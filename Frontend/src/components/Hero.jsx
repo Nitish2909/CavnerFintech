@@ -155,61 +155,52 @@
 // }
 
 import React, { useState, useEffect } from "react";
-import {
-  ArrowRight,
-  ShieldCheck,
-  Clock,
-  Percent,
-} from "lucide-react";
+import { ShieldCheck, Users, Landmark } from "lucide-react"; // Common fallback utility stats icons
 
-// Content exactly mapped to your screenshots layout
 const HERO_SLIDES = [
   {
-   mainText: "Apply Home Loan Online with",
-  brandHighlight: "Cavner Wealth & Fintech",
-  subText: "Fast Approval & Low Interest Rates",
-  illustration: (
-    <div className="relative w-full h-full min-h-[160px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
-      <img 
-        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMGxvYW5zfGVufDB8fDB8fHww" 
-        alt="Apply For Home Loan" 
-        className="w-full h-full object-cover object-top md:object-center"
-        loading="lazy"
-      />
-      {/* Micro-Overlay to keep colors matching cleanly with white background sections */}
-      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10" />
-    </div>
-  )
-},
+    mainText: "Apply Home Loan Online with",
+    brandHighlight: "Cavner Wealth & Fintech",
+    subText: "Fast Approval & Low Interest Rates",
+    illustration: (
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
+        <img 
+          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMGxvYW5zfGVufDB8fDB8fHww" 
+          alt="Apply For Home Loan" 
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-white/10" />
+      </div>
+    )
+  },
   {
-   mainText: "Apply Personal Loan Online with",
-  brandHighlight: "Cavner Wealth & Fintech",
-  subText: "Fast Approval & Low Interest Rates",
-  illustration: (
-    <div className="relative w-full h-full min-h-[160px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
-      <img 
-        src="https://media.istockphoto.com/id/1195331254/photo/personal-loan-application-isolated-on-white-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=jK3LirtoxynhMdIRHLXKmwbqWKbNynGocsJkSMyHeTI=" 
-        alt="Apply For Personal Loan" 
-        className="w-full h-full object-cover object-top md:object-center"
-        loading="lazy"
-      />
-      {/* Micro-Overlay to keep colors matching cleanly with white background sections */}
-      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10" />
-    </div>
-  )
-},
+    mainText: "Apply Personal Loan Online with",
+    brandHighlight: "Cavner Wealth & Fintech",
+    subText: "Fast Approval & Low Interest Rates",
+    illustration: (
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
+        <img 
+          src="https://media.istockphoto.com/id/1195331254/photo/personal-loan-application-isolated-on-white-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=jK3LirtoxynhMdIRHLXKmwbqWKbNynGocsJkSMyHeTI=" 
+          alt="Apply For Personal Loan" 
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-white/10" />
+      </div>
+    )
+  },
   {
-    
     mainText: "Smart Financial Solutions That Match Your Goals",
     brandHighlight: "Cavner Wealth and Fintech Brings Financial Solutions",
     subText: "Compare 300+ Verified Lenders Instantly",
     illustration: (
-      <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100/40 p-4">
-        <div className="flex flex-col gap-2 w-full max-w-[200px]">
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100/40 p-6">
+        <div className="flex flex-col gap-2.5 w-full max-w-[240px]">
           {["Health Loan", "Home Loan", "Vehicle Loan", "Personal Loan"].map((loan, idx) => (
-            <div key={idx} className="bg-white px-3 py-1.5 rounded-lg shadow-sm border border-slate-100 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#f7941d]" />
-              <span className="text-xs font-semibold text-slate-600">{loan}</span>
+            <div key={idx} className="bg-white px-3.5 py-2 rounded-xl shadow-sm border border-slate-100/80 flex items-center gap-2.5 transform transition-transform hover:translate-x-1">
+              <span className="w-2 h-2 rounded-full bg-[#f7941d] shrink-0" />
+              <span className="text-xs font-bold text-slate-700">{loan}</span>
             </div>
           ))}
         </div>
@@ -217,22 +208,21 @@ const HERO_SLIDES = [
     )
   },
   {
-  mainText: "Trusted by Thousands",
-  brandHighlight: "for Their Financial Needs",
-  subText: "10,000+ Happy Customers",
-  illustration: (
-    <div className="relative w-full h-full min-h-[160px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
-      <img 
-        src="https://media.istockphoto.com/id/1958309457/photo/happy-family-with-child-sitting-among-moving-boxes-and-using-laptop.webp?a=1&b=1&s=612x612&w=0&k=20&c=E3lJJ36YdlUb7MwlRdQYpo4o1FM-8IjkcEZlJL_P6mg=" 
-        alt="Happy family using laptop among moving boxes" 
-        className="w-full h-full object-cover object-top md:object-center"
-        loading="lazy"
-      />
-      {/* Micro-Overlay to keep colors matching cleanly with white background sections */}
-      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10" />
-    </div>
-  )
-}
+    mainText: "Trusted by Thousands",
+    brandHighlight: "for Their Financial Needs",
+    subText: "10,000+ Happy Customers",
+    illustration: (
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
+        <img 
+          src="https://media.istockphoto.com/id/1958309457/photo/happy-family-with-child-sitting-among-moving-boxes-and-using-laptop.webp?a=1&b=1&s=612x612&w=0&k=20&c=E3lJJ36YdlUb7MwlRdQYpo4o1FM-8IjkcEZlJL_P6mg=" 
+          alt="Happy family using laptop among moving boxes" 
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-white/10" />
+      </div>
+    )
+  }
 ];
 
 export default function Hero() {
@@ -246,7 +236,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#fafafa]">
+    <section className="relative overflow-hidden bg-[#fafafa] w-full">
       {/* Background Micro Dot Mesh */}
       <div
         className="absolute inset-0 opacity-25 pointer-events-none"
@@ -256,59 +246,76 @@ export default function Hero() {
         }}
       />
 
-      {/* STAGE 1: DYNAMIC BANNER CONTAINER (EXACT STRUCTURE) */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 pt-6">
-        <div className="relative w-full min-h-[320px] md:min-h-[400px] rounded-2xl overflow-hidden bg-white border border-slate-200/70 shadow-sm grid grid-cols-1 md:grid-cols-12">
+      {/* DYNAMIC BANNER CONTAINER */}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-6">
+        <div className="relative w-full rounded-2xl overflow-hidden bg-white border border-slate-200/70 shadow-sm min-h-[460px] sm:min-h-[500px] md:min-h-[380px] lg:min-h-[420px]">
           
-          {HERO_SLIDES.map((slide, index) => (
-            <React.Fragment key={index}>
-              {/* LEFT TEXT BOX PANEL (8 Columns wide) */}
-              <div 
-                className={`absolute inset-y-0 left-0 col-span-1 md:col-span-8 flex flex-col justify-center px-6 md:px-12 transition-all duration-700 ease-in-out ${
-                  index === activeSlide ? "opacity-100 translate-x-0 z-10" : "opacity-0 -translate-x-4 pointer-events-none"
+          {HERO_SLIDES.map((slide, index) => {
+            const isActive = index === activeSlide;
+            return (
+              <div
+                key={index}
+                className={`absolute inset-0 w-full h-full grid grid-cols-1 md:grid-cols-12 transition-all duration-700 ease-in-out ${
+                  isActive ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
                 }`}
               >
-                <h2 className="text-2xl sm:text-3xl md:text-[36px] font-black tracking-tight text-[#0f3742] leading-[1.2]">
-                  {slide.mainText}
-                  <span className="text-[#f7941d] block mt-1 font-black">
-                    {slide.brandHighlight}
-                  </span>
-                </h2>
-                <p className="text-sm md:text-base text-red-600 font-bold mt-3 tracking-wide">
-                  {slide.subText}
-                </p>
-              </div>
+                {/* LEFT TEXT BOX PANEL */}
+                <div 
+                  className={`col-span-1 md:col-span-7 lg:col-span-8 flex flex-col justify-center px-5 sm:px-8 md:px-12 pt-8 pb-16 md:py-6 transition-all duration-700 delay-100 ${
+                    isActive ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"
+                  }`}
+                >
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-black tracking-tight text-[#0f3742] leading-[1.25] sm:leading-[1.2]">
+                    {slide.mainText}
+                    <span className="text-[#f7941d] block mt-1 font-black">
+                      {slide.brandHighlight}
+                    </span>
+                  </h2>
+                  <p className="text-xs sm:text-sm md:text-base text-red-600 font-bold mt-2.5 sm:mt-4 tracking-wide">
+                    {slide.subText}
+                  </p>
+                </div>
 
-              {/* RIGHT VISUAL GRAPHIC PANEL (4 Columns wide) */}
-              <div 
-                className={`absolute inset-y-0 right-0 w-full md:w-1/3 col-span-1 md:col-span-4 transition-all duration-700 ease-in-out ${
-                  index === activeSlide ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 pointer-events-none"
-                }`}
-              >
-                {slide.illustration}
+                {/* RIGHT VISUAL GRAPHIC PANEL */}
+                <div 
+                  className={`col-span-1 md:col-span-5 lg:col-span-4 w-full h-full relative order-first md:order-last transition-all duration-700 ${
+                    isActive ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                  }`}
+                >
+                  {slide.illustration}
+                </div>
               </div>
-            </React.Fragment>
-          ))}
+            );
+          })}
 
-          {/* Linear Pagination Bar Tickers (Matches bottom elements in screenshots) */}
-          <div className="absolute bottom-4 left-6 md:left-12 flex gap-1.5 z-20">
+          {/* Linear Pagination Bar Tickers */}
+          <div className="absolute bottom-5 left-5 sm:left-8 md:left-12 flex gap-2 z-20">
             {HERO_SLIDES.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveSlide(index)}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  index === activeSlide ? "bg-[#f7941d] w-6" : "bg-slate-200 w-3 hover:bg-slate-300"
+                className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
+                  index === activeSlide ? "bg-[#f7941d] w-7" : "bg-slate-200 w-3 hover:bg-slate-300"
                 }`}
-                aria-label={`Slide ${index + 1}`}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
         </div>
       </div>
 
-      {/* STAGE 2: TYPOGRAPHY LAYOUT UNDER THE INTERACTIVE DISPLAY BANNER */}
-      <div className="relative w-full max-w-[1280px] mx-auto px-6 md:px-8 pt-12 pb-16 flex flex-col items-center text-center">
-
+      {/* SECONDARY BOTTOM SECTION: TYPOGRAPHY LAYOUT & KEY STATS BAR */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-10 pb-14 flex flex-col items-center text-center">
+        <h3 className="text-xs uppercase font-black tracking-[0.25em] text-slate-400 mb-6">
+          Our Platform At A Glance
+        </h3>
+        
+        {/* Responsive Grid layout for Statistics elements */}
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 max-w-2xl w-full justify-center">
+          <Stat icon={ShieldCheck} value="100% Secure" label="Data Encryption" />
+          <Stat icon={Users} value="1000+" label="Happy Clients" />
+          <Stat icon={Landmark} value="300+" label="Verified Banks" />
+        </div>
       </div>
     </section>
   );
@@ -316,12 +323,16 @@ export default function Hero() {
 
 function Stat({ icon: Icon, value, label }) {
   return (
-    <div className="flex flex-col items-center text-center">
-      <div className="w-8 h-8 rounded-lg bg-slate-100 text-[#0e2a35] grid place-items-center mb-1.5 border border-slate-200/40">
-        <Icon size={14} />
+    <div className="flex flex-col items-center text-center group">
+      <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white text-[#0e2a35] grid place-items-center mb-2 border border-slate-200/60 shadow-sm transition-transform group-hover:-translate-y-0.5">
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
       </div>
-      <div className="text-xs sm:text-sm font-black text-[#0e2a35] tracking-tight leading-none">{value}</div>
-      <div className="text-[10px] text-[#6b7b82] mt-1 font-medium">{label}</div>
+      <div className="text-xs sm:text-base font-black text-[#0e2a35] tracking-tight leading-none">
+        {value}
+      </div>
+      <div className="text-[9px] sm:text-[11px] text-[#6b7b82] mt-1 font-semibold tracking-wide uppercase">
+        {label}
+      </div>
     </div>
   );
 }

@@ -67,10 +67,6 @@ export default function EmiCalculator() {
               <span className="inline-flex items-center"><span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#f7941d]" />Principal</span>
               <span className="inline-flex items-center"><span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#e63946]" />Interest</span>
             </div>
-
-            <button className="w-full inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full font-semibold transition-all mt-6 bg-[#f7941d] text-white shadow-[0_12px_40px_-10px_rgba(14,42,53,0.18)] hover:brightness-105 hover:-translate-y-[1px]">
-              Apply for this Loan
-            </button>
           </div>
 
         </div>

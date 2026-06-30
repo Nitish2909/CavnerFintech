@@ -434,6 +434,8 @@ const LoanFormModal = ({ loanTitle, onClose }) => {
     panCard: null,
     aadhaarCard: null,
     incomeProof: null,
+    itr: null,
+    salaryslip: null,
   });
 
   const handleChange = (e) => {
@@ -459,6 +461,10 @@ const LoanFormModal = ({ loanTitle, onClose }) => {
       submissionData.append("aadhaarCard", documents.aadhaarCard);
     if (documents.incomeProof)
       submissionData.append("incomeProof", documents.incomeProof);
+      if (documents.itr)
+      submissionData.append("ITR", documents.itr);
+      if (documents.salaryslip)
+      submissionData.append("Salary Slip", documents.salaryslip);
 
     alert(
       `Application securely queued for ${loanTitle}! Check logs for payload metadata.`,
@@ -618,6 +624,18 @@ const LoanFormModal = ({ loanTitle, onClose }) => {
                 label="Income Ledger Statement (Past 3 Months)"
                 name="incomeProof"
                 file={documents.incomeProof}
+                onChange={handleFileChange}
+              />
+              <FileRow
+                label="ITR (Past 2 Years)"
+                name="incomeProof"
+                file={documents.itr}
+                onChange={handleFileChange}
+              />
+              <FileRow
+                label="Salary Slip (Past 3 Months)"
+                name="incomeProof"
+                file={documents.salaryslip}
                 onChange={handleFileChange}
               />
             </div>

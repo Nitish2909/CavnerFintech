@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "./pages/Home";
-import CheckCivilScore from "./pages/CheckCivilScore";
+import CheckCivilScore from "./pages/CheckCibilScore.jsx";
 import EMICalculator from "./pages/EMICalculator";
 import Login from "./pages/Login";
 import Register from "./pages/Register";

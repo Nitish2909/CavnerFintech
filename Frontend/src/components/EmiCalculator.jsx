@@ -17,25 +17,25 @@ export default function EmiCalculator() {
   }, [amount, rate, tenure]);
 
   return (
-    <section id="emi" className="py-20 w-full max-w-[1280px] mx-auto px-4 md:px-8">
+    <section id="emi" className="py-12 md:py-20 w-full max-w-[1280px] mx-auto px-4 md:px-8">
       {/* EMI Wrap */}
-      <div className="rounded-[28px] overflow-hidden text-white bg-gradient-to-br from-[#0e2a35] to-[#16424f]">
+      <div className="rounded-[24px] md:rounded-[28px] overflow-hidden text-white bg-gradient-to-br from-[#0e2a35] to-[#16424f]">
         {/* EMI Inner Grid */}
-        <div className="grid gap-10 p-8 md:p-12 lg:grid-cols-2">
+        <div className="grid gap-8 md:gap-10 p-5 sm:p-8 md:p-12 grid-cols-1 lg:grid-cols-2">
           
           {/* Left Column: Sliders */}
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-[11.2px] font-bold tracking-wider uppercase">
+          <div className="flex flex-col justify-center">
+            <div className="inline-flex self-start items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-[11.2px] font-bold tracking-wider uppercase">
               <Calculator size={14} /> EMI Calculator
             </div>
-            <h2 className="text-[clamp(1.875rem,3.5vw,2.5rem)] font-bold tracking-tight leading-[1.1] mt-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.5rem] font-bold tracking-tight leading-[1.2] sm:leading-[1.1] mt-4">
               Plan smarter with our <span className="text-[#f7941d]">Loan EMI Calculator</span>
             </h2>
-            <p className="text-white/70 mt-3 text-[1.1rem] max-w-xl leading-[1.5]">
+            <p className="text-white/70 mt-3 text-sm sm:text-base md:text-[1.1rem] max-w-xl leading-[1.5]">
               Estimate your monthly EMI, total interest, and overall repayment before committing to a loan tenure.
             </p>
 
-            <div className="mt-8 flex flex-col gap-6">
+            <div className="mt-6 md:mt-8 flex flex-col gap-5 md:gap-6">
               <Slider label="Loan Amount" value={amount} min={50000} max={5000000} step={10000} suffix={fmt(amount)} onChange={setAmount} />
               <Slider label="Interest Rate (%)" value={rate} min={5} max={24} step={0.1} suffix={`${rate.toFixed(1)}%`} onChange={setRate} />
               <Slider label="Tenure (Months)" value={tenure} min={6} max={240} step={1} suffix={`${tenure} mo`} onChange={setTenure} />
@@ -43,34 +43,45 @@ export default function EmiCalculator() {
           </div>
 
           {/* Right Column: Calculations & Summary Display */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[22px] p-8 flex flex-col justify-center">
-            <div className="flex justify-between items-center">
-              <span className="text-[1rem] text-white/80">Monthly EMI</span>
-              <span className="text-[1.875rem] font-bold text-[#f7941d]">{fmt(emi)}</span>
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[20px] md:rounded-[22px] p-5 sm:p-8 flex flex-col justify-center w-full">
+            <div className="flex justify-between items-center gap-4">
+              <span className="text-sm sm:text-[1rem] text-white/80">Monthly EMI</span>
+              <span className="text-xl sm:text-2xl md:text-[1.875rem] font-bold text-[#f7941d] whitespace-nowrap">{fmt(emi)}</span>
             </div>
             
-            <div className="h-[1px] bg-white/10 my-5" />
+            <div className="h-[1px] bg-white/10 my-4 md:my-5" />
             
-            <div className="flex justify-between items-center"><span className="text-[0.875rem] text-white/60">Principal Amount</span><span className="font-bold">{fmt(amount)}</span></div>
-            <div className="h-3" />
-            <div className="flex justify-between items-center"><span className="text-[0.875rem] text-white/60">Total Interest</span><span className="font-bold">{fmt(totalInterest)}</span></div>
-            <div className="h-3" />
-            <div className="flex justify-between items-center"><span className="text-[0.875rem] text-white/60">Total Payment</span><span className="font-bold">{fmt(totalPayment)}</span></div>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center text-xs sm:text-sm md:text-[0.875rem] gap-4">
+                <span className="text-white/60">Principal Amount</span>
+                <span className="font-bold text-right">{fmt(amount)}</span>
+              </div>
+              <div className="flex justify-between items-center text-xs sm:text-sm md:text-[0.875rem] gap-4">
+                <span className="text-white/60">Total Interest</span>
+                <span className="font-bold text-right">{fmt(totalInterest)}</span>
+              </div>
+              <div className="flex justify-between items-center text-xs sm:text-sm md:text-[0.875rem] gap-4">
+                <span className="text-white/60">Total Payment</span>
+                <span className="font-bold text-right">{fmt(totalPayment)}</span>
+              </div>
+            </div>
 
             {/* Principal vs Interest Distribution Bar */}
-            <div className="mt-6 h-2.5 rounded-full bg-white/10 overflow-hidden flex">
+            <div className="mt-6 h-2.5 rounded-full bg-white/10 overflow-hidden flex w-full">
               <div className="h-full bg-[#f7941d]" style={{ width: `${(amount / totalPayment) * 100}%` }} />
               <div className="h-full bg-[#e63946]" style={{ width: `${(totalInterest / totalPayment) * 100}%` }} />
             </div>
             
-            <div className="mt-3 flex gap-5 text-[0.75rem] text-white/70">
-              <span className="inline-flex items-center"><span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#f7941d]" />Principal</span>
-              <span className="inline-flex items-center"><span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#e63946]" />Interest</span>
+            <div className="mt-3 flex gap-4 md:gap-5 text-[0.75rem] text-white/70">
+              <span className="inline-flex items-center">
+                <span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#f7941d] shrink-0" />
+                Principal
+              </span>
+              <span className="inline-flex items-center">
+                <span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#e63946] shrink-0" />
+                Interest
+              </span>
             </div>
-
-            <button className="w-full inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full font-semibold transition-all mt-6 bg-[#f7941d] text-white shadow-[0_12px_40px_-10px_rgba(14,42,53,0.18)] hover:brightness-105 hover:-translate-y-[1px]">
-              Apply for this Loan
-            </button>
           </div>
 
         </div>
@@ -78,6 +89,7 @@ export default function EmiCalculator() {
     </section>
   );
 }
+
 
 function Slider({ label, value, min, max, step, suffix, onChange }) {
   return (

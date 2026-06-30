@@ -112,11 +112,11 @@ export default function SiteFooter() {
             <div className="w-[38px] h-[38px] rounded-[10px] bg-gradient-to-br from-[#f7941d] to-[#e63946] text-white grid place-items-center font-extrabold text-[1.15rem]">
               ₹
             </div>
-            <span className="text-[1.5rem] font-extrabold text-white">CavnerFintech</span>
+            <span className="text-[1.5rem] font-extrabold text-white">Cavner Wealth & Fintech</span>
           </div>
           
           <p className="text-white/70 text-[0.875rem] max-w-md mt-4 leading-[1.5]">
-            CabinerFintech is your trusted financial partner offering fast loan assistance, transparent comparisons across 300+ banks & NBFCs, and a smooth digital journey for every borrower.
+            Cavner Wealth & Fintech is your trusted financial partner offering fast loan assistance, transparent comparisons across 300+ banks & NBFCs, and a smooth digital journey for every borrower.
           </p>
           
           {/* Social Icons Row */}
@@ -148,7 +148,7 @@ export default function SiteFooter() {
             <span className="inline-flex items-center gap-1.5"><Mail size={14} /> info@Fintech.com</span>
             <span className="inline-flex items-center gap-1.5"><MapPin size={14} /> Karnal, Haryana India</span>
           </div>
-          <p>© {new Date().getFullYear()} CavnerFintech. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Cavner Wealth & Fintech. All rights reserved.</p>
         </div>
       </div>
     </footer>
