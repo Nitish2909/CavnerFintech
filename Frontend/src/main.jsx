@@ -29,6 +29,8 @@ import HomeLoan from "./pages/loans/HomeLoan.jsx";
 import PersonalLoan from "./pages/loans/PersonalLoan.jsx";
 import Dashboard from "./pages/Users/Dashboard.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import EducationLoan from "./pages/loans/EducationLoan.jsx";
+import BusinessLoan from "./pages/loans/BusinessLoan.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,9 +46,9 @@ const router = createBrowserRouter([
       { path: "/partner-login", element: <PartnerLogin /> },
       { path: "/partnersregisteration", element: <PartnerRegistration /> },
       { path: "/credit-card", element: <CreditCard /> },
-      { path: "/loans", element: <ApplyLoan /> },
       { path: "/applyforloan", element: <ApplyPage /> },
 
+      //Corporate
       { path: "/corporate", element: <BuilderFinance /> },
       { path: "/corporate/builder", element: <BuilderFinance /> },
       { path: "/corporate/shares", element: <FundingShares /> },
@@ -55,8 +57,14 @@ const router = createBrowserRouter([
       { path: "/corporate/nbfc", element: <NbfcFunding /> },
       { path: "/corporate/capex", element: <CapexFinance /> },
 
+      // All Types of Loan
+      { path: "/loans", element: <ApplyLoan /> },
       { path: "/loans/home-loan", element: <HomeLoan /> },
       { path: "/loans/personal-loan", element: <PersonalLoan /> },
+      { path: "/loans/education-loan", element: <EducationLoan /> },
+      { path: "/loans/business-loan", element: <BusinessLoan /> },
+      // { path: "/loans/education-loan", element: <EducationLoan /> },
+
 
       { path: "/contact", element: <ContactUs /> },
       { path: "/partner", element: <BecomePartner /> },

@@ -160,7 +160,7 @@ import { ShieldCheck, Users, Landmark } from "lucide-react"; // Common fallback 
 const HERO_SLIDES = [
   {
     mainText: "Apply Home Loan Online with",
-    brandHighlight: "Cavner Wealth & Fintech",
+    brandHighlight: "Cavner Wealth & FinTech",
     subText: "Fast Approval & Low Interest Rates",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
@@ -176,7 +176,7 @@ const HERO_SLIDES = [
   },
   {
     mainText: "Apply Personal Loan Online with",
-    brandHighlight: "Cavner Wealth & Fintech",
+    brandHighlight: "Cavner Wealth & FinTech",
     subText: "Fast Approval & Low Interest Rates",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
@@ -192,7 +192,7 @@ const HERO_SLIDES = [
   },
   {
     mainText: "Smart Financial Solutions That Match Your Goals",
-    brandHighlight: "Cavner Wealth and Fintech Brings Financial Solutions",
+    brandHighlight: "Cavner Wealth and FinTech Brings Financial Solutions",
     subText: "Compare 300+ Verified Lenders Instantly",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100/40 p-6">
@@ -222,7 +222,24 @@ const HERO_SLIDES = [
         <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-white/10" />
       </div>
     )
-  }
+  },
+    {
+    mainText: "India's best platform for ",
+    brandHighlight: "Loans, Cards and Investments",
+    subText: "One Stop for all Financial Solutions",
+    illustration: (
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100/40 p-6">
+        <div className="flex flex-col gap-2.5 w-full max-w-[240px]">
+          {["Health Loan", "Home Loan", "Vehicle Loan", "Personal Loan"].map((loan, idx) => (
+            <div key={idx} className="bg-white px-3.5 py-2 rounded-xl shadow-sm border border-slate-100/80 flex items-center gap-2.5 transform transition-transform hover:translate-x-1">
+              <span className="w-2 h-2 rounded-full bg-[#f7941d] shrink-0" />
+              <span className="text-xs font-bold text-slate-700">{loan}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  },
 ];
 
 export default function Hero() {

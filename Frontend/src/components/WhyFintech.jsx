@@ -1,16 +1,67 @@
-import { Zap, FileCheck, Wallet, Layers, Smartphone, ShieldCheck, Percent, HelpCircle, Clock, Gift } from "lucide-react";
+import {
+  Zap,
+  FileCheck,
+  Wallet,
+  Layers,
+  Smartphone,
+  ShieldCheck,
+  Percent,
+  HelpCircle,
+  Clock,
+  Gift,
+} from "lucide-react";
 
 const features = [
-  { Icon: Zap, title: "Quick Loan Approvals", text: "Faster approvals help borrowers receive funds during urgent financial situations." },
-  { Icon: FileCheck, title: "Easy Documentation", text: "Minimal paperwork makes the loan application process simple and stress-free." },
-  { Icon: Wallet, title: "Flexible EMI Plans", text: "Choose repayment options that fit your monthly budget and lifestyle." },
-  { Icon: Layers, title: "Multiple Loan Options", text: "Compare offers from 300+ lenders to find the best deal in seconds." },
-  { Icon: Smartphone, title: "Smooth Digital Journey", text: "End-to-end online application with electronic verification and tracking." },
-  { Icon: ShieldCheck, title: "Safe & Secure", text: "Bank-grade encryption safeguards your personal and financial details at all times." },
-  { Icon: Percent, title: "Competitive Rates", text: "Access industry-low interest rates customized exclusively for your credit profile." },
-  { Icon: HelpCircle, title: "24/7 Expert Support", text: "Dedicated financial advisors are always ready to guide you through your journey." },
-  { Icon: Clock, title: "Zero Hidden Charges", text: "Complete transparency with upfront fees and absolutely no surprise costs." },
-  { Icon: Gift, title: "Loyalty Rewards", text: "Unlock premium cashback offers and lower rates on your subsequent loans." },
+  {
+    Icon: Zap,
+    title: "Quick Loan Approvals",
+    text: "Faster approvals help borrowers receive funds during urgent financial situations.",
+  },
+  {
+    Icon: FileCheck,
+    title: "Easy Documentation",
+    text: "Minimal paperwork makes the loan application process simple and stress-free.",
+  },
+  {
+    Icon: Wallet,
+    title: "Flexible EMI Plans",
+    text: "Choose repayment options that fit your monthly budget and lifestyle.",
+  },
+  {
+    Icon: Layers,
+    title: "Multiple Loan Options",
+    text: "Compare offers from 300+ lenders to find the best deal in seconds.",
+  },
+  {
+    Icon: Smartphone,
+    title: "Smooth Digital Journey",
+    text: "End-to-end online application with electronic verification and tracking.",
+  },
+  {
+    Icon: ShieldCheck,
+    title: "Safe & Secure",
+    text: "Bank-grade encryption safeguards your personal and financial details at all times.",
+  },
+  {
+    Icon: Percent,
+    title: "Competitive Rates",
+    text: "Access industry-low interest rates customized exclusively for your credit profile.",
+  },
+  {
+    Icon: HelpCircle,
+    title: "24/7 Expert Support",
+    text: "Dedicated financial advisors are always ready to guide you through your journey.",
+  },
+  {
+    Icon: Clock,
+    title: "Zero Hidden Charges",
+    text: "Complete transparency with upfront fees and absolutely no surprise costs.",
+  },
+  {
+    Icon: Gift,
+    title: "Loyalty Rewards",
+    text: "Unlock premium cashback offers and lower rates on your subsequent loans.",
+  },
 ];
 
 export default function WhyFintech() {
@@ -47,7 +98,7 @@ export default function WhyFintech() {
           Why Fintech
         </p>
         <h2 className="text-[clamp(2rem,4vw,2.75rem)] font-extrabold tracking-tight leading-[1.15] text-[#0e2a35]">
-          More Borrowers Trust Cavner Wealth and Fintech for{" "}
+          More Borrowers Trust Cavner Wealth and FinTech for{" "}
           <span className="bg-gradient-to-r from-[#f7941d] via-[#e63946] to-[#f7941d] bg-[length:200%_auto] animate-text-shine bg-clip-text text-transparent">
             Fast Loan Solutions
           </span>
@@ -58,28 +109,33 @@ export default function WhyFintech() {
       {/* Grid Layout */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {features.map(({ Icon, title, text }, i) => (
-          <div 
+          <div
             className="group relative overflow-hidden bg-gradient-to-b from-white to-[#fafafa] border border-[#e8e6e0] rounded-[24px] p-8 
                        transition-all duration-300 ease-out
                        hover:-translate-y-1.5 hover:border-[#f7941d]/30 hover:bg-white
                        hover:shadow-[0_20px_50px_-12px_rgba(14,42,53,0.12)]
-                       animate-slide-up" 
+                       animate-slide-up"
             key={title}
             style={{ animationDelay: `${i * 80}ms` }} // Reduced delay slightly so 10 elements load smoothly
           >
             {/* Top Right Background Corner Glow Flare */}
             <div className="absolute top-0 right-0 w-[130px] h-[130px] rounded-full bg-gradient-to-br from-[rgba(247,148,29,0.16)] to-transparent opacity-70 pointer-events-none transition-transform duration-500 group-hover:scale-150" />
-            
+
             {/* Bottom Left Subtle Ambient Secondary Glow */}
             <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-[rgba(230,57,70,0.06)] to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            
+
             {/* Feature Icon Container */}
-            <div className="w-14 h-14 rounded-[16px] bg-[#0e2a35] text-white grid place-items-center mb-6 
+            <div
+              className="w-14 h-14 rounded-[16px] bg-[#0e2a35] text-white grid place-items-center mb-6 
                             transition-all duration-300 relative overflow-hidden
-                            group-hover:bg-[#f7941d] group-hover:scale-110 group-hover:shadow-[0_8px_20px_-4px_rgba(247,148,29,0.4)]">
-              <Icon size={24} className="transition-transform duration-300 group-hover:rotate-[5deg]" />
+                            group-hover:bg-[#f7941d] group-hover:scale-110 group-hover:shadow-[0_8px_20px_-4px_rgba(247,148,29,0.4)]"
+            >
+              <Icon
+                size={24}
+                className="transition-transform duration-300 group-hover:rotate-[5deg]"
+              />
             </div>
-            
+
             {/* Content */}
             <h3 className="text-[1.2rem] font-bold tracking-tight leading-[1.2] text-[#0e2a35] transition-colors duration-200 group-hover:text-[#f7941d]">
               {title}
@@ -87,10 +143,12 @@ export default function WhyFintech() {
             <p className="mt-3 text-[0.925rem] text-[#55656c] leading-[1.6]">
               {text}
             </p>
-            
+
             {/* Large Background Counter Number */}
-            <span className="absolute bottom-1 right-5 text-[4.5rem] font-black text-[rgba(14,42,53,0.035)] leading-none select-none pointer-events-none 
-                             transition-all duration-300 group-hover:text-[rgba(247,148,29,0.07)] group-hover:bottom-3">
+            <span
+              className="absolute bottom-1 right-5 text-[4.5rem] font-black text-[rgba(14,42,53,0.035)] leading-none select-none pointer-events-none 
+                             transition-all duration-300 group-hover:text-[rgba(247,148,29,0.07)] group-hover:bottom-3"
+            >
               {i + 1 < 10 ? `0${i + 1}` : i + 1}
             </span>
           </div>

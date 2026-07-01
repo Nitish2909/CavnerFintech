@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// Unified mock data mimicking the fields in Screenshot 2026-06-27 142601.png
+
 const ALL_BANKS_DATA = [
   {
     id: 1,

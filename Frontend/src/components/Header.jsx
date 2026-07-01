@@ -154,15 +154,19 @@ import {
   ChevronDown,
   ChevronUp,
   Home,
+  HandCoins,
   TrendingUp,
   Building,
   Sun,
   Briefcase,
+  GraduationCap,
+  IndianRupeeIcon,
+  BriefcaseBusiness,
 } from "lucide-react";
 
 const navItems = [
   { label: "Credit Card", href: "/credit-card", hasMenu: true },
-  { label: "Apply Loan", href: "/loans" },
+  // { label: "Apply Loan", href: "/loans" },
   { label: "Investment Plan", href: "/investment" },
   {
     label: "Corporate Finance",
@@ -197,6 +201,38 @@ const navItems = [
         label: "PROJECT / CAPEX FINANCE",
         href: "/corporate/capex",
         icon: Briefcase,
+      },
+    ],
+  },
+
+   {
+    label: "Apply Loan",
+    href: "/loans",
+    subMenu: [
+      {
+        label: "PERSONAL LOAN",
+        href: "/loans/personal-loan",
+        icon: HandCoins,
+      },
+      {
+        label: "HOME LOAN",
+        href: "/loans/home-loan",
+        icon: Home,
+      },
+      {
+        label: "EDUCATION LOAN",
+        href: "/loans/education-loan",
+        icon: GraduationCap,
+      },
+      {
+        label: "BUSINESS LOAN",
+        href: "/loans/business-loan",
+        icon: BriefcaseBusiness,
+      },
+      {
+        label: "OTHERS LOAN",
+        href: "/loans",
+        icon: IndianRupeeIcon,
       },
     ],
   },

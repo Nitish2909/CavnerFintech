@@ -141,12 +141,14 @@ export default function LoanDashboard() {
                 </span>
               </div>
             </div>
-            <button className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all" title="Log Out">
+            <button
+              className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all"
+              title="Log Out"
+            >
               <LogOut size={16} />
             </button>
           </div>
         </header>
-
         {/* Dynamic Route Container */}
         <main className="p-4 md:p-8 flex-1 max-w-7xl w-full mx-auto space-y-8">
           {/* TAB 1: OVERVIEW COMPONENT VIEW */}
@@ -188,7 +190,7 @@ export default function LoanDashboard() {
                       CIBIL Score
                     </span>
                     <h3 className="text-3xl font-black text-emerald-600 tracking-tight">
-                      765 
+                      765
                       {/* get the credit score of user */}
                     </h3>
                   </div>

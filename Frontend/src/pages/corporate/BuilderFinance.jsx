@@ -62,7 +62,7 @@ const BuilderFinance = () => {
               <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
               
               <div className="relative z-10 space-y-5">
-                {/* 📸 Image Component */}
+                {/*  Image Component */}
                 <div className="w-full h-56 rounded-2xl overflow-hidden bg-white flex items-center justify-center shadow-md">
                   <img 
                     src="https://upniva.com/_next/image?url=%2Fimages%2Fbusiness-Loan.png&w=1080&q=75" 
