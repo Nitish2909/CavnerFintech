@@ -31,6 +31,11 @@ import Dashboard from "./pages/Users/Dashboard.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import EducationLoan from "./pages/loans/EducationLoan.jsx";
 import BusinessLoan from "./pages/loans/BusinessLoan.jsx";
+import Bonds from "./pages/investments/bonds.jsx";
+import PMMY from "./pages/governmentServices.jsx/PMMY.jsx";
+import PMEGP from "./pages/governmentServices.jsx/PMEGP.jsx";
+import PMVidyalaxmiPortal from "./pages/governmentServices.jsx/PMVidyalaxmiPortal.jsx";
+import ProjectReport from "./pages/OthersServices/ProjectReport.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +47,6 @@ const router = createBrowserRouter([
       { path: "/emi", element: <EMICalculator /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
-      { path: "/investment", element: <InvestmentPlan /> },
       { path: "/partner-login", element: <PartnerLogin /> },
       { path: "/partnersregisteration", element: <PartnerRegistration /> },
       { path: "/credit-card", element: <CreditCard /> },
@@ -65,6 +69,24 @@ const router = createBrowserRouter([
       { path: "/loans/business-loan", element: <BusinessLoan /> },
       // { path: "/loans/education-loan", element: <EducationLoan /> },
 
+      //Investments
+      { path: "/investment", element: <InvestmentPlan /> },
+      { path: "/investment/bonds", element: <Bonds /> },
+
+      //Government Services
+      { path: "/government-services", element: <PMMY /> },
+      { path: "/government-services/mudra-yojana", element: <PMMY /> },
+      { path: "/government-services/pmegp", element: <PMEGP /> },
+      {
+        path: "/government-services/pm-vidyalaxmiportal",
+        element: <PMVidyalaxmiPortal />,
+      },
+
+
+      //Others services 
+       { path: "/others-services/project-report", element: <ProjectReport/> },
+
+       
 
       { path: "/contact", element: <ContactUs /> },
       { path: "/partner", element: <BecomePartner /> },

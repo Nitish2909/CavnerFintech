@@ -167,7 +167,109 @@ import {
 const navItems = [
   { label: "Credit Card", href: "/credit-card", hasMenu: true },
   // { label: "Apply Loan", href: "/loans" },
-  { label: "Investment Plan", href: "/investment" },
+  // { label: "Investment Plan", href: "/investment" },
+  {
+    label: "Investments Plan",
+    href: "/investment",
+    subMenu: [
+      {
+        label: "Bonds",
+        href: "/investment/bonds",
+        // You can add an icon here if needed, e.g., icon: FileText
+        items: [
+          { label: "Bonds In India", href: "/investments/bonds/india" },
+          { label: "Corporate Bonds", href: "/investments/bonds/corporate" },
+          { label: "Government Bonds", href: "/investments/bonds/government" },
+          { label: "Tax Free Bonds", href: "/investments/bonds/tax-free" },
+          {
+            label: "Floating Rate Bonds",
+            href: "/investments/bonds/floating-rate",
+          },
+          {
+            label: "Capital Gain Bonds",
+            href: "/investments/bonds/capital-gain",
+          },
+          {
+            label: "Zero Coupon Bonds",
+            href: "/investments/bonds/zero-coupon",
+          },
+          {
+            label: "How to invest in Bonds",
+            href: "/investments/bonds/how-to-invest",
+          },
+          {
+            label: "Sovereign Gold Bonds",
+            href: "/investments/bonds/sovereign-gold",
+          },
+        ],
+      },
+      {
+        label: "Fixed Deposit",
+        href: "/investments/fixed-deposit",
+        items: [
+          {
+            label: "Fixed Deposit Interest Rates",
+            href: "/investments/fd/interest-rates",
+          },
+          {
+            label: "Senior Citizen FD Rates",
+            href: "/investments/fd/senior-citizen",
+          },
+          {
+            label: "Loan against Fixed Deposit",
+            href: "/investments/fd/loan-against",
+          },
+          {
+            label: "FD vs Mutual Funds",
+            href: "/investments/fd/vs-mutual-funds",
+          },
+          { label: "FD vs RD", href: "/investments/fd/vs-rd" },
+          {
+            label: "Post Office FD Rates",
+            href: "/investments/fd/post-office-rates",
+          },
+          {
+            label: "Recurring Deposit",
+            href: "/investments/fd/recurring-deposit",
+          },
+        ],
+      },
+      {
+        label: "Mutual Funds",
+        href: "/investments/mutual-funds",
+        items: [
+          { label: "Mutual Funds", href: "/investments/mutual-funds/all" },
+          {
+            label: "Large Cap Mutual Funds",
+            href: "/investments/mutual-funds/large-cap",
+          },
+          {
+            label: "Mid Cap Mutual Funds",
+            href: "/investments/mutual-funds/mid-cap",
+          },
+          {
+            label: "Small Cap Mutual Funds",
+            href: "/investments/mutual-funds/small-cap",
+          },
+          {
+            label: "ELSS Mutual Funds",
+            href: "/investments/mutual-funds/elss",
+          },
+          {
+            label: "Mutual Fund Investment",
+            href: "/investments/mutual-funds/investment-guide",
+          },
+          { label: "SWP Mutual Funds", href: "/investments/mutual-funds/swp" },
+          {
+            label: "Flexi Cap Funds",
+            href: "/investments/mutual-funds/flexi-cap",
+          },
+          { label: "Liquid Funds", href: "/investments/mutual-funds/liquid" },
+        ],
+      },
+    ],
+  },
+
   {
     label: "Corporate Finance",
     href: "/corporate",
@@ -205,7 +307,7 @@ const navItems = [
     ],
   },
 
-   {
+  {
     label: "Apply Loan",
     href: "/loans",
     subMenu: [
@@ -236,6 +338,38 @@ const navItems = [
       },
     ],
   },
+  {
+    label: "Governments Services",
+    href: "/government-services",
+    subMenu: [
+      {
+        label: "Pradhan Mantri MUDRA Yojana (PMMY)",
+        href: "/government-services/mudra-yojana",
+        icon: Home,
+      },
+      {
+        label: " Prime Minister's Employment Generation Programme (PMEGP)",
+        href: "/government-services/pmegp",
+        icon: TrendingUp,
+      },
+      {
+        label: "PM-Vidyalaxmi Portal",
+        href: "/government-services/pm-vidyalaxmiportal",
+        icon: Building,
+      },
+    ],
+  },
+  {
+    label: "Others Services",
+    href: "/others-services",
+    subMenu: [
+      {
+        label: "PROJECT REPORT",
+        href: "/others-services/project-report",
+        icon: Home,
+      },
+    ],
+  },
 ];
 
 const Header = () => {
@@ -251,9 +385,11 @@ const Header = () => {
       {/* Top Bar */}
       <div className="border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
-          
           {/* Logo Section */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0 group">
+          <Link
+            to="/"
+            className="flex items-center gap-2 sm:gap-3 shrink-0 group"
+          >
             {/* Geometric Logo Icon */}
             <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-md shadow-emerald-900/30 transition-transform group-hover:scale-105">
               <span className="text-xs sm:text-sm font-black text-white tracking-tighter">
@@ -289,16 +425,28 @@ const Header = () => {
 
           {/* Right Utility Navigation - Desktop only */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] font-bold tracking-wider text-slate-300">
-            <Link to="/cibil" className="hover:text-emerald-400 transition-colors whitespace-nowrap">
+            <Link
+              to="/cibil"
+              className="hover:text-emerald-400 transition-colors whitespace-nowrap"
+            >
               CIBIL SCORE
             </Link>
-            <Link to="/emi" className="hover:text-emerald-400 transition-colors whitespace-nowrap">
+            <Link
+              to="/emi"
+              className="hover:text-emerald-400 transition-colors whitespace-nowrap"
+            >
               EMI CALCULATOR
             </Link>
-            <Link to="/login" className="hover:text-emerald-400 transition-colors whitespace-nowrap">
+            <Link
+              to="/login"
+              className="hover:text-emerald-400 transition-colors whitespace-nowrap"
+            >
               LOGIN
             </Link>
-            <Link to="/partner-login" className="hover:text-emerald-400 transition-colors whitespace-nowrap">
+            <Link
+              to="/partner-login"
+              className="hover:text-emerald-400 transition-colors whitespace-nowrap"
+            >
               PARTNER LOGIN
             </Link>
           </nav>
@@ -311,7 +459,9 @@ const Header = () => {
               className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-full text-xs font-semibold transition-all hover:text-emerald-400"
             >
               <Phone size={14} className="text-emerald-400 shrink-0" />
-              <span className="hidden sm:inline text-slate-200">9971749994</span>
+              <span className="hidden sm:inline text-slate-200">
+                9971749994
+              </span>
             </a>
 
             {/* Mobile Menu Toggle Button */}
@@ -331,7 +481,10 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between">
           <nav className="flex items-center gap-6 h-full">
             {navItems.map((item) => (
-              <div key={item.label} className="relative group h-full flex items-center">
+              <div
+                key={item.label}
+                className="relative group h-full flex items-center"
+              >
                 <Link
                   to={item.href}
                   className="flex items-center gap-1 text-slate-300 group-hover:text-emerald-400 font-bold py-2 transition-colors uppercase tracking-wider"
@@ -339,8 +492,14 @@ const Header = () => {
                   {item.label}
                   {item.subMenu && (
                     <>
-                      <ChevronDown size={12} className="block group-hover:hidden text-slate-500" />
-                      <ChevronUp size={12} className="hidden group-hover:block text-emerald-400" />
+                      <ChevronDown
+                        size={12}
+                        className="block group-hover:hidden text-slate-500"
+                      />
+                      <ChevronUp
+                        size={12}
+                        className="hidden group-hover:block text-emerald-400"
+                      />
                     </>
                   )}
                 </Link>
@@ -358,7 +517,10 @@ const Header = () => {
                             className="flex items-center gap-3 px-4 py-3 text-[11px] font-bold text-slate-700 hover:bg-slate-50 hover:text-emerald-600 transition-colors tracking-wide border-b border-slate-100 last:border-none"
                           >
                             {IconComponent && (
-                              <IconComponent size={15} className="text-slate-400 shrink-0" />
+                              <IconComponent
+                                size={15}
+                                className="text-slate-400 shrink-0"
+                              />
                             )}
                             <span>{sub.label}</span>
                           </Link>
@@ -386,7 +548,6 @@ const Header = () => {
       {open && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-gray-900 border-t border-gray-700 max-h-[calc(100vh-5rem)] overflow-y-auto shadow-2xl z-50">
           <nav className="flex flex-col p-4 space-y-2 text-sm font-semibold text-slate-200">
-            
             {/* Search Input on Mobile Devices Only */}
             <div className="flex md:hidden items-center gap-2 bg-gray-800 px-3 py-2.5 rounded-lg mb-2 border border-gray-700">
               <Search size={16} className="text-slate-400" />
@@ -398,7 +559,10 @@ const Header = () => {
             </div>
 
             {navItems.map((item) => (
-              <div key={item.label} className="flex flex-col border-b border-gray-800/60 last:border-none pb-1">
+              <div
+                key={item.label}
+                className="flex flex-col border-b border-gray-800/60 last:border-none pb-1"
+              >
                 <div className="flex items-center justify-between py-2">
                   <Link
                     to={item.href}
@@ -412,7 +576,11 @@ const Header = () => {
                       onClick={() => toggleSubMenu(item.label)}
                       className="p-2 text-slate-400 hover:text-white focus:outline-none rounded-lg hover:bg-gray-800"
                     >
-                      {activeSubMenu === item.label ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                      {activeSubMenu === item.label ? (
+                        <ChevronUp size={16} />
+                      ) : (
+                        <ChevronDown size={16} />
+                      )}
                     </button>
                   )}
                 </div>
@@ -437,12 +605,48 @@ const Header = () => {
 
             {/* Additional Secondary Mobile Menu Items */}
             <div className="pt-2 mt-2 border-t border-gray-800 flex flex-col gap-3 text-xs tracking-wider uppercase text-slate-400">
-              <Link to="/cibil" className="hover:text-emerald-400 py-1 transition-colors" onClick={() => setOpen(false)}>Check CIBIL Score</Link>
-              <Link to="/emi" className="hover:text-emerald-400 py-1 transition-colors" onClick={() => setOpen(false)}>EMI Calculator</Link>
-              <Link to="/login" className="hover:text-emerald-400 py-1 transition-colors" onClick={() => setOpen(false)}>Login</Link>
-              <Link to="/partner-login" className="hover:text-emerald-400 py-1 transition-colors" onClick={() => setOpen(false)}>Partner Login</Link>
-              <Link to="/partner" className="hover:text-emerald-400 py-1 transition-colors font-bold text-slate-300" onClick={() => setOpen(false)}>Become a Partner</Link>
-              <Link to="/contact" className="hover:text-emerald-400 py-1 transition-colors font-bold text-slate-300" onClick={() => setOpen(false)}>Contact Us</Link>
+              <Link
+                to="/cibil"
+                className="hover:text-emerald-400 py-1 transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                Check CIBIL Score
+              </Link>
+              <Link
+                to="/emi"
+                className="hover:text-emerald-400 py-1 transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                EMI Calculator
+              </Link>
+              <Link
+                to="/login"
+                className="hover:text-emerald-400 py-1 transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                Login
+              </Link>
+              <Link
+                to="/partner-login"
+                className="hover:text-emerald-400 py-1 transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                Partner Login
+              </Link>
+              <Link
+                to="/partner"
+                className="hover:text-emerald-400 py-1 transition-colors font-bold text-slate-300"
+                onClick={() => setOpen(false)}
+              >
+                Become a Partner
+              </Link>
+              <Link
+                to="/contact"
+                className="hover:text-emerald-400 py-1 transition-colors font-bold text-slate-300"
+                onClick={() => setOpen(false)}
+              >
+                Contact Us
+              </Link>
             </div>
           </nav>
         </div>
