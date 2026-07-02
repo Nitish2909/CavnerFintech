@@ -1,6 +1,7 @@
 import express from "express"
 const app = express()
 import dotenv from "dotenv"
+import cors from 'cors'
 dotenv.config()
 import authRoutes from "./routes/authRoutes.js"
 import connectDB from "./config/db.js"
@@ -19,7 +20,7 @@ app.use(cookieParser())
 app.use("/api/auth", authRoutes )
 
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 
 app.listen(PORT ,()=>{

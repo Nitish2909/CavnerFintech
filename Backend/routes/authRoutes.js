@@ -15,7 +15,11 @@ router.post("/register", registerUserController);
  * @description Login user and generate access and refresh tokens
  * @access Public   
  */
+<<<<<<< HEAD
 router.post("/login", auth, loginUserController);
+=======
+router.post("/login",loginUserController);
+>>>>>>> 60fc6dbca1667b9ac629e5a24c10f939eb62bd94
 
 /**
  * @route GET /api/auth/get-me
