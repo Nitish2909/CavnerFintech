@@ -1,148 +1,3 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import { Phone, Search, Menu, X, ChevronDown } from "lucide-react";
-
-// const navItems = [
-//   { label: "Credit Card", href: "/credit-card", hasMenu: true },
-//   { label: "Apply Loan", href: "/loans", hasMenu: true },
-//   { label: "Investment Plan", href: "/investment", hasMenu: true },
-//   { label: "Corporate Finance", href: "/corporate", hasMenu: true },
-// ];
-
-// const Header = () => {
-//   const [open, setOpen] = useState(false);
-
-//   return (
-//     <header className="w-full bg-gray-800 text-white sticky top-0 z-50">
-//       {/* Top Bar */}
-//       <div className="border-b border-gray-700">
-//         <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-4">
-
-//           {/* Logo */}
-//           <Link to="/" className="flex items-center gap-2 shrink-0">
-//             <div className="bg-pink-600 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center text-lg">
-//               ₹
-//             </div>
-//             <h1 className="text-xl font-bold text-pink-600 tracking-wide">Fintech</h1>
-//           </Link>
-
-//           {/* Search Bar - Hidden on small mobile */}
-//           <div className="hidden sm:flex items-center gap-2 bg-gray-700 px-3 py-1.5 rounded-md md:w-64">
-//             <Search size={16} className="text-gray-400" />
-//             <input
-//               type="search"
-//               placeholder="What you're looking for?"
-//               className="bg-transparent border-none outline-none text-sm placeholder-gray-400 w-full focus:ring-0"
-//             />
-//           </div>
-
-//           {/* Right utility navigation - Hidden on Mobile */}
-//           <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wider text-gray-300">
-//             <Link to="/cibil" className="hover:text-pink-500 transition-colors">CHECK CIBIL SCORE</Link>
-//             <Link to="/emi" className="hover:text-pink-500 transition-colors">EMI CALCULATOR</Link>
-//             <Link to="/login" className="hover:text-pink-500 transition-colors">LOGIN</Link>
-//             <Link to="/partner-login" className="hover:text-pink-500 transition-colors">PARTNER LOGIN</Link>
-//           </nav>
-
-//           {/* Contact Pill & Mobile Toggle Action Group */}
-//           <div className="flex items-center gap-4">
-//             <a
-//               href="tel:9971749994"
-//               className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap"
-//             >
-//               <span className="text-pink-500"><Phone size={14} /></span>
-//               <span>9971749994</span>
-//             </a>
-
-//             {/* Mobile Menu Button */}
-//             <button
-//               className="lg:hidden p-1 text-gray-300 hover:text-white transition-colors focus:outline-none"
-//               onClick={() => setOpen((prev) => !prev)}
-//               aria-label="Toggle Menu"
-//             >
-//               {open ? <X size={24} /> : <Menu size={24} />}
-//             </button>
-//           </div>
-
-//         </div>
-//       </div>
-
-//       {/* Sub Navigation Bar - Hidden on Mobile/Tablets */}
-//       <div className="hidden lg:block bg-gray-900 border-b border-gray-800 text-sm">
-//         <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between">
-//           <nav className="flex items-center gap-6">
-//             {navItems.map((item) => (
-//               <Link
-//                 key={item.label}
-//                 to={item.href}
-//                 className="flex items-center gap-1 text-gray-300 hover:text-white py-2 transition-colors"
-//               >
-//                 {item.label}
-//                 {item.hasMenu && <ChevronDown size={14} className="text-gray-500" />}
-//               </Link>
-//             ))}
-//           </nav>
-
-//           <nav className="flex items-center gap-6 text-gray-400">
-//             <Link to="/partner" className="hover:text-white transition-colors">Become a Partner</Link>
-//             <Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link>
-//           </nav>
-//         </div>
-//       </div>
-
-//       {/* Mobile Drawer Menu Layer */}
-//       {open && (
-//         <div className="lg:hidden absolute top-full left-0 w-full bg-gray-900 border-b border-gray-700 shadow-xl transition-all">
-//           <nav className="flex flex-col p-4 space-y-3 text-sm font-medium text-gray-300">
-//             {/* Contextual Search inside Mobile layout */}
-//             <div className="flex sm:hidden items-center gap-2 bg-gray-800 px-3 py-2 rounded-md mb-2">
-//               <Search size={16} className="text-gray-400" />
-//               <input
-//                 type="search"
-//                 placeholder="Search..."
-//                 className="bg-transparent border-none outline-none text-sm placeholder-gray-400 w-full focus:ring-0"
-//               />
-//             </div>
-
-//             {/* Dynamic Core Categories */}
-//             {navItems.map((item) => (
-//               <Link
-//                 key={item.label}
-//                 to={item.href}
-//                 className="hover:text-pink-500 transition-colors py-1 border-b border-gray-800"
-//                 onClick={() => setOpen(false)}
-//               >
-//                 {item.label}
-//               </Link>
-//             ))}
-
-//             {/* Utility Targets */}
-//             <Link to="/cibil" className="hover:text-pink-500 transition-colors py-1" onClick={() => setOpen(false)}>
-//               Check CIBIL Score
-//             </Link>
-//             <Link to="/emi" className="hover:text-pink-500 transition-colors py-1" onClick={() => setOpen(false)}>
-//               EMI Calculator
-//             </Link>
-//             <Link to="/login" className="hover:text-pink-500 transition-colors py-1" onClick={() => setOpen(false)}>
-//               Login
-//             </Link>
-//             <Link to="/partner-login" className="hover:text-pink-500 transition-colors py-1" onClick={() => setOpen(false)}>
-//               Partner Login
-//             </Link>
-//             <Link to="/partner" className="hover:text-pink-500 transition-colors py-1" onClick={() => setOpen(false)}>
-//               Become a Partner
-//             </Link>
-//             <Link to="/contact" className="hover:text-pink-500 transition-colors py-1" onClick={() => setOpen(false)}>
-//               Contact Us
-//             </Link>
-//           </nav>
-//         </div>
-//       )}
-//     </header>
-//   );
-// };
-
-// export default Header;
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -414,7 +269,7 @@ const Header = () => {
           </Link>
 
           {/* Search Bar - Hidden on Mobile, shows up on tablets & desktops */}
-          <div className="hidden md:flex items-center gap-2 bg-gray-700/60 px-3 py-2 rounded-lg max-w-xs xl:max-w-md w-full border border-gray-600/40 focus-within:border-emerald-500/50 transition-all">
+          <div className="hidden md:flex items-center gap-2 bg-gray-700/60 px-3 py-2 rounded-lg max-w-xs xl:max-w-md w-[300px] border border-gray-600/40 focus-within:border-emerald-500/50 transition-all">
             <Search size={16} className="text-gray-400" />
             <input
               type="search"
@@ -448,6 +303,9 @@ const Header = () => {
               className="hover:text-emerald-400 transition-colors whitespace-nowrap"
             >
               PARTNER LOGIN
+            </Link>
+            <Link to="/contact" className="hover:text-emerald-400 transition-colors whitespace-nowrap">
+              Contact Us
             </Link>
           </nav>
 
@@ -537,9 +395,7 @@ const Header = () => {
             <Link to="/partner" className="hover:text-white transition-colors">
               Become a Partner
             </Link>
-            <Link to="/contact" className="hover:text-white transition-colors">
-              Contact Us
-            </Link>
+            
           </nav>
         </div>
       </div>

@@ -467,3 +467,8 @@ const PersonalLoan = () => {
 };
 
 export default PersonalLoan;
+
+
+
+
+// Add above form in place of current existed for in PersonalLoan

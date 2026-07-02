@@ -240,6 +240,22 @@ const HERO_SLIDES = [
       </div>
     )
   },
+    {
+    mainText: "We Can also helps to ",
+    brandHighlight: "Create Project Report For Getting Loan",
+    subText: "",
+    illustration: (
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
+        <img 
+          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMGxvYW5zfGVufDB8fDB8fHww" 
+          alt="Apply For Home Loan" 
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-white/10" />
+      </div>
+    )
+  },
 ];
 
 export default function Hero() {

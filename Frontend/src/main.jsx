@@ -82,11 +82,9 @@ const router = createBrowserRouter([
         element: <PMVidyalaxmiPortal />,
       },
 
-
-      //Others services 
-       { path: "/others-services/project-report", element: <ProjectReport/> },
-
-       
+      //Others services
+      { path: "/others-services", element: <ProjectReport /> },
+      { path: "/others-services/project-report", element: <ProjectReport /> },
 
       { path: "/contact", element: <ContactUs /> },
       { path: "/partner", element: <BecomePartner /> },

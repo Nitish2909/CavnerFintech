@@ -3,7 +3,8 @@ import React from 'react'
 const Bonds = () => {
   return (
     <div>
-      <h1>Bonds</h1>
+      <h1>Bonds in India </h1>
+      <p></p>
     </div>
   )
 }

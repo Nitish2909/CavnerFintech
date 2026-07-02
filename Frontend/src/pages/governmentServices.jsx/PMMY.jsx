@@ -12,7 +12,7 @@ const PMMY = () => {
     {
       name: "Kishor 🚀",
       desc: "For operational businesses requiring scaling capital.",
-      limit: "₹50,01 to ₹5 Lakhs",
+      limit: "₹50,000 to ₹5 Lakhs",
       color: "border-blue-500 text-blue-800 bg-blue-50/60 shadow-blue-100/50",
       badgeColor: "bg-blue-500",
     },
