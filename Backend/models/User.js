@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
       uppercase: true,
       trim: true,
     },
-    pinCode: {
+    pincode: {
       type: String,
       required: [true, 'Pincode is required'], // Synced with controller
       trim: true,

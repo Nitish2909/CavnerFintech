@@ -110,7 +110,7 @@ export const loginUserController = async (req, res) => {
     }
 
     //3.check user in database
-    const user = await User.findOne({ phone });
+    const user = await User.findOne({ name:fullname });
 
     //4. if user not found
     if (!user) {
