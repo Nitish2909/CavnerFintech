@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -279,7 +278,7 @@ const Header = () => {
           </div>
 
           {/* Right Utility Navigation - Desktop only */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] font-bold tracking-wider text-slate-300">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[12px] font-bold tracking-wider text-slate-300">
             <Link
               to="/cibil"
               className="hover:text-emerald-400 transition-colors whitespace-nowrap"

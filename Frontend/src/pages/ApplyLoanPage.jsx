@@ -173,7 +173,8 @@ export default function ApplyPage() {
             disabled={!isValid} 
             className="w-full bg-blue-700 text-white py-3.5 rounded-xl font-bold  disabled:cursor-not-allowed shadow-lg hover:bg-blue-800 transition-all cursor-pointer text-center mt-2"
           >
-            Send OTP
+            {/* Send OTP */}
+            Apply Loan
           </button>
         </form>
       </div>

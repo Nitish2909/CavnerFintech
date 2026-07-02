@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User, Mail, Phone, Calendar, CreditCard, MapPin, ArrowRight, ShieldCheck, MailIcon, Lock } from "lucide-react";
 // import axiosInstance from "./axiosInstance"; 
-import axiosInstance from "../services/axios.js"
 
 const Register = () => {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
   const [email, setEmail]= useState("");
   const [password, setPassword] = useState("");
-  const [dob, setDob] = useState("");
-  const [pannumber, setPanNumber] = useState("");
+  const [dateofbirth, setDateOfBirth] = useState("");
+  const [pancard, setPanCard] = useState("");
   const [pincode, setPinCode] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
 
@@ -25,30 +24,32 @@ const Register = () => {
     }
 
     const payload = {
-      name,
-      phone,
+      name:fullname,
+      phone:phonenumber,
       email,
       password,
-      dob,
-      pannumber,
+      dob:dateofbirth,
+      pannumber:pancard,
       pincode,
     };
 
     console.log("Submitting form data:", payload);
 
     try {
-      const response = await axiosInstance.post(
-        "http://localhost:3000/api/auth/register",
-        payload
+      const response = await fetch(
+        "http://localhost:3000/api/auth/register",{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(payload)
+        }
       );
       console.log(response.data);
       alert("Registration Successful!");
     
-      setName("");
-      setPhone("");
-      setDob("");
-      setEmail("")
-      setPanNumber("");
+      setFullname("");
+      setPhonenumber("");
+      setDateOfBirth("");
+      setPanCard("");
       setPinCode("");
       setAgreeTerms(false);
     
@@ -119,9 +120,9 @@ const Register = () => {
                 <input
                   type="text"
                   required
-                  name="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  name="fullname"
+                  value={fullname}
+                  onChange={(e) => setFullname(e.target.value)}
                   placeholder="John Doe"
                   className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium text-slate-800 placeholder:text-slate-400"
                 />
@@ -136,9 +137,9 @@ const Register = () => {
                 <input
                   type="tel"
                   required
-                  name="phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  name="phonenumber"
+                  value={phonenumber}
+                  onChange={(e) => setPhonenumber(e.target.value)}
                   placeholder="+91 XXXXX XXXXX"
                   className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium text-slate-800 placeholder:text-slate-400"
                 />
@@ -187,9 +188,9 @@ const Register = () => {
                 <input
                   type="date"
                   required
-                  name="dob"
-                  value={dob}
-                  onChange={(e) => setDob(e.target.value)}
+                  name="dateofbirth"
+                  value={dateofbirth}
+                  onChange={(e) => setDateOfBirth(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium text-slate-700"
                 />
               </div>
@@ -204,9 +205,9 @@ const Register = () => {
                   <input
                     type="text"
                     required
-                    name="pannumber"
-                    value={pannumber}
-                    onChange={(e) => setPanNumber(e.target.value)}
+                    name="pancard"
+                    value={pancard}
+                    onChange={(e) => setPanCard(e.target.value)}
                     placeholder="ABCDE1234F"
                     className="w-full pl-10 pr-4 py-3 text-sm uppercase bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium text-slate-800 placeholder:text-slate-400 tracking-wider"
                   />

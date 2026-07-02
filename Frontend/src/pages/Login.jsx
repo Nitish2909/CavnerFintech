@@ -13,31 +13,33 @@ const Login = () => {
     e.preventDefault();
 
     const payload = {
-      fullname,
-      email,
-      password
+      name:fullname,
+      email:email,
+      password:password
     };
 
     console.log("Submitting login payload:", payload);
 
-    // try {
-    //   const response = await axiosInstance.post(
-    //     "http://localhost:4000/api/auth/login",
-    //     payload,
-    //     {
-    //       withCredentials: true,
-    //     },
-    //   );
-    //   console.log(response.data);
-    //
-    //   setFullname("");
-    //   setPhonenumber("");
-    //
-    //   navigate("/dashboard");
-    // } catch (error) {
-    //   console.error("Login Error", error);
-    //   alert(error.response?.data?.message || "Login failed");
-    // }
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/auth/login",
+        {
+          method:"POST",
+          headers:{'Content-Type':"application/json"},
+          body:JSON.stringify(payload),
+          credentials:'include'
+        },
+      );
+      console.log(response.data);
+    
+      setFullname("");
+      // setPhonenumber("");
+    
+      navigate("/user/dashboard");
+    } catch (error) {
+      console.error("Login Error", error);
+      alert(error.response?.data?.message || "Login failed");
+    }
   };
 
   return (
