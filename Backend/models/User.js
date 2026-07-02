@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Password is required'],
     },
     dob: {
-      type: Date, 
+      type: Date,
       required: [true, 'Date of birth is required'], // Synced with controller
     },
     pannumber: {
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
       uppercase: true,
       trim: true,
     },
-    pinCode: {
+    pincode: {
       type: String,
       required: [true, 'Pincode is required'], // Synced with controller
       trim: true,

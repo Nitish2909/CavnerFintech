@@ -100,17 +100,17 @@ export const loginUserController = async (req, res) => {
      /* ================= NORMAL LOGIN ================= */
 
     //1. get email and password from request body
-    const { fullname, email, password } = req.body;
+    const { name, email, password } = req.body;
 
     //2. check empty
-    if (!fullname || !email || !password) {
+    if (!name || !email || !password) {
       return res.status(400).json({
         message: "All Fields Are Required",
       });
     }
 
     //3.check user in database
-    const user = await User.findOne({ phone });
+    const user = await User.findOne({ email });
 
     //4. if user not found
     if (!user) {
@@ -166,7 +166,7 @@ export const loginUserController = async (req, res) => {
       message: "User LoggedIn Successfully",
       user: {
         _id: user._id,
-        username: user.username,
+        name: user.name,
         email: email,
       },
       accessToken, // send to frontend
