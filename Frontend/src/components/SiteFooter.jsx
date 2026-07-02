@@ -1,4 +1,3 @@
-
 import { Mail, Phone, MapPin } from "lucide-react";
 
 // Clean, native SVG brand icons to completely bypass lucide-react package version mismatches
@@ -100,8 +99,10 @@ export default function SiteFooter() {
         {/* Brand / About Column */}
         <div className="flex flex-col">
           <div className="flex items-center gap-2 shrink-0">
-            <div className="w-[38px] h-[38px] rounded-[10px] bg-gradient-to-br from-[#f7941d] to-[#e63946] text-white grid place-items-center font-extrabold text-[1.15rem]">
-              ₹
+            <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-md shadow-emerald-900/30 transition-transform group-hover:scale-105">
+              <span className="text-xs sm:text-sm font-black text-white tracking-tighter">
+                CWF
+              </span>
             </div>
             <span className="text-[1.5rem] font-extrabold text-white">
               Cavner Wealth & FinTech
@@ -113,7 +114,6 @@ export default function SiteFooter() {
             fast loan assistance, transparent comparisons across 300+ banks &
             NBFCs, and a smooth digital journey for every borrower.
           </p>
-
           {/* Social Icons Row */}
           <div className="mt-5 flex gap-3">
             {socials.map((name, i) => (

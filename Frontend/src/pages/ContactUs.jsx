@@ -59,7 +59,7 @@ export default function ContactUs() {
                   </div>
                   <div>
                     <div className="text-[10px] text-white/40 uppercase font-bold tracking-widest mb-0.5">Call Our Support</div>
-                    <a href="tel:+919971740584" className="text-base font-bold text-white hover:text-[#f7941d] transition-colors tracking-wide">+91 99717 40584</a>
+                    <a href="tel:+919971740584" className="text-base font-bold text-white hover:text-[#f7941d] transition-colors tracking-wide">+91 8816942362</a>
                   </div>
                 </div>
 

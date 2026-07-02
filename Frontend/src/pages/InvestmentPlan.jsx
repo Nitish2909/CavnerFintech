@@ -86,7 +86,7 @@ const InvestmentPlan = () => {
               bonds carry explicit issuer terms.
             </p>
             <p className="text-center pt-4 text-[12px] text-slate-500 font-medium">
-              © {new Date().getFullYear()} Fintech Wealth Management Inc. All
+              © {new Date().getFullYear()} Cavner Wealth & FinTech Management Inc. All
               Rights Reserved. Brokerage products provided by registered
               regulatory clearing houses.
             </p>

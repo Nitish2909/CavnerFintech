@@ -317,12 +317,12 @@ const Header = () => {
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Phone Button - Compact on tiny screens, fully detailed on larger targets */}
             <a
-              href="tel:9971749994"
+              href="tel:918816942362"
               className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-full text-xs font-semibold transition-all hover:text-emerald-400"
             >
               <Phone size={14} className="text-emerald-400 shrink-0" />
               <span className="hidden sm:inline text-slate-200">
-                9971749994
+               8816942362
               </span>
             </a>
 
