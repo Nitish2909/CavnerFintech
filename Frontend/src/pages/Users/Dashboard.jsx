@@ -12,12 +12,15 @@ import {
   Wallet,
   IndianRupee,
   LogIn,
+  User,
+  Settings,
 } from "lucide-react";
 
 export default function LoanDashboard() {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("overview");
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   // Dynamic User State (Simulating an active auth session)
   const [user, setUser] = useState({
@@ -25,6 +28,9 @@ export default function LoanDashboard() {
     initials: "NK",
     role: "Premium Borrower",
   });
+
+  // Local state container specifically to handle dynamic editing inside the view layer
+  const [editName, setEditName] = useState(user ? user.name : "");
 
   // Mock states reflecting fintech loan portfolio integrations
   const [loans] = useState([
@@ -59,6 +65,29 @@ export default function LoanDashboard() {
   // Derived State: Dynamic mock calculation for the next monthly payment (5% of active capital)
   const nextPayment = Math.round(totalAmount * 0.05);
 
+  // Helper function to extract initials dynamically on change
+  const calculateInitials = (fullName) => {
+    if (!fullName) return "??";
+    const parts = fullName.trim().split(" ");
+    if (parts.length > 1) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return parts[0].substring(0, 2).toUpperCase();
+  };
+
+  // Process profile update details dynamically
+  const handleUpdateProfile = (e) => {
+    e.preventDefault();
+    if (!editName.trim()) return;
+
+    setUser((prev) => ({
+      ...prev,
+      name: editName,
+      initials: calculateInitials(editName),
+    }));
+    setIsProfileModalOpen(false);
+  };
+
   // Handle PDF Generation Simulation for Loan Agreements
   const handleDownloadAgreement = (loanId) => {
     console.log(`Triggering generatePdf FromHtml for loan agreement: ${loanId}`);
@@ -68,35 +97,32 @@ export default function LoanDashboard() {
   // Handle Logout Event
   const handleLogout = async () => {
     try {
-      // Changed method to POST since mutations like logging out should avoid GET requests
-      const response = await fetch("http://localhost:3000/api/auth/logout", {
+      const response = await fetch("http://localhost:9000/api/auth/logout", {
         method: "POST", 
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        credentials: "include", 
       });
 
       if (!response.ok) {
         throw new Error("Logout request failed on server");
       }
-
-      const data = await response.json();
-      console.log(data);
-
+    } catch (error) {
+      console.error("LogOut Server Error (Proceeding with client-side cleanup):", error);
+    } finally {
       setUser(null);
       navigate("/login");
-    } catch (error) {
-      console.error("LogOut Error", error);
-      alert(error.message || "LogOut failed");
     }
   };
 
-  // Handle Login Simulation (To test moving between states easily)
+  // Handle Login Simulation
   const handleLoginSimulation = () => {
+    const defaultName = "Nitish Kumar";
     setUser({
-      name: "Nitish Kumar",
-      initials: "NK",
+      name: defaultName,
+      initials: calculateInitials(defaultName),
       role: "Premium Borrower",
     });
+    setEditName(defaultName);
   };
 
   return (
@@ -117,22 +143,22 @@ export default function LoanDashboard() {
               {/* Geometric Logo Icon */}
               <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-md shadow-emerald-900/30 transition-transform group-hover:scale-105">
                 <span className="text-xs sm:text-sm font-black text-white tracking-tighter">
-                  CWF
+                  {user ? user.initials : "CWF"}
                 </span>
               </div>
 
-              {/* Brand Typography */}
+              {/* Brand Typography dynamically adapts to User Session */}
               <div className="flex flex-col justify-center leading-none">
-                <div className="flex items-baseline">
-                  <span className="font-black text-emerald-400 text-lg sm:text-xl tracking-tight">
-                    Cavner
+                <div className="flex items-baseline max-w-[140px] truncate">
+                  <span className="font-black text-emerald-400 text-base sm:text-lg tracking-tight truncate">
+                    {user ? user.name.split(" ")[0] : "Cavner"}
                   </span>
-                  <span className="font-light text-slate-200 text-lg sm:text-xl tracking-tight ml-1">
-                    Wealth
+                  <span className="font-light text-slate-200 text-base sm:text-lg tracking-tight ml-1 truncate">
+                    {user ? user.name.split(" ")[1] || "Portal" : "Wealth"}
                   </span>
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-0.5 sm:mt-1">
-                  & Fintech
+                <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-0.5 sm:mt-1 truncate">
+                  {user ? user.role : "& Fintech"}
                 </span>
               </div>
             </Link>
@@ -177,17 +203,22 @@ export default function LoanDashboard() {
             </button>
           </div>
 
-          {/* User Account / Logout Action conditional rendering */}
+          {/* Dynamic User Account Trigger Section */}
           <div className="flex items-center gap-6">
             {user ? (
               <>
-                <div className="flex items-center gap-3 border-r border-slate-200 pr-4">
-                  <div className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-emerald-600 border border-slate-200">
+                <div 
+                  onClick={() => setIsProfileModalOpen(true)}
+                  className="flex items-center gap-3 border-r border-slate-200 pr-4 cursor-pointer hover:opacity-80 group transition-all"
+                  title="Click to Edit Profile Name"
+                >
+                  <div className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-emerald-600 border border-slate-200 group-hover:border-emerald-400 transition-colors">
                     {user.initials}
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-900 leading-none">
-                      {user.name}
+                    <p className="text-xs font-bold text-slate-900 leading-none group-hover:text-emerald-600 flex items-center gap-1">
+                      <span>{user.name}</span>
+                      <Settings size={10} className="text-slate-400 inline" />
                     </p>
                     <span className="text-[10px] text-slate-500 font-medium">
                       {user.role}
@@ -283,7 +314,7 @@ export default function LoanDashboard() {
                   </div>
                 </div>
 
-                {/* Interactive Performance/Sessions list */}
+                {/* Interactive Loan commitments table list */}
                 <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
                   <div className="px-6 py-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                     <div>
@@ -291,8 +322,7 @@ export default function LoanDashboard() {
                         Loan Commitments
                       </h3>
                       <p className="text-slate-400 text-xs mt-0.5">
-                        Active financing pipelines and verified compliance
-                        statuses.
+                        Active financing pipelines and verified compliance statuses.
                       </p>
                     </div>
                   </div>
@@ -305,17 +335,12 @@ export default function LoanDashboard() {
                           <th className="py-3 px-6">Capital Offering</th>
                           <th className="py-3 px-6">Origination Date</th>
                           <th className="py-3 px-6">Underwriting State</th>
-                          <th className="py-3 px-6 text-right">
-                            Legal Documents
-                          </th>
+                          <th className="py-3 px-6 text-right">Legal Documents</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
                         {loans.map((loan) => (
-                          <tr
-                            key={loan.id}
-                            className="hover:bg-slate-50/60 transition-colors"
-                          >
+                          <tr key={loan.id} className="hover:bg-slate-50/60 transition-colors">
                             <td className="py-4 px-6 text-slate-900 font-bold font-mono text-xs">
                               {loan.id}
                             </td>
@@ -326,22 +351,18 @@ export default function LoanDashboard() {
                                 {Number(loan.amount).toLocaleString("en-IN")}
                               </span>
                             </td>
-                            <td className="py-4 px-6 text-slate-400 text-xs">
-                              {loan.date}
-                            </td>
+                            <td className="py-4 px-6 text-slate-400 text-xs">{loan.date}</td>
                             <td className="py-4 px-6">
                               <span
                                 className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ${
-                                  loan.status === "Disbursed" ||
-                                  loan.status === "Approved"
+                                  loan.status === "Disbursed" || loan.status === "Approved"
                                     ? "bg-emerald-50 text-emerald-700"
                                     : "bg-amber-50 text-amber-700"
                                 }`}
                               >
                                 <span
                                   className={`w-1.5 h-1.5 rounded-full ${
-                                    loan.status === "Disbursed" ||
-                                    loan.status === "Approved"
+                                    loan.status === "Disbursed" || loan.status === "Approved"
                                       ? "bg-emerald-500"
                                       : "bg-amber-500"
                                   }`}
@@ -350,12 +371,9 @@ export default function LoanDashboard() {
                               </span>
                             </td>
                             <td className="py-4 px-6 text-right">
-                              {loan.status === "Disbursed" ||
-                              loan.status === "Approved" ? (
+                              {loan.status === "Disbursed" || loan.status === "Approved" ? (
                                 <button
-                                  onClick={() =>
-                                    handleDownloadAgreement(loan.id)
-                                  }
+                                  onClick={() => handleDownloadAgreement(loan.id)}
                                   className="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all active:scale-95"
                                 >
                                   <FileText size={12} />
@@ -381,12 +399,9 @@ export default function LoanDashboard() {
               <div className="p-4 bg-slate-100 text-slate-400 rounded-full">
                 <LogOut size={40} />
               </div>
-              <h3 className="text-xl font-bold text-slate-900">
-                Logged Out Securely
-              </h3>
+              <h3 className="text-xl font-bold text-slate-900">Logged Out Securely</h3>
               <p className="text-sm text-slate-500">
-                You must be authenticated to view your active financial capital
-                details.
+                You must be authenticated to view your active financial capital details.
               </p>
               <button
                 onClick={handleLoginSimulation}
@@ -399,6 +414,60 @@ export default function LoanDashboard() {
           )}
         </main>
       </div>
+
+      {/* --- REUSABLE DYNAMIC PROFILE UPDATE MODAL OVERLAY --- */}
+      {isProfileModalOpen && user && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white border border-slate-200 shadow-2xl rounded-2xl w-full max-w-md overflow-hidden relative p-6 space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div className="flex items-center gap-2">
+                <User size={18} className="text-emerald-600" />
+                <h3 className="font-black text-slate-900 text-lg tracking-tight">
+                  Update Profile Identity
+                </h3>
+              </div>
+              <button 
+                onClick={() => setIsProfileModalOpen(false)}
+                className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <form onSubmit={handleUpdateProfile} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  className="w-full border border-slate-200 px-4 py-2.5 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all bg-slate-50"
+                  placeholder="Enter dynamic profile name..."
+                  autoFocus
+                />
+              </div>
+
+              <div className="flex justify-end items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setIsProfileModalOpen(false)}
+                  className="px-4 py-2 text-xs font-bold text-slate-500 hover:bg-slate-100 rounded-xl transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-md transition-all active:scale-95"
+                >
+                  Save Dynamic Updates
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

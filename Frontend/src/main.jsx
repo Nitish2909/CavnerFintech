@@ -36,6 +36,7 @@ import PMMY from "./pages/governmentServices.jsx/PMMY.jsx";
 import PMEGP from "./pages/governmentServices.jsx/PMEGP.jsx";
 import PMVidyalaxmiPortal from "./pages/governmentServices.jsx/PMVidyalaxmiPortal.jsx";
 import ProjectReport from "./pages/OthersServices/ProjectReport.jsx";
+import StandUpIndiaScheme from "./pages/governmentServices.jsx/StandUpIndiaScheme.jsx";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,7 @@ const router = createBrowserRouter([
       { path: "/government-services", element: <PMMY /> },
       { path: "/government-services/mudra-yojana", element: <PMMY /> },
       { path: "/government-services/pmegp", element: <PMEGP /> },
+      { path: "/government-services/standup-india-scheme", element: <StandUpIndiaScheme/> },
       {
         path: "/government-services/pm-vidyalaxmiportal",
         element: <PMVidyalaxmiPortal />,

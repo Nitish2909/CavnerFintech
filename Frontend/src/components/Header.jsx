@@ -211,6 +211,11 @@ const navItems = [
         href: "/government-services/pm-vidyalaxmiportal",
         icon: Building,
       },
+       {
+        label: "Stand-Up India Scheme",
+        href: "/government-services/standup-india-scheme",
+        icon: Building,
+      },
     ],
   },
   {
@@ -278,7 +283,7 @@ const Header = () => {
           </div>
 
           {/* Right Utility Navigation - Desktop only */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[12px] font-bold tracking-wider text-slate-300">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] font-bold tracking-wider text-slate-300">
             <Link
               to="/cibil"
               className="hover:text-emerald-400 transition-colors whitespace-nowrap"
