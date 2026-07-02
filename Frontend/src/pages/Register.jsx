@@ -24,37 +24,40 @@ const Register = () => {
     }
 
     const payload = {
-      fullname,
-      phonenumber,
+      name:fullname,
+      phone:phonenumber,
       email,
       password,
-      dateofbirth,
-      pancard,
+      dob:dateofbirth,
+      pannumber:pancard,
       pincode,
     };
 
     console.log("Submitting form data:", payload);
 
-    // try {
-    //   const response = await axiosInstance.post(
-    //     "http://localhost:4000/api/auth/register",
-    //     payload
-    //   );
-    //   console.log(response.data);
-    //   alert("Registration Successful!");
-    //
-    //   setFullname("");
-    //   setPhonenumber("");
-    //   setDateOfBirth("");
-    //   setPanCard("");
-    //   setPinCode("");
-    //   setAgreeTerms(false);
-    //
-    //   navigate("/login");
-    // } catch (error) {
-    //   console.error(error);
-    //   alert(error.response?.data?.message || "Something went wrong");
-    // }
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/auth/register",{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(payload)
+        }
+      );
+      console.log(response.data);
+      alert("Registration Successful!");
+    
+      setFullname("");
+      setPhonenumber("");
+      setDateOfBirth("");
+      setPanCard("");
+      setPinCode("");
+      setAgreeTerms(false);
+    
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Something went wrong");
+    }
   };
 
   return (

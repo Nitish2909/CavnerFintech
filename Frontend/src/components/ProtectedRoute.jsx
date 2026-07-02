@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   const navigate = useNavigate();
 
   useEffect(() => {
