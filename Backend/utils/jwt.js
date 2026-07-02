@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-
+import {config} from 'dotenv';
+config()
 
 // Access Token (short time)
 export const generateAccessToken = (userId) => {

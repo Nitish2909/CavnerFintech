@@ -15,7 +15,7 @@ router.post("/register", registerUserController);
  * @description Login user and generate access and refresh tokens
  * @access Public   
  */
-router.post("/login", loginUserController);
+router.post("/login", auth,loginUserController);
 
 /**
  * @route GET /api/auth/get-me
@@ -37,14 +37,14 @@ router.get("/refresh-token", refreshTokenController)
  * @description Logout user
  * @access Public   
  */
-router.get("/logout", logOutUserController);
+router.get("/logout", auth, logOutUserController);
 
 /**
  * @route GET /api/auth/logout-all
  * @description Logout user from all devices by revoking all refresh tokens
  * @access Public   
  */
-router.get("/logout-all", logOutAllUserController)
+router.get("/logout-all", auth, logOutAllUserController)
 
 
 export default router;

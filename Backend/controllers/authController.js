@@ -71,7 +71,7 @@ export const registerUserController = async (req, res) => {
     });
 
     //10. send response with user
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: "User Registered Successfully",
       user: {
@@ -84,7 +84,7 @@ export const registerUserController = async (req, res) => {
     });
   } catch (error) {
     console.log(error)
-    res.status(500).json({
+    return res.status(500).json({
       message: "Server error",
     });
   }

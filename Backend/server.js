@@ -4,14 +4,14 @@ import dotenv from "dotenv"
 dotenv.config()
 import authRoutes from "./routes/authRoutes.js"
 import connectDB from "./config/db.js"
-import { auth } from "./middleware/authMiddleware.js"
+import cookieParser from "cookie-parser"
 
 connectDB()
 
-app.use(express.json);
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-
-app.post("/api/auth", auth, authRoutes )
+app.use(cookieParser())
+app.use("/api/auth", authRoutes )
 
 
 const PORT = process.env.PORT || 5000
