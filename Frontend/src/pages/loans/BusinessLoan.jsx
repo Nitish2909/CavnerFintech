@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from "react";
 
 const BusinessLoan = () => {
-  // Application form state
+  // Business Loan Application form state
   const [formData, setFormData] = useState({
     fullName: "",
     mobileNumber: "",
+    companyName: "",
+    annualTurnover: "",
     agree: true,
   });
 
@@ -22,7 +24,7 @@ const BusinessLoan = () => {
   const [isFormSubmittedSuccessfully, setIsFormSubmittedSuccessfully] =
     useState(false);
 
-  // Core base bank dataset
+  // Core base corporate bank dataset
   const baseOffers = [
     {
       id: 1,
@@ -104,7 +106,7 @@ const BusinessLoan = () => {
     },
   ];
 
-  // List of 50 additional prominent financial institutions
+  // List of 50 additional prominent commercial financial institutions
   const extraBankNames = [
     "Punjab National Bank",
     "Bank of Baroda",
@@ -158,7 +160,7 @@ const BusinessLoan = () => {
     "LendenClub",
   ];
 
-  // Programmatically compound datasets into a cohesive list of 56 providers
+  // Programmatically compound datasets into a cohesive list of 56 corporate capital providers
   const baseLoanOffers = useMemo(() => {
     const trackingGradients = [
       "from-teal-600 to-emerald-500",
@@ -176,12 +178,7 @@ const BusinessLoan = () => {
       const rateCalculated = parseFloat((10.2 + index * 0.07).toFixed(2));
       const amountCalculated =
         index % 3 === 0 ? 3000000 : index % 3 === 1 ? 5000000 : 1500000;
-      const formattedAmount =
-        amountCalculated >= 5000000
-          ? `₹${amountCalculated / 100000} Lakh`
-          : `₹${amountCalculated / 100000} Lakh`;
 
-      // Formulate custom dynamic initials matching your token criteria
       const standardInitials = name
         .split(" ")
         .map((w) => w[0])
@@ -269,25 +266,24 @@ const BusinessLoan = () => {
 
   return (
     <div className="bg-[#f8fafc] min-h-screen font-sans text-gray-800 antialiased selection:bg-blue-500 selection:text-white">
-      {/* Banner Component */}
+      {/* Marketplace Banner Component */}
       <div className="max-w-7xl mx-auto px-4 pt-8">
         <div className="relative overflow-hidden rounded-3xl shadow-xl bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-900 h-[280px] md:h-[350px] group">
           <img
             className="w-full h-full object-cover mix-blend-overlay opacity-30 transition-transform duration-1000 group-hover:scale-105"
             src="https://ik.imagekit.io/tpzm8ak07/images/homeSlider/pasence_personal.webp"
-            alt="Personal Loan Marketplace"
+            alt="Business Loan Capital Marketplace"
           />
           <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 text-white space-y-4 pointer-events-none">
             <span className="bg-white/10 text-blue-300 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase w-fit backdrop-blur-md border border-white/10 animate-pulse">
               ⚡ Cavner Wealth FinTech Ecosystem
             </span>
             <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-tight max-w-2xl drop-shadow-sm">
-              Instant Credit Lines. <br className="hidden md:inline" />
-              Tailored Transparent Terms.
+              Business Loan
             </h1>
             <p className="text-sm md:text-lg text-slate-300 max-w-xl font-light leading-relaxed">
-              Skip traditional branch queues. Compare verified institutional
-              capital offers instantly with single-click routing protocols.
+              Accelerate your corporate runway. Compare pre-approved commercial
+              funding structures from premium banks with automated asset routing.
             </p>
           </div>
         </div>
@@ -300,7 +296,7 @@ const BusinessLoan = () => {
           <div className="lg:col-span-7 space-y-8 mt-4">
             <div className="space-y-4">
               <div className="inline-flex items-center space-x-2 text-blue-600 font-bold tracking-widest text-xs uppercase bg-blue-50 px-3 py-1.5 rounded-lg">
-                <span>Optimized Loan Marketplace</span>
+                <span>Optimized Commercial Marketplace</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight leading-none">
                 Compare Across{" "}
@@ -311,13 +307,13 @@ const BusinessLoan = () => {
               </h2>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
                 A business loan is a financial solution designed to help small
-                and large businesses to access funds to manage cash flow,
-                operational expenses, business expansion and growth. Compare and
-                apply for best business loan offers up to Rs. 1 crore from 20+
-                RBI-regulated banks, non-banking financial companies (NBFCs),
-                and other financial institutions. Cavner Wealth & FinTech help
-                you to get business loans at lowest interest rates and quick
-                disbursal with minimal documentation.
+                and large businesses access capital to optimize cash flow,
+                cover operational overheads, scale production infrastructure, and spark
+                enterprise growth. Compare and apply for premier corporate credit facilities 
+                up to ₹1 Crore from top RBI-regulated banks, non-banking financial 
+                companies (NBFCs), and specialized digital lenders. Cavner Wealth & FinTech 
+                empowers your organization with highly customized, competitive interest rates 
+                and fast capital disbursement cycles with structured document automation.
               </p>
             </div>
 
@@ -350,62 +346,78 @@ const BusinessLoan = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE LEAD CARD */}
-          <div className="lg:col-span-5 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden sticky top-8 transition-transform duration-300 hover:shadow-2xl">
-            <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 px-6 py-4 border-b border-dashed border-emerald-500/20 flex items-center justify-between"></div>
+          {/* RIGHT SIDE ELIGIBILITY CARD */}
+<div className="lg:col-span-5 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden sticky top-8 transition-transform duration-300 hover:shadow-2xl">
+  <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 px-6 py-4 border-b border-dashed border-emerald-500/20 flex items-center justify-between">
+    <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest block">
+      Application Guidelines
+    </span>
+    <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full uppercase tracking-wider">
+      Instant Check
+    </span>
+  </div>
 
-            <form onSubmit={handleMainFormSubmit} className="p-8 space-y-6">
-              <div className="space-y-1 text-center">
-                <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
-                  Home Loan
-                </span>
-                <h3 className="text-2xl font-black text-gray-900 tracking-tight">
-                  Avail Up to <span className="text-blue-600">1Cr </span>
-                  Starting at <span className="text-blue-600">13%</span>
-                </h3>
-              </div>
+  <div className="p-8 space-y-6">
+    <div className="space-y-1 text-center">
+      <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">
+        Business Capital
+      </span>
+      <h3 className="text-2xl font-black text-gray-900 tracking-tight">
+        Eligibility <span className="text-blue-600">Criteria</span>
+      </h3>
+      <p className="text-xs text-gray-500">Check if your enterprise matches our benchmark requirements</p>
+    </div>
 
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="Full Name (as on your PAN)"
-                  className="w-full px-4 py-4 bg-gray-50/50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:bg-white transition-all duration-200 text-sm"
-                  required
-                />
-                <input
-                  type="tel"
-                  name="mobileNumber"
-                  value={formData.mobileNumber}
-                  onChange={handleChange}
-                  placeholder="Mobile Number"
-                  className="w-full px-4 py-4 bg-gray-50/50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:bg-white transition-all duration-200 text-sm"
-                  required
-                />
-              </div>
+    {/* Criteria List */}
+    <div className="space-y-3.5">
+      {/* 1. Annual Turnover */}
+      <div className="flex items-start p-4 bg-gray-50/50 border border-gray-200/60 rounded-xl hover:bg-white hover:border-blue-500/30 transition-all duration-200">
+        <div className="flex-shrink-0 bg-blue-50 text-blue-600 p-2 rounded-lg text-sm font-black mr-3.5">
+          ₹
+        </div>
+        <div>
+          <h4 className="text-sm font-bold text-gray-900">Annual Turnover</h4>
+          <p className="text-xs text-gray-500 mt-0.5">Minimum ₹15 Lakhs of gross revenue recorded in the last financial year.</p>
+        </div>
+      </div>
 
-              <button
-                type="submit"
-                disabled={isSubmittingLead}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-[0.98] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-blue-600/20 disabled:opacity-50"
-              >
-                <span>
-                  {isSubmittingLead
-                    ? "Processing Secure Tokens..."
-                    : "Generate Offers"}
-                </span>
-                {!isSubmittingLead && <span className="text-lg">➔</span>}
-              </button>
+      {/* 2. Business Vintage */}
+      <div className="flex items-start p-4 bg-gray-50/50 border border-gray-200/60 rounded-xl hover:bg-white hover:border-blue-500/30 transition-all duration-200">
+        <div className="flex-shrink-0 bg-indigo-50 text-indigo-600 p-2 rounded-lg text-sm font-black mr-3.5">
+          ⏳
+        </div>
+        <div>
+          <h4 className="text-sm font-bold text-gray-900">Business Vintage</h4>
+          <p className="text-xs text-gray-500 mt-0.5">Minimum 2+ years of continuous operations under active legal registration.</p>
+        </div>
+      </div>
 
-              {isFormSubmittedSuccessfully && (
-                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-medium text-center animate-fade-in">
-                  ✓ Profile indexed! Custom pricing pipelines adjusted below.
-                </div>
-              )}
-            </form>
-          </div>
+      {/* 3. Credit Score */}
+      <div className="flex items-start p-4 bg-gray-50/50 border border-gray-200/60 rounded-xl hover:bg-white hover:border-blue-500/30 transition-all duration-200">
+        <div className="flex-shrink-0 bg-emerald-50 text-emerald-600 p-2 rounded-lg text-sm font-black mr-3.5">
+          📈
+        </div>
+        <div>
+          <h4 className="text-sm font-bold text-gray-900">Credit Score</h4>
+          <p className="text-xs text-gray-500 mt-0.5">A preferred CIBIL score of 700 or above for the primary signatory.</p>
+        </div>
+      </div>
+
+      {/* 4. Entity Types */}
+      <div className="flex items-start p-4 bg-gray-50/50 border border-gray-200/60 rounded-xl hover:bg-white hover:border-blue-500/30 transition-all duration-200">
+        <div className="flex-shrink-0 bg-teal-50 text-teal-600 p-2 rounded-lg text-sm font-black mr-3.5">
+          💼
+        </div>
+        <div>
+          <h4 className="text-sm font-bold text-gray-900">Eligible Structures</h4>
+          <p className="text-xs text-gray-500 mt-0.5">Proprietorships, Partnerships, LLPs, and Private Limited companies.</p>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</div>
         </div>
 
         <hr className="border-gray-200/80 mb-16" />
@@ -415,15 +427,15 @@ const BusinessLoan = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
               <h2 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">
-                Live Offers Catalog
+                Live Business Offers Catalog
               </h2>
               <p className="text-sm text-gray-500 mt-1">
-                Interact with the filters. The matching banking allocations
-                adjust and sort instantly.
+                Interact with the filters. The matching capital allocations
+                adjust and sort instantly based on your target thresholds.
               </p>
             </div>
             <span className="text-xs font-bold bg-white border border-gray-200 shadow-sm px-4 py-2 rounded-xl text-gray-600 w-fit">
-              Found {filteredOffers.length} Qualified System Matches
+              Found {filteredOffers.length} Qualified Institutional Matches
             </span>
           </div>
 
@@ -445,7 +457,7 @@ const BusinessLoan = () => {
               {/* Processing Speed */}
               <div className="mb-6">
                 <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                  Processing Speed
+                  Disbursal Window
                 </h4>
                 <div className="space-y-2">
                   {["Instant", "1 - 2 Days", "3 - 5 Days"].map((time) => (
@@ -465,7 +477,7 @@ const BusinessLoan = () => {
                       <span
                         className={`transition-colors duration-150 ${filters.processingTime === time ? "font-bold text-blue-600" : "group-hover:text-gray-900"}`}
                       >
-                        {time}
+                        {time} Disbursal
                       </span>
                     </label>
                   ))}
@@ -495,7 +507,7 @@ const BusinessLoan = () => {
                       <span
                         className={`transition-colors duration-150 ${filters.interestRate === rate ? "font-bold text-blue-600" : "group-hover:text-gray-900"}`}
                       >
-                        {rate} Pricing
+                        {rate} Commercial Pricing
                       </span>
                     </label>
                   ))}
@@ -505,7 +517,7 @@ const BusinessLoan = () => {
               {/* Loan Limit Target */}
               <div className="border-t border-gray-100 pt-5">
                 <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                  Loan Amount Target
+                  Credit Limit Target
                 </h4>
                 <div className="space-y-2">
                   {["Lowest", "Highest"].map((amount) => (
@@ -525,7 +537,7 @@ const BusinessLoan = () => {
                       <span
                         className={`transition-colors duration-150 ${filters.loanAmount === amount ? "font-bold text-blue-600" : "group-hover:text-gray-900"}`}
                       >
-                        {amount} Limits
+                        {amount} Funding Limits
                       </span>
                     </label>
                   ))}
@@ -541,7 +553,7 @@ const BusinessLoan = () => {
                     key={offer.id}
                     className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:border-blue-500/30 transition-all duration-300 flex flex-col lg:flex-row lg:items-center justify-between gap-6 group transform hover:-translate-y-[1px]"
                   >
-                    {/* Bank Circle Badge with Name Initials Fallback centered perfectly */}
+                    {/* Bank circle Fallback */}
                     <div className="flex items-center space-x-4 min-w-[240px]">
                       <div
                         className={`w-14 h-14 rounded-full bg-gradient-to-br ${offer.bgGradient} flex items-center justify-center p-0.5 shadow-md group-hover:scale-105 transition-transform duration-200 shrink-0 border border-white/20`}
@@ -570,7 +582,7 @@ const BusinessLoan = () => {
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 flex-1 bg-slate-50/50 p-4 rounded-xl border border-gray-100 lg:bg-transparent lg:p-0 lg:border-none text-xs">
                       <div>
                         <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">
-                          Speed
+                          Turnaround
                         </span>
                         <span className="font-bold text-gray-800">
                           {offer.processingTime}
@@ -578,7 +590,7 @@ const BusinessLoan = () => {
                       </div>
                       <div>
                         <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">
-                          Rate Tier
+                          Commercial APR
                         </span>
                         <span className="font-bold text-emerald-600">
                           {offer.displayRate}
@@ -594,7 +606,7 @@ const BusinessLoan = () => {
                       </div>
                       <div>
                         <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">
-                          Max Allocation
+                          Max Capital Limit
                         </span>
                         <span className="font-bold text-blue-600">
                           {offer.displayAmount}
@@ -616,7 +628,7 @@ const BusinessLoan = () => {
                 <div className="bg-white border border-gray-200 border-dashed rounded-3xl p-16 text-center text-gray-400">
                   <span className="text-4xl block mb-3 animate-bounce">🔍</span>
                   <p className="text-sm font-medium text-gray-500">
-                    No matching banking infrastructure lines met those criteria
+                    No corporate banking allocation frameworks met those criteria
                     thresholds.
                   </p>
                   <button
@@ -665,11 +677,10 @@ const BusinessLoan = () => {
 
               <div className="space-y-2">
                 <h3 className="text-xl font-black text-gray-900 tracking-tight">
-                  Initialize Routing
+                  Initialize B2B Routing
                 </h3>
                 <p className="text-xs text-gray-500 px-2 leading-relaxed">
-                  Connecting digital application channels into the secure
-                  workspace portal of{" "}
+                  Connecting digital application profiles into the secure corporate underwriting panel of{" "}
                   <span className="font-bold text-gray-900">
                     {selectedBank.bankName}
                   </span>
@@ -708,7 +719,7 @@ const BusinessLoan = () => {
                 <button
                   onClick={() => {
                     alert(
-                      `Application pipeline compiled successfully for ${selectedBank.bankName}!`,
+                      `Commercial underwriting pipeline compiled successfully for ${selectedBank.bankName}! Our B2B desk will contact you.`,
                     );
                     setSelectedBank(null);
                   }}

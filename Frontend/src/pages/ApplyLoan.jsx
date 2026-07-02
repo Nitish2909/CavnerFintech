@@ -420,7 +420,7 @@ const ProductCard = ({ icon, title, desc, onClick }) => {
 };
 
 // MODAL COMPONENT: Features text input forms along with identity document file triggers
-const LoanFormModal = ({ loanTitle, onClose }) => {
+export const LoanFormModal = ({ loanTitle, onClose }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",

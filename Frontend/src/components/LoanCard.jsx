@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { X } from 'lucide-react'; // Make sure to install lucide-react or replace with a text "X"
 
 const ALL_BANKS_DATA = [
   {
@@ -76,6 +76,44 @@ const ALL_BANKS_DATA = [
 
 export default function BankLoanDashboard() {
   const [searchTerm, setSearchTerm] = useState('');
+  
+  // Modal States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBank, setSelectedBank] = useState(null);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    amount: ''
+  });
+
+  // Handle opening the application form
+  const handleApplyClick = (bank) => {
+    setSelectedBank(bank);
+    setIsModalOpen(true);
+  };
+
+  // Handle closing the application modal and clearing form data
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedBank(null);
+    setFormData({ fullName: '', email: '', phone: '', amount: '' });
+  };
+
+  // Form submit handler
+  const handleSubmitApplication = (e) => {
+    e.preventDefault();
+    
+    // Simulate API Submission
+    console.log("Submitting Loan Application details:", {
+      bankId: selectedBank.id,
+      bankName: selectedBank.name,
+      ...formData
+    });
+
+    alert(`Application successfully submitted to ${selectedBank.name}!`);
+    handleCloseModal();
+  };
 
   // Filter banks safely based on search input
   const filteredBanks = ALL_BANKS_DATA.filter((bank) =>
@@ -83,15 +121,15 @@ export default function BankLoanDashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 md:p-10 font-sans">
+    <div className="min-h-screen bg-gray-50 p-6 md:p-10 font-sans relative">
       <div className="max-w-6xl mx-auto space-y-6">
         
-        {/* */}
+        {/* Search Input */}
         <div className="flex justify-end mb-4">
           <div className="w-full sm:w-64">
             <input
               type="text"
-              placeholder="Search"
+              placeholder="Search Bank"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-white border border-gray-300 rounded px-4 py-2 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-cyan-700 transition"
@@ -163,7 +201,10 @@ export default function BankLoanDashboard() {
 
                 {/* Direct Action Trigger */}
                 <div className="flex items-center justify-start md:justify-end min-w-[120px]">
-                  <button className="bg-[#005f60] hover:bg-[#004d4e] text-white text-sm font-semibold py-2 px-6 rounded-sm transition-colors duration-200 shadow-sm w-full md:w-auto">
+                  <button 
+                    onClick={() => handleApplyClick(bank)}
+                    className="bg-[#005f60] hover:bg-[#004d4e] text-white text-sm font-semibold py-2 px-6 rounded-sm transition-colors duration-200 shadow-sm w-full md:w-auto"
+                  >
                     Apply Now
                   </button>
                 </div>
@@ -176,8 +217,96 @@ export default function BankLoanDashboard() {
             </div>
           )}
         </div>
-
       </div>
+
+      {/* Pop-up Application Modal */}
+      {isModalOpen && selectedBank && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-md max-w-md w-full p-6 shadow-xl relative">
+            
+            {/* Close Cross icon Button */}
+            <button 
+              onClick={handleCloseModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition"
+            >
+              <X size={20} />
+            </button>
+
+            {/* Header elements */}
+            <h2 className="text-xl font-bold text-gray-800 mb-1">Loan Application Form</h2>
+            <p className="text-xs font-semibold text-[#005f60] mb-5">Applying for: {selectedBank.name}</p>
+
+            {/* Input Form Elements */}
+            <form onSubmit={handleSubmitApplication} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Name</label>
+                <input 
+                  type="text" 
+                  required 
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-800 focus:outline-none focus:border-[#005f60]"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Email Address</label>
+                <input 
+                  type="email" 
+                  required 
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-800 focus:outline-none focus:border-[#005f60]"
+                  placeholder="name@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Phone Number</label>
+                <input 
+                  type="tel" 
+                  required 
+                  value={formData.phone}
+                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-800 focus:outline-none focus:border-[#005f60]"
+                  placeholder="9876543210"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Requested Loan Amount</label>
+                <input 
+                  type="text" 
+                  required 
+                  value={formData.amount}
+                  onChange={(e) => setFormData({...formData, amount: e.target.value})}
+                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-800 focus:outline-none focus:border-[#005f60]"
+                  placeholder={`Allowed: ${selectedBank.loanAmount}`}
+                />
+              </div>
+
+              {/* Form Actions */}
+              <div className="flex gap-3 mt-6 pt-2">
+                <button
+                  type="button"
+                  onClick={handleCloseModal}
+                  className="flex-1 border border-gray-300 text-gray-700 text-sm font-semibold py-2 rounded-sm hover:bg-gray-50 transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 bg-[#005f60] hover:bg-[#004d4e] text-white text-sm font-semibold py-2 rounded-sm transition shadow-sm"
+                >
+                  Submit Application
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }

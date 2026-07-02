@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 
 const PersonalLoan = () => {
-  // Application form state
+  // Application form state (retained if needed for modal or future endpoints)
   const [formData, setFormData] = useState({
     fullName: "",
     mobileNumber: "",
@@ -59,9 +59,7 @@ const PersonalLoan = () => {
       const generatedId = index + 7;
       const rateCalculated = parseFloat((10.20 + (index * 0.07)).toFixed(2));
       const amountCalculated = index % 3 === 0 ? 3000000 : (index % 3 === 1 ? 5000000 : 1500000);
-      const formattedAmount = amountCalculated >= 5000000 ? `₹${amountCalculated/100000} Lakh` : `₹${amountCalculated/100000} Lakh`;
 
-      // Formulate custom dynamic initials matching your token criteria
       const standardInitials = name.split(" ").map(w => w[0]).join("").substring(0, 4).toUpperCase();
 
       return {
@@ -81,25 +79,6 @@ const PersonalLoan = () => {
 
     return [...baseOffers, ...compiledExtraOffers];
   }, []);
-
-  // Form Handlers
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleMainFormSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmittingLead(true);
-    setTimeout(() => {
-      setIsSubmittingLead(false);
-      setIsFormSubmittedSuccessfully(true);
-      setTimeout(() => setIsFormSubmittedSuccessfully(false), 5000);
-    }, 1200);
-  };
 
   const handleFilterChange = (category, value) => {
     setFilters((prev) => ({ ...prev, [category]: value }));
@@ -146,8 +125,7 @@ const PersonalLoan = () => {
               ⚡ Cavner Wealth FinTech Ecosystem
             </span>
             <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-tight max-w-2xl drop-shadow-sm">
-              Instant Credit Lines. <br className="hidden md:inline" />
-              Tailored Transparent Terms.
+              Personal Loan
             </h1>
             <p className="text-sm md:text-lg text-slate-300 max-w-xl font-light leading-relaxed">
               Skip traditional branch queues. Compare verified institutional capital offers instantly with single-click routing protocols.
@@ -191,59 +169,41 @@ const PersonalLoan = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE LEAD CARD */}
-          <div className="lg:col-span-5 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden sticky top-8 transition-transform duration-300 hover:shadow-2xl">
-            <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 px-6 py-4 border-b border-dashed border-emerald-500/20 flex items-center justify-between">
-              <span className="text-[10px] font-bold text-emerald-800 tracking-wider uppercase bg-emerald-100 px-2.5 py-1 rounded-md">
-                
-              </span>
-            
+          {/* RIGHT SIDE: NEW CONTENT COMPONENT (Eligibility & Features Checklist) */}
+          <div className="lg:col-span-5 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden sticky top-8 p-8 space-y-6">
+            <div>
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Pre-Requisites</span>
+              <h3 className="text-2xl font-black text-gray-900 tracking-tight">General Eligibility Criteria</h3>
+              <p className="text-xs text-gray-500 mt-1">Ensure you hold the following configurations to expedite your custom pricing pipeline allocations.</p>
             </div>
 
-            <form onSubmit={handleMainFormSubmit} className="p-8 space-y-6">
-              <div className="space-y-1 text-center">
-                <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block">Get Personal Loan</span>
-                <h3 className="text-2xl font-black text-gray-900 tracking-tight">Avail Up to <span className="text-blue-600">
-                  1Cr </span>Starting at <span className="text-blue-600">
-                  13%</span></h3>
-              </div>
-
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="Full Name (as on your PAN)"
-                  className="w-full px-4 py-4 bg-gray-50/50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:bg-white transition-all duration-200 text-sm"
-                  required
-                />
-                <input
-                  type="tel"
-                  name="mobileNumber"
-                  value={formData.mobileNumber}
-                  onChange={handleChange}
-                  placeholder="Mobile Number"
-                  className="w-full px-4 py-4 bg-gray-50/50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:bg-white transition-all duration-200 text-sm"
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmittingLead}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-[0.98] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-blue-600/20 disabled:opacity-50"
-              >
-                <span>{isSubmittingLead ? "Processing Secure Tokens..." : "Apply Know"}</span>
-                {!isSubmittingLead && <span className="text-lg">➔</span>}
-              </button>
-
-              {isFormSubmittedSuccessfully && (
-                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-medium text-center animate-fade-in">
-                  ✓ Profile indexed! Custom pricing pipelines adjusted below.
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3.5 p-3 rounded-2xl hover:bg-slate-50 transition-colors duration-150">
+                <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 border border-blue-100 text-blue-600 font-bold text-sm">📈</div>
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900">Credit Score Stability</h4>
+                  <p className="text-xs text-gray-500 leading-normal">Maintained CIBIL index tracking value ≥ 700 without active defaults.</p>
                 </div>
-              )}
-            </form>
+              </div>
+
+              <div className="flex items-start space-x-3.5 p-3 rounded-2xl hover:bg-slate-50 transition-colors duration-150">
+                <div className="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100 text-emerald-600 font-bold text-sm">💼</div>
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900">Employment Parameters</h4>
+                  <p className="text-xs text-gray-500 leading-normal">Salaried profile or certified self-employed entity for over 12 months.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3.5 p-3 rounded-2xl hover:bg-slate-50 transition-colors duration-150">
+                <div className="w-8 h-8 rounded-xl bg-indigo-50 flex items-center justify-center shrink-0 border border-indigo-100 text-indigo-600 font-bold text-sm">📝</div>
+                <div>
+                  <h4 className="text-sm font-bold text-gray-900">Documentation Blueprint</h4>
+                  <p className="text-xs text-gray-500 leading-normal">Active PAN, Aadhaar identity tokens, and past 3-month banking statements.</p>
+                </div>
+              </div>
+            </div>
+
+            
           </div>
         </div>
 
@@ -345,7 +305,7 @@ const PersonalLoan = () => {
                     key={offer.id} 
                     className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:border-blue-500/30 transition-all duration-300 flex flex-col lg:flex-row lg:items-center justify-between gap-6 group transform hover:-translate-y-[1px]"
                   >
-                    {/* Bank Circle Badge with Name Initials Fallback centered perfectly */}
+                    {/* Bank Circle Badge with Name Initials Fallback */}
                     <div className="flex items-center space-x-4 min-w-[240px]">
                       <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${offer.bgGradient} flex items-center justify-center p-0.5 shadow-md group-hover:scale-105 transition-transform duration-200 shrink-0 border border-white/20`}>
                         <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden p-1">
@@ -449,8 +409,8 @@ const PersonalLoan = () => {
                 <button onClick={() => setSelectedBank(null)} className="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition text-xs">Go Back</button>
                 <button 
                   onClick={() => {
-                    alert(`Application pipeline compiled successfully for ${selectedBank.bankName}!`);
                     setSelectedBank(null);
+                    alert(`Routing initiated successfully to ${selectedBank.bankName}`);
                   }}
                   className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl shadow-md transition text-xs"
                 >
@@ -467,8 +427,3 @@ const PersonalLoan = () => {
 };
 
 export default PersonalLoan;
-
-
-
-
-// Add above form in place of current existed for in PersonalLoan
