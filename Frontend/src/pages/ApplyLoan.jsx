@@ -21,6 +21,7 @@ import {
   FileCheck,
   ArrowRight,
 } from "lucide-react";
+import { useEffect } from "react";
 
 const ApplyLoan = () => {
   const [selectedLoan, setSelectedLoan] = useState(null);
@@ -120,6 +121,8 @@ const ApplyLoan = () => {
       desc: "Experience seamless automation loops as your loan executes fast-track validation and routing paths safely.",
     },
   ];
+
+  
 
   return (
     <div className="w-full bg-slate-50 font-sans text-slate-800 antialiased relative">
@@ -420,7 +423,7 @@ const ProductCard = ({ icon, title, desc, onClick }) => {
 };
 
 // MODAL COMPONENT: Features text input forms along with identity document file triggers
-export const LoanFormModal = ({ loanTitle, onClose }) => {
+export const LoanFormModal =  ({ loanTitle, onClose }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -438,6 +441,8 @@ export const LoanFormModal = ({ loanTitle, onClose }) => {
     salaryslip: null,
   });
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -449,7 +454,7 @@ export const LoanFormModal = ({ loanTitle, onClose }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     const submissionData = new FormData();
     Object.keys(formData).forEach((key) =>

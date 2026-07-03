@@ -16,6 +16,7 @@ const PartnerRegistration = () => {
     district: "",
     city: "",
     pinCode: "",
+    password:""
   });
 
   const handleChange = (e) => {
@@ -25,9 +26,44 @@ const PartnerRegistration = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async(e) => {
     e.preventDefault();
     console.log("Submitting Partner Registration State:", formData);
+
+    const payload = {
+    entityType: type,
+    corporateName:name,
+    shortName:shortName,
+    phone:officialNumber,
+    email: officialEmail,
+    pannumber:panNumber,
+    dateOfIncorporation:dob,
+    plotNo:plotNo,
+    address:officialAddress,
+    state:state,
+    district:district,
+    city:city,
+    pincode :pinCode,
+    // password
+    }
+
+  try {
+      const response = await fetch(
+        "http://localhost:3000/api/partner/",{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(payload)
+        }
+      );
+      console.log(response.data);
+      alert("Registration Successful!");
+    
+      setFormData("")
+      navigate("/partner-login");
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Something went wrong");
+    }
   };
 
   return (
@@ -176,6 +212,23 @@ const PartnerRegistration = () => {
                     />
                   </div>
                 </div>
+                 {/* Password */}
+                 <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-700">Password</label>
+                  <div className="relative">
+                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <input
+                      type="password"
+                      required
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="password"
+                      className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium text-slate-800 placeholder:text-slate-400"
+                    />
+                  </div>
+                </div>
+
 
                 {/* PAN Number */}
                 <div className="flex flex-col gap-1.5">
