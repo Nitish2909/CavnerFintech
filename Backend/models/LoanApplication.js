@@ -21,48 +21,45 @@ const loanApplicationSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Name is required'],
+      required: [true, "Name is required"],
       trim: true,
     },
     email: {
       type: String,
-      required: [true, 'Email is required'],
-      unique: true,
+      required: [true, "Email is required"],
       trim: true,
       lowercase: true,
-      match: [/^\S+@\S+\.\S+$/, 'Please fill a valid email address'],
     },
     phone: {
       type: String,
-      required: [true, 'Phone number is required'],
-      unique: true,
+      required: [true, "Phone number is required"],
       trim: true,
     },
     loanAmount: {
       type: Number,
-      required: true,
-      min: 0,
+      required: [true, "Loan amount is required"],
     },
     employmentType: {
       type: String,
-      required: true,
-      enum: ['salaried', 'self-employed'],
+      required: [true, "Employment type is required"],
+      enum: ["Salaried", "Self Employed", "Business", "Other"],
     },
     monthlyIncome: {
       type: Number,
-      required: true,
-      min: 0,
+      required: [true, "Monthly income is required"],
     },
   },
   {
-    timestamps: true, // Automatically manages createdAt and updatedAt
+    timestamps: true,
   }
 );
 
-const LoanApplication = mongoose.model('LoanApplication', loanApplicationSchema);
+const LoanApplication = mongoose.model(
+  "LoanApplication",
+  loanApplicationSchema
+);
 
 export default LoanApplication;
-
 
 
 

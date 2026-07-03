@@ -1,11 +1,14 @@
 import express from "express";
-import { addLoanApplicationController, getLoanApplcationController } from "../controllers/loanApplicationController.js";
+import {
+  addLoanApplicationController,
+  getLoanApplicationController,
+  getSingleLoanApplicationController,
+} from "../controllers/loanApplicationController.js";
+
 const router = express.Router();
 
-
 router.post("/", addLoanApplicationController);
-
-router.get("/", getLoanApplcationController )
-
+router.get("/", getLoanApplicationController);
+router.get("/:id", getSingleLoanApplicationController);
 
 export default router;
