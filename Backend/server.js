@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoutes.js"
 import connectDB from "./config/db.js"
 import cookieParser from "cookie-parser"
 import loanApplicationRoutes from "./routes/loanApplicationRoutes.js"
+import partnerRoutes from "./routes/partnerRoutes.js"
 connectDB()
 
 app.use(cors({
@@ -20,6 +21,7 @@ app.use(cookieParser())
 
 app.use("/api/auth", authRoutes )
 app.use("/api/loan", loanApplicationRoutes )
+app.use("/api/partner", partnerRoutes )
 
 
 

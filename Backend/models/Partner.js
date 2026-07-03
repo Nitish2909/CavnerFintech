@@ -24,74 +24,87 @@ const bankDetailsSchema = new mongoose.Schema({
 
 const partnerSchema = new mongoose.Schema(
   {
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
+    entityType: {
+      type: String,
       required: true,
-      unique: true, // A user can only have one partner profile
-      ref: 'User',
+      enum: ['PVT Company', 'Public Company', 'LLP','HUF','Partnership Firm','Proprietorship firm'], // Restricting to known entity types
+    
     },
-    profession: {
+    corporateName: {
       type: String,
       trim: true,
-      required: true, // E.g., 'DSA', 'Chartered Accountant', 'Financial Planner'
+      required: true, 
     },
-    city: {
+    shortName: {
+      type: String,
+      trim: true,
+    },
+    phone: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    email: {
       type: String,
       trim: true,
       required: true,
     },
+    password: {
+      type: String,
+      required: true,
+    },
+
+    pannumber : {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    dateOfIncorporation: {
+      type: Date,
+      required: true,
+
+    },
+    plotNo: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+
     state: {
       type: String,
       trim: true,
       required: true,
     },
-    expectedVolume: {
-      type: Number, // Estimated business/lead volume per month
-      min: 0,
-      default: 0,
-    },
-    referralCode: {
+    district: {
       type: String,
-      required: true,
-      unique: true,
       trim: true,
-      uppercase: true,
+      required: true, 
     },
-    kycStatus: {
+    city:{
       type: String,
+      trim: true,
       required: true,
-      enum: ['pending', 'verified'],
-      default: 'pending',
     },
-    totalLeads: {
+    pincode: {
       type: Number,
-      default: 0,
-      min: 0,
+      trim: true,
+      required: true,
     },
-    totalConversions: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
-    totalEarnings: {
-      type: Number,
-      default: 0,
-      min: 0, // Keeps track of payouts/commissions earned
-    },
-    bankDetails: {
-      type: bankDetailsSchema,
-      default: null, // Can be provided later during the KYC verification process
-    },
+    // bankDetails: {
+    //   type: bankDetailsSchema,
+    //   default: null, // Can be provided later during the KYC verification process
+    // },
   },
   {
     timestamps: true, // Automatically manages createdAt and updatedAt
   }
 );
 
-// Performance & Lookup Indexes
-partnerSchema.index({ userId: 1 });
-partnerSchema.index({ referralCode: 1 }, { unique: true });
-partnerSchema.index({ kycStatus: 1 });
 
 const Partner = mongoose.model('Partner', partnerSchema);
 

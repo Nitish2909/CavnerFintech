@@ -1,5 +1,4 @@
 import LoanApplication from "../models/LoanApplication.js";
-
 /**
  * @route POST /api/loans
  * @desc Create Loan Application
@@ -8,7 +7,6 @@ import LoanApplication from "../models/LoanApplication.js";
 export const addLoanApplicationController = async (req, res) => {
 
     try {
-
         console.log("Request Body:", req.body); // Log the request body for debugging
         const {
             name,
@@ -49,7 +47,6 @@ export const addLoanApplicationController = async (req, res) => {
         });
     } catch (error) {
         console.error(error);
-
         return res.status(500).json({
             success: false,
             message: error.message || "Internal Server Error",
