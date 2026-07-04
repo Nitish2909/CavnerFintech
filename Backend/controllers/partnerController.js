@@ -144,3 +144,4 @@ const getSinglePartnerController = async (req, res) => {
 }
 
 export { addPartnerController, loginPartnerController, getAllPartnerController, getSinglePartnerController };
+
