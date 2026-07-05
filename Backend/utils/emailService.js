@@ -2,7 +2,8 @@ import { Resend } from "resend";
 import { config } from "../config/index.js";
 import { maskEmail } from "./otp.js";
 
-const resend = config.resend.apiKey ? new Resend(config.resend.apiKey) : null;
+
+const resend = new Resend(config.resend.apiKey) ;
 
 export const sendOtpEmail = async (to, otp, purpose = "verification") => {
   const subject =

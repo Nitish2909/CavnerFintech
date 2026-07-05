@@ -1,36 +1,42 @@
 {
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "bcryptjs": "^3.0.3",
-    "cloudinary": "^2.10.0",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.6",
-    "crypto": "^1.0.1",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.5.2",
-    "express-session": "^1.19.0",
-    "express-validator": "^7.3.2",
-    "helmet": "^8.2.0",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.7.2",
-    "morgan": "^1.11.0",
-    "multer": "^2.2.0",
-    "nodemailer": "^9.0.1",
-    "nodemon": "^3.1.14",
-    "resend": "^6.17.1"
-  },
-  "name": "backend",
+  "name": "cavner-complete-backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "Backend API for Cavner Wealth & Fintech - Indian fintech platform for loans, credit cards, investments and corporate finance",
   "type": "module",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "keywords": [
+    "fintech",
+    "loans",
+    "credit-card",
+    "india",
+    "express",
+    "mongodb"
+  ],
+  "author": "Cavner Fintech",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^9.0.3",
+    "resend": "^4.0.1",
+    "twilio": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }

@@ -1,3 +1,7 @@
-node_modules
+node_modules/
 .env
-data.js
+uploads/*
+!uploads/.gitkeep
+*.log
+.DS_Store
+test.js
