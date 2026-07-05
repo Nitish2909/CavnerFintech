@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const isLoggedIn = true
+  const userDetails = useSelector((state)=>state.auth.user)
+
+  const isLoggedIn = userDetails?.email
   const navigate = useNavigate();
 
   useEffect(() => {
