@@ -24,8 +24,6 @@ user-frontend/
 │   │   ├── Seo.jsx             # SEO meta tags manager
 │   │   ├── EmiCalculator.jsx   # EMI calculator widget
 │   │   ├── ProtectedRoute.jsx  # Auth guard
-|   |   |-  Hero.jsx
-        |-  WhyFinTech     
 │   │   └── InfoPage.jsx        # Generic info page template
 │   ├── pages/
 │   │   ├── Home.jsx            # Landing page

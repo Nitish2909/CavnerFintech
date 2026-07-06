@@ -1,16 +1,9 @@
-import React, { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
-  const userDetails = useSelector((state)=>state.auth.user)
-
-  const isLoggedIn = userDetails?.email
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!isLoggedIn) navigate("/login");
-  });
+const ProtectedRoute = ({ children, role = "user" }) => {
+  const token = role === "partner" ? useSelector((s) => s.auth.partnerToken) : useSelector((s) => s.auth.token);
+  if (!token) return <Navigate to={role === "partner" ? "/partner-login" : "/login"} replace />;
   return children;
 };
 

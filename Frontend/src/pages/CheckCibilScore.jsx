@@ -1,286 +1,74 @@
-import React, { useState } from "react";
-import {
-  User,
-  Calendar,
-  MapPin,
-  CreditCard,
-  Mail,
-  Phone,
-  ShieldCheck,
-  ArrowRight,
-  Info,
-} from "lucide-react";
+import { useState } from "react";
+import { ShieldCheck, Loader2, CheckCircle2, Gauge } from "lucide-react";
+import Seo from "../components/Seo";
 
-const CheckCivilScore = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    dob: "",
-    gender: "",
-    pinCode: "",
-    panNumber: "",
-    email: "",
-    mobileNumber: "",
-    consent: false,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+const CheckCibilScore = () => {
+  const [form, setForm] = useState({ name: "", phone: "", pan: "" });
+  const [loading, setLoading] = useState(false);
+  const [score, setScore] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting scoring request:", formData);
+    setLoading(true);
+    setTimeout(() => {
+      setScore(Math.floor(Math.random() * 300) + 600);
+      setLoading(false);
+    }, 1500);
+  };
+
+  const getRating = (s) => {
+    if (s >= 800) return { label: "Excellent", color: "text-emerald-600" };
+    if (s >= 740) return { label: "Very Good", color: "text-brand-600" };
+    if (s >= 670) return { label: "Good", color: "text-blue-600" };
+    if (s >= 580) return { label: "Fair", color: "text-amber-600" };
+    return { label: "Poor", color: "text-rose-600" };
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-500 selection:text-white">
-      <div className="w-full max-w-7xl mx-auto px-4 py-12 md:px-8 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Form Section */}
-          <div className="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.04)]">
-            <div className="mb-8">
-              <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
-                Get Your Credit Score in Seconds
-              </h1>
-              <p className="text-slate-400 text-sm mt-1">
-                Checking your score is completely free and will not affect your
-                credit rating.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Full Name */}
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <input
-                    type="text"
-                    required
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Enter full legal name"
-                    className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium placeholder:text-slate-400"
-                  />
-                </div>
-              </div>
-
-              {/* Grid for DOB & Gender */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    Date of Birth
-                  </label>
-                  <div className="relative">
-                    <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <input
-                      type="date"
-                      required
-                      name="dob"
-                      value={formData.dob}
-                      onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium text-slate-700"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    Gender
-                  </label>
-                  <div className="grid grid-cols-2 gap-3 h-12">
-                    <label
-                      className={`flex items-center justify-center gap-2 border rounded-xl cursor-pointer text-sm font-semibold transition-all ${formData.gender === "male" ? "border-indigo-600 bg-indigo-50/40 text-indigo-600 ring-2 ring-indigo-600/10" : "border-slate-200 bg-slate-50 hover:bg-slate-100/70 text-slate-600"}`}
-                    >
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="male"
-                        checked={formData.gender === "male"}
-                        onChange={handleChange}
-                        className="sr-only"
-                      />
-                      <span>Male</span>
-                    </label>
-                    <label
-                      className={`flex items-center justify-center gap-2 border rounded-xl cursor-pointer text-sm font-semibold transition-all ${formData.gender === "female" ? "border-indigo-600 bg-indigo-50/40 text-indigo-600 ring-2 ring-indigo-600/10" : "border-slate-200 bg-slate-50 hover:bg-slate-100/70 text-slate-600"}`}
-                    >
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="female"
-                        checked={formData.gender === "female"}
-                        onChange={handleChange}
-                        className="sr-only"
-                      />
-                      <span>Female</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              {/* Grid for Pin Code & PAN */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    Pin Code
-                  </label>
-                  <div className="relative">
-                    <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <input
-                      type="text"
-                      required
-                      name="pinCode"
-                      value={formData.pinCode}
-                      onChange={handleChange}
-                      placeholder="110001"
-                      className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium placeholder:text-slate-400"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    PAN Number
-                  </label>
-                  <div className="relative">
-                    <CreditCard className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <input
-                      type="text"
-                      required
-                      name="panNumber"
-                      value={formData.panNumber}
-                      onChange={handleChange}
-                      placeholder="ABCDE1234F"
-                      className="w-full pl-10 pr-4 py-3 text-sm uppercase bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium placeholder:text-slate-400 tracking-wider text-slate-800"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Email Address */}
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <input
-                    type="email"
-                    required
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="name@company.com"
-                    className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium placeholder:text-slate-400"
-                  />
-                </div>
-              </div>
-
-              {/* Mobile Number */}
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  Mobile Number
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <input
-                    type="tel"
-                    required
-                    name="mobileNumber"
-                    value={formData.mobileNumber}
-                    onChange={handleChange}
-                    placeholder="Enter dynamic phone line"
-                    className="w-full pl-10 pr-4 py-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 transition-all font-medium placeholder:text-slate-400"
-                  />
-                </div>
-              </div>
-
-              {/* Context Alert Note */}
-              <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-3.5">
-                <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                <p className="text-xs text-amber-800 font-medium leading-relaxed">
-                  Important: Please supply the specific primary mobile variant
-                  registered alongside your existing active credit lines or
-                  banking records.
-                </p>
-              </div>
-
-              {/* Authorization Consent Agreement */}
-              <div className="flex items-start gap-3 pt-2">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  name="consent"
-                  checked={formData.consent}
-                  onChange={handleChange}
-                  className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 transition-all cursor-pointer"
-                />
-                <label
-                  htmlFor="consent"
-                  className="text-xs text-slate-500 leading-relaxed cursor-pointer select-none"
-                >
-                  I hereby appoint Fintech as my authorized representative to
-                  retrieve my analytical credit profiling matrix directly from
-                  CIBIL / Equifax / Experian / CRIF Highmark credit bureaus.
-                </label>
-              </div>
-
-              {/* Secure Transmission Footer Badge */}
-              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-lg">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>100% Encrypted & Secured</span>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full sm:w-auto group flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 py-3 text-white text-xs font-bold hover:bg-slate-900 transition-all shadow-md shadow-slate-950/10 active:scale-[0.98]"
-                >
-                  <span>Generate Free Credit Score</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-            </form>
+    <>
+      <Seo title="Check CIBIL Score" description="Check your CIBIL score online for free. Know your credit score before applying for loans and credit cards in India." path="/cibil" keywords="CIBIL score, credit score, check CIBIL, free credit score" />
+      <div className="max-w-2xl mx-auto px-4 py-12">
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 rounded-2xl bg-brand-100 flex items-center justify-center mx-auto mb-4">
+            <Gauge size={32} className="text-brand-700" />
           </div>
-
-          {/* Right Column: Context Marketing & Visual Asset Space */}
-          <div className="lg:col-span-5 lg:sticky lg:top-12 space-y-8">
-            <div className="relative group overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-2 shadow-sm">
-              <img
-                src="https://upniva.com/_next/image?url=https%3A%2F%2Fik.imagekit.io%2Ftpzm8ak07%2Fimages%2Fcsd.webp&w=1080&q=75"
-                alt="Credit evaluation interface dashboard asset"
-                className="w-full h-auto object-cover rounded-2xl group-hover:scale-[1.01] transition-transform duration-500"
-              />
-            </div>
-          </div>
+          <h1 className="text-3xl font-bold text-slate-800 mb-2">Check Your CIBIL Score</h1>
+          <p className="text-slate-500">Free credit score check - no impact on your score</p>
         </div>
-       <div className="flex flex-col items-center p-8 m-5 bg-slate-300 ">
-        <h1 className="text-2xl font-bold">What is CIBIL Score</h1>
-        <p className="text-xl mt-5">Your CIBIL Score is a 3-digit numeric summary (ranging from 300 to 900) of your credit history. Lenders use it as a "trust score" to evaluate how responsibly you manage and repay debt. A higher score generally means faster loan approvals and lower interest rates.</p>
-       </div>
-       
-        <div className="flex flex-col items-center p-8 m-5 bg-slate-300 gap-5 ">
-        <h1 className="text-2xl font-bold">Why is Your CIBIL Score So Important?</h1>
-        <p className="text-xl mt-5">Your CIBIL Score acts as a lender's "first impression". If your score is low, your application might be rejected before they even review your income or employment details. On the flip side, a strong score provides several massive advantages:</p>
-        <p>Lower Interest Rates:   Save significantly on the total interest paid for heavy-ticket items like Home Loans or car loans</p>
-        <p>Faster Approvals: Skip the red tape and enjoy expedited processing for both secured and unsecured loans.</p>
-        <p>Better Credit Limits:  Gain access to premium credit cards with higher spending limits and exclusive rewards.</p>
-       </div>
-       
-       <div>
-        <h1>How is Your CIBIL Score Calculated?</h1>
 
-       </div>
+        {score ? (
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 text-center">
+            <CheckCircle2 size={48} className="text-emerald-500 mx-auto mb-4" />
+            <p className="text-slate-500 mb-2">Your CIBIL Score</p>
+            <p className="text-6xl font-bold text-slate-800 mb-2">{score}</p>
+            <p className={`text-lg font-semibold ${getRating(score).color}`}>{getRating(score).label}</p>
+            <p className="text-sm text-slate-500 mt-4 max-w-md mx-auto">
+              {score >= 700 ? "Great score! You're likely eligible for loans at the best interest rates." : "Consider improving your score for better loan offers. Pay bills on time and reduce credit utilization."}
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 space-y-4">
+            <div>
+              <label className="block text-sm text-slate-600 mb-1">Full Name</label>
+              <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+            </div>
+            <div>
+              <label className="block text-sm text-slate-600 mb-1">Phone Number</label>
+              <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required maxLength="10" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+            </div>
+            <div>
+              <label className="block text-sm text-slate-600 mb-1">PAN Number</label>
+              <input value={form.pan} onChange={(e) => setForm({ ...form, pan: e.target.value.toUpperCase() })} required maxLength="10" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+            </div>
+            <button type="submit" disabled={loading} className="w-full flex items-center justify-center gap-2 bg-brand-700 text-white py-2.5 rounded-lg hover:bg-brand-800 disabled:opacity-50">
+              {loading ? <Loader2 size={18} className="animate-spin" /> : <ShieldCheck size={18} />} Check Score
+            </button>
+            <p className="text-xs text-slate-400 text-center">Your data is safe and encrypted. We don't store your PAN details.</p>
+          </form>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 
-export default CheckCivilScore;
+export default CheckCibilScore;

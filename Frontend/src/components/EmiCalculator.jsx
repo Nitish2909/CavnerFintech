@@ -1,125 +1,66 @@
-import { useMemo, useState } from "react";
-import { Calculator } from "lucide-react";
+import { useState } from "react";
+import { Calculator, IndianRupee } from "lucide-react";
 
-const fmt = (n) => "₹ " + Math.round(n).toLocaleString("en-IN");
-
-export default function EmiCalculator() {
+const EmiCalculator = () => {
   const [amount, setAmount] = useState(500000);
-  const [rate, setRate] = useState(10.5);
+  const [rate, setRate] = useState(11);
   const [tenure, setTenure] = useState(36);
 
-  const { emi, totalInterest, totalPayment } = useMemo(() => {
-    const r = rate / 12 / 100;
-    const n = tenure;
-    const e = (amount * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    const total = e * n;
-    return { emi: e, totalInterest: total - amount, totalPayment: total };
-  }, [amount, rate, tenure]);
+  const monthlyRate = rate / 12 / 100;
+  const months = tenure;
+  const emi = amount * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+  const totalPayable = emi * months;
+  const totalInterest = totalPayable - amount;
 
   return (
-    <section id="emi" className="py-12 md:py-20 w-full max-w-[1280px] mx-auto px-4 md:px-8">
-      {/* EMI Wrap */}
-      <div className="rounded-[24px] md:rounded-[28px] overflow-hidden text-white bg-gradient-to-br from-[#0e2a35] to-[#16424f]">
-        {/* EMI Inner Grid */}
-        <div className="grid gap-8 md:gap-10 p-5 sm:p-8 md:p-12 grid-cols-1 lg:grid-cols-2">
-          
-          {/* Left Column: Sliders */}
-          <div className="flex flex-col justify-center">
-            <div className="inline-flex self-start items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-[11.2px] font-bold tracking-wider uppercase">
-              <Calculator size={14} /> EMI Calculator
-            </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[2.5rem] font-bold tracking-tight leading-[1.2] sm:leading-[1.1] mt-4">
-              Plan smarter with our <span className="text-[#f7941d]">Loan EMI Calculator</span>
-            </h2>
-            <p className="text-white/70 mt-3 text-sm sm:text-base md:text-[1.1rem] max-w-xl leading-[1.5]">
-              Estimate your monthly EMI, total interest, and overall repayment before committing to a loan tenure.
-            </p>
+    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="flex items-center gap-2 mb-5">
+        <Calculator size={22} className="text-brand-600" />
+        <h3 className="font-bold text-slate-800 text-lg">EMI Calculator</h3>
+      </div>
 
-            <div className="mt-6 md:mt-8 flex flex-col gap-5 md:gap-6">
-              <Slider label="Loan Amount" value={amount} min={50000} max={5000000} step={10000} suffix={fmt(amount)} onChange={setAmount} />
-              <Slider label="Interest Rate (%)" value={rate} min={5} max={24} step={0.1} suffix={`${rate.toFixed(1)}%`} onChange={setRate} />
-              <Slider label="Tenure (Months)" value={tenure} min={6} max={240} step={1} suffix={`${tenure} mo`} onChange={setTenure} />
-            </div>
+      <div className="space-y-5">
+        <div>
+          <div className="flex justify-between text-sm mb-1">
+            <label className="text-slate-600">Loan Amount</label>
+            <span className="font-semibold text-slate-800">₹{amount.toLocaleString()}</span>
           </div>
+          <input type="range" min="50000" max="5000000" step="50000" value={amount} onChange={(e) => setAmount(Number(e.target.value))} className="w-full accent-brand-600" />
+        </div>
 
-          {/* Right Column: Calculations & Summary Display */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[20px] md:rounded-[22px] p-5 sm:p-8 flex flex-col justify-center w-full">
-            <div className="flex justify-between items-center gap-4">
-              <span className="text-sm sm:text-[1rem] text-white/80">Monthly EMI</span>
-              <span className="text-xl sm:text-2xl md:text-[1.875rem] font-bold text-[#f7941d] whitespace-nowrap">{fmt(emi)}</span>
-            </div>
-            
-            <div className="h-[1px] bg-white/10 my-4 md:my-5" />
-            
-            <div className="space-y-3">
-              <div className="flex justify-between items-center text-xs sm:text-sm md:text-[0.875rem] gap-4">
-                <span className="text-white/60">Principal Amount</span>
-                <span className="font-bold text-right">{fmt(amount)}</span>
-              </div>
-              <div className="flex justify-between items-center text-xs sm:text-sm md:text-[0.875rem] gap-4">
-                <span className="text-white/60">Total Interest</span>
-                <span className="font-bold text-right">{fmt(totalInterest)}</span>
-              </div>
-              <div className="flex justify-between items-center text-xs sm:text-sm md:text-[0.875rem] gap-4">
-                <span className="text-white/60">Total Payment</span>
-                <span className="font-bold text-right">{fmt(totalPayment)}</span>
-              </div>
-            </div>
-
-            {/* Principal vs Interest Distribution Bar */}
-            <div className="mt-6 h-2.5 rounded-full bg-white/10 overflow-hidden flex w-full">
-              <div className="h-full bg-[#f7941d]" style={{ width: `${(amount / totalPayment) * 100}%` }} />
-              <div className="h-full bg-[#e63946]" style={{ width: `${(totalInterest / totalPayment) * 100}%` }} />
-            </div>
-            
-            <div className="mt-3 flex gap-4 md:gap-5 text-[0.75rem] text-white/70">
-              <span className="inline-flex items-center">
-                <span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#f7941d] shrink-0" />
-                Principal
-              </span>
-              <span className="inline-flex items-center">
-                <span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 bg-[#e63946] shrink-0" />
-                Interest
-              </span>
-            </div>
+        <div>
+          <div className="flex justify-between text-sm mb-1">
+            <label className="text-slate-600">Interest Rate (% p.a.)</label>
+            <span className="font-semibold text-slate-800">{rate}%</span>
           </div>
+          <input type="range" min="5" max="30" step="0.5" value={rate} onChange={(e) => setRate(Number(e.target.value))} className="w-full accent-brand-600" />
+        </div>
 
+        <div>
+          <div className="flex justify-between text-sm mb-1">
+            <label className="text-slate-600">Tenure (months)</label>
+            <span className="font-semibold text-slate-800">{tenure} mo</span>
+          </div>
+          <input type="range" min="6" max="360" step="6" value={tenure} onChange={(e) => setTenure(Number(e.target.value))} className="w-full accent-brand-600" />
         </div>
       </div>
-    </section>
-  );
-}
 
-
-function Slider({ label, value, min, max, step, suffix, onChange }) {
-  return (
-    <div className="flex flex-col">
-      <div className="flex justify-between mb-2 text-[0.875rem]">
-        <span className="text-white/70">{label}</span>
-        <span className="text-[#f7941d] font-bold">{suffix}</span>
+      <div className="mt-6 bg-brand-50 rounded-xl p-5 space-y-2">
+        <div className="flex justify-between text-sm">
+          <span className="text-slate-600">Monthly EMI</span>
+          <span className="font-bold text-brand-800 text-lg">₹{Math.round(emi).toLocaleString()}</span>
+        </div>
+        <div className="flex justify-between text-sm">
+          <span className="text-slate-600">Total Interest</span>
+          <span className="font-semibold text-slate-700">₹{Math.round(totalInterest).toLocaleString()}</span>
+        </div>
+        <div className="flex justify-between text-sm pt-2 border-t border-brand-200">
+          <span className="text-slate-600">Total Payable</span>
+          <span className="font-semibold text-slate-800">₹{Math.round(totalPayable).toLocaleString()}</span>
+        </div>
       </div>
-      
-      {/* Range Input with optimized cross-browser standard utility definitions */}
-      <input 
-        type="range" 
-        min={min} 
-        max={max} 
-        step={step} 
-        value={value} 
-        onChange={(e) => onChange(Number(e.target.value))} 
-        className="w-full h-1.5 rounded-full bg-white/10 appearance-none outline-none cursor-pointer
-          [&::-webkit-slider-thumb]:appearance-none 
-          [&::-webkit-slider-thumb]:w-5 
-          [&::-webkit-slider-thumb]:h-5 
-          [&::-webkit-slider-thumb]:rounded-full 
-          [&::-webkit-slider-thumb]:bg-[#f7941d] 
-          [&::-webkit-slider-thumb]:shadow-[0_2px_8px_rgba(0,0,0,0.3)]
-          [&::-moz-range-thumb]:w-5 
-          [&::-moz-range-thumb]:h-5 
-          [&::-moz-range-thumb]:border-none 
-          [&::-moz-range-thumb]:rounded-full 
-          [&::-moz-range-thumb]:bg-[#f7941d]"
-      />
     </div>
   );
-}
+};
+
+export default EmiCalculator;

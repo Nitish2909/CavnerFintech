@@ -1,20 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { 
-  FileText, 
-  CreditCard, 
-  User, 
-  LogOut, 
-  TrendingUp, 
-  Clock, 
-  CheckCircle2, 
-  XCircle,
-  IndianRupee, 
-  Wallet, 
-  ShieldCheck, 
-  HandCoins 
-} from "lucide-react";
+import { FileText, CreditCard, User, LogOut, TrendingUp, Clock, CheckCircle2, XCircle } from "lucide-react";
 import Seo from "../../components/Seo";
 import { clearUser } from "../../store/index";
 import { logout, getMyApplications } from "../../services/apiService";
@@ -41,15 +28,6 @@ const Dashboard = () => {
   const loanApps = apps.loanApplications || [];
   const cardApps = apps.creditCardApplications || [];
 
-  // Derived financial metrics for the new summary cards
-  const totalAmount = loanApps
-    .filter((a) => a.status === "approved" || a.status === "disbursed")
-    .reduce((sum, a) => sum + (a.amountRequested || 0), 0);
-
-  const nextPayment = loanApps
-    .filter((a) => a.status === "approved" || a.status === "disbursed")
-    .reduce((sum, a) => sum + Math.round((a.amountRequested || 0) / (a.tenureMonths || 12)), 0);
-
   const stats = [
     { label: "Loan Applications", value: loanApps.length, icon: FileText, color: "bg-blue-500" },
     { label: "Card Applications", value: cardApps.length, icon: CreditCard, color: "bg-violet-500" },
@@ -69,7 +47,6 @@ const Dashboard = () => {
     <>
       <Seo title="My Dashboard" description="View your loan and credit card applications" path="/user/dashboard" />
       <div className="max-w-7xl mx-auto px-4 py-8">
-        
         {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div>
@@ -86,8 +63,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Stats Summary Counter */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        {/* Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {stats.map((s) => {
             const Icon = s.icon;
             return (
@@ -100,63 +77,6 @@ const Dashboard = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Financial Highlights Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex justify-between items-start">
-            <div className="space-y-2">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                Total Active Capital
-              </span>
-              <h3 className="text-3xl font-black text-slate-900 tracking-tight">
-                <span className="flex items-center">
-                  <IndianRupee size={22} className="mr-0.5" />
-                  {totalAmount.toLocaleString("en-IN")}
-                </span>
-              </h3>
-            </div>
-            <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl">
-              <Wallet size={20} />
-            </div>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex justify-between items-start">
-            <div className="space-y-2">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                CIBIL Score
-              </span>
-              <h3 className="text-3xl font-black text-emerald-600 tracking-tight">
-                765
-              </h3>
-            </div>
-            <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl">
-              <ShieldCheck size={20} />
-            </div>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex justify-between items-start">
-            <div className="space-y-2">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                Next Scheduled Payment
-              </span>
-              <h3 className="text-3xl font-black text-slate-900 tracking-tight">
-                <span className="flex items-baseline">
-                  <IndianRupee
-                    size={22}
-                    className="self-center mr-0.5"
-                  />
-                  {nextPayment.toLocaleString("en-IN")}
-                  <span className="text-xs font-medium text-slate-400 ml-1">
-                    /month
-                  </span>
-                </span>
-              </h3>
-            </div>
-            <div className="p-2.5 bg-amber-50 text-amber-600 rounded-xl">
-              <HandCoins size={20} />
-            </div>
-          </div>
         </div>
 
         {/* Quick actions */}
@@ -189,7 +109,7 @@ const Dashboard = () => {
                   <div key={a._id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
                     <div>
                       <p className="font-medium text-slate-800 capitalize">{a.loanType} Loan</p>
-                      <p className="text-xs text-slate-500">₹{a.amountRequested?.toLocaleString("en-IN")} · {a.tenureMonths} months · {new Date(a.createdAt).toLocaleDateString()}</p>
+                      <p className="text-xs text-slate-500">₹{a.amountRequested?.toLocaleString()} · {a.tenureMonths} months · {new Date(a.createdAt).toLocaleDateString()}</p>
                     </div>
                     <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColor(a.status)}`}>{a.status.replace("_", " ")}</span>
                   </div>

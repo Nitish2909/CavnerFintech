@@ -1,207 +1,76 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Phone, Mail, MapPin, Shield, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
 
-// Clean, native SVG brand icons to completely bypass lucide-react package version mismatches
-const SocialIcon = ({ name, size = 16 }) => {
-  const icons = {
-    facebook: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-      </svg>
-    ),
-    instagram: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-      </svg>
-    ),
-    twitter: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-      </svg>
-    ),
-    linkedin: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-        <rect width="4" height="12" x="2" y="9" />
-        <circle cx="4" cy="4" r="2" />
-      </svg>
-    ),
-    youtube: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z" />
-        <polygon points="10 15 15 12 10 9 10 15" />
-      </svg>
-    ),
-  };
-
-  return icons[name] || null;
-};
-
-export default function SiteFooter() {
-  const socials = ["facebook", "instagram", "twitter", "linkedin", "youtube"];
-
+const SiteFooter = () => {
   return (
-    <footer className="bg-[#0e2a35] text-white/90 mt-24">
-      {/* Upper Grid Layout */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 py-16 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
-        {/* Brand / About Column */}
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-md shadow-emerald-900/30 transition-transform group-hover:scale-105">
-              <span className="text-xs sm:text-sm font-black text-white tracking-tighter">
-                CWF
-              </span>
+    <footer className="bg-slate-900 text-slate-300">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-sm">CWF</div>
+              <div>
+                <p className="font-bold text-white text-lg">Cavner</p>
+                <p className="text-xs text-brand-400 -mt-1">Wealth & Fintech</p>
+              </div>
             </div>
-            <span className="text-[1.5rem] font-extrabold text-white">
-              Cavner Wealth & FinTech
-            </span>
+            <p className="text-sm text-slate-400 mb-4">
+              Your trusted partner for loans, credit cards, investments and corporate finance across India.
+            </p>
+            <div className="flex gap-3">
+              <a href="#" className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-700 transition-colors"><Facebook size={16} /></a>
+              <a href="#" className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-700 transition-colors"><Twitter size={16} /></a>
+              <a href="#" className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-700 transition-colors"><Linkedin size={16} /></a>
+              <a href="#" className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-700 transition-colors"><Youtube size={16} /></a>
+            </div>
           </div>
 
-          <p className="text-white/70 text-[0.875rem] max-w-md mt-4 leading-[1.5]">
-            Cavner Wealth & FinTech is your trusted financial partner offering
-            fast loan assistance, transparent comparisons across 300+ banks &
-            NBFCs, and a smooth digital journey for every borrower.
-          </p>
-          {/* Social Icons Row */}
-          <div className="mt-5 flex gap-3">
-            {socials.map((name, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-9 h-9 rounded-full bg-white/10 grid place-items-center transition-colors duration-200 hover:bg-[#f7941d] text-white"
-                aria-label={name}
-              >
-                <SocialIcon name={name} size={16} />
-              </a>
-            ))}
+          {/* Loans */}
+          <div>
+            <h3 className="font-semibold text-white mb-4">Loans</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/loans/personal-loan" className="hover:text-brand-400">Personal Loan</Link></li>
+              <li><Link to="/loans/home-loan" className="hover:text-brand-400">Home Loan</Link></li>
+              <li><Link to="/loans/education-loan" className="hover:text-brand-400">Education Loan</Link></li>
+              <li><Link to="/loans/business-loan" className="hover:text-brand-400">Business Loan</Link></li>
+              <li><Link to="/credit-card" className="hover:text-brand-400">Credit Cards</Link></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/corporate" className="hover:text-brand-400">Corporate Finance</Link></li>
+              <li><Link to="/investment" className="hover:text-brand-400">Investments</Link></li>
+              <li><Link to="/government-services" className="hover:text-brand-400">Government Services</Link></li>
+              <li><Link to="/partner" className="hover:text-brand-400">Become a Partner</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-400">Contact Us</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="font-semibold text-white mb-4">Get in Touch</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-2"><Phone size={16} className="mt-0.5 text-brand-400 shrink-0" /> <a href="tel:918816942362">+91 88169 42362</a></li>
+              <li className="flex items-start gap-2"><Mail size={16} className="mt-0.5 text-brand-400 shrink-0" /> <a href="mailto:info@cavnerfintech.in">info@cavnerfintech.in</a></li>
+              <li className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 text-brand-400 shrink-0" /> India</li>
+            </ul>
           </div>
         </div>
 
-        {/* Dynamic Column Components */}
-        <FooterCol
-          title="Loans"
-          links={[
-            "Personal Loan",
-            "Business Loan",
-            "Home Loan",
-            "Education Loan",
-            "Car Loan",
-            "Loan Against Property",
-          ]}
-        />
-        <FooterCol
-          title="Company"
-          links={[
-            "About Us",
-            "Become a Partner",
-            "Careers",
-            "Blog",
-            "Contact Us",
-          ]}
-        />
-        <FooterCol
-          title="Tools"
-          links={[
-            "EMI Calculator",
-            "CIBIL Score Check",
-            "Eligibility Calculator",
-            "Compare Loans",
-          ]}
-        />
-      </div>
-
-      {/* Footer Bottom Strip */}
-      <div className="border-t border-white/10">
-        <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row gap-4 items-center justify-between text-[0.875rem] text-white/60">
-          <div className="flex flex-wrap justify-center gap-5">
-            <span className="inline-flex items-center gap-1.5">
-              <Phone size={14} /> 9971740584
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Mail size={14} /> info@FinTech.com
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <MapPin size={14} /> Karnal, Haryana India
-            </span>
+        <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-500">
+          <p>&copy; {new Date().getFullYear()} Cavner Wealth & Fintech. All rights reserved.</p>
+          <div className="flex items-center gap-2">
+            <Shield size={14} className="text-brand-500" />
+            <span>Secured with bank-grade encryption</span>
           </div>
-          <p>
-            © {new Date().getFullYear()} Cavner Wealth & FinTech. All rights
-            reserved.
-          </p>
         </div>
       </div>
     </footer>
   );
-}
+};
 
-function FooterCol({ title, links }) {
-  return (
-    <div className="flex flex-col">
-      <h4 className="text-white font-bold mb-4">{title}</h4>
-      <ul className="flex flex-col gap-2 text-[0.875rem]">
-        {links.map((l) => (
-          <li key={l}>
-            <a
-              href={`/#${l}`}
-              className="text-white/70 transition-colors duration-200 hover:text-[#f7941d]"
-            >
-              {l}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+export default SiteFooter;

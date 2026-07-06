@@ -1,176 +1,88 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare, ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Loader2, CheckCircle2, Send } from "lucide-react";
+import Seo from "../components/Seo";
+import { contactUs } from "../services/apiService";
 
-export default function ContactUs() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: 'General Inquiry',
-    message: ''
-  });
+const ContactUs = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted successfully:", formData);
-    alert("Thank you! Your message has been received.");
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError("");
+    setLoading(true);
+    try {
+      await contactUs(form);
+      setSent(true);
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to send message");
+    } finally { setLoading(false); }
   };
 
   return (
-    <section className="min-h-screen py-20 bg-[#fdfcf9] text-[#0e2a35] font-sans antialiased selection:bg-[#f7941d]/20">
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
-        
-        {/* Section Head */}
-        <div className="text-center max-w-[42rem] mx-auto mb-20">
-          <span className="text-[0.75rem] tracking-[0.2em] uppercase font-extrabold text-[#f7941d] bg-[#f7941d]/5 px-3 py-1.5 rounded-md">
-            Get In Touch
-          </span>
-          <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.5rem)] font-black tracking-tight leading-[1.1] text-[#0e2a35]">
-            We are Here to <span className="bg-gradient-to-r from-[#f7941d] to-[#e63946] bg-clip-text text-transparent">Help You</span>
-          </h1>
-          <p className="mt-4 text-[#6b7b82] text-sm md:text-base leading-relaxed">
-            Have questions about loan eligibilities, interest rates, or your ongoing application? Reach out to our customer care specialists.
-          </p>
+    <>
+      <Seo title="Contact Us" description="Contact Cavner Fintech for loans, credit cards, and investment queries. Get in touch with our financial experts." path="/contact" />
+      <div className="max-w-5xl mx-auto px-4 py-12">
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-slate-800 mb-2">Contact Us</h1>
+          <p className="text-slate-500">We're here to help with your financial needs</p>
         </div>
 
-        {/* Dual-Column Layout Container */}
-        <div className="grid gap-10 lg:grid-cols-12 items-start">
-          
-          {/* Left Column: Essential Contact Information */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="rounded-[24px] bg-[#0e2a35] text-white p-8 md:p-10 relative overflow-hidden shadow-[0_20px_50px_-12px_rgba(14,42,53,0.25)]">
-              {/* Complex Background Decorative Elements */}
-              <div className="absolute top-0 right-0 w-[180px] h-[180px] rounded-full bg-gradient-to-br from-[rgba(247,148,29,0.12)] to-transparent pointer-events-none" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/5 rounded-full blur-2xl" />
-              
-              <h2 className="text-[1.625rem] font-extrabold tracking-tight mb-2">Support Center</h2>
-              <p className="text-white/70 text-sm leading-relaxed mb-8">
-                Connect directly with our verification and processing departments for instantaneous updates.
-              </p>
-
-              <div className="flex flex-col gap-6 relative z-10">
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 shrink-0 rounded-[14px] bg-white/10 grid place-items-center text-[#f7941d] group-hover:bg-[#f7941d] group-hover:text-white transition-all duration-300">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <div className="text-[10px] text-white/40 uppercase font-bold tracking-widest mb-0.5">Call Our Support</div>
-                    <a href="tel:+919971740584" className="text-base font-bold text-white hover:text-[#f7941d] transition-colors tracking-wide">+91 8816942362</a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 shrink-0 rounded-[14px] bg-white/10 grid place-items-center text-[#f7941d] group-hover:bg-[#f7941d] group-hover:text-white transition-all duration-300">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <div className="text-[10px] text-white/40 uppercase font-bold tracking-widest mb-0.5">Email Correspondence</div>
-                    <a href="mailto:info@Fintech.com" className="text-base font-bold text-white hover:text-[#f7941d] transition-colors tracking-wide">info@Fintech.com</a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 shrink-0 rounded-[14px] bg-white/10 grid place-items-center text-[#f7941d] group-hover:bg-[#f7941d] group-hover:text-white transition-all duration-300">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <div className="text-[10px] text-white/40 uppercase font-bold tracking-widest mb-0.5">Headquarters Office</div>
-                    <p className="text-base font-bold text-white tracking-wide">Karnal Haryana, India</p>
-                  </div>
-                </div>
-              </div>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Contact info */}
+          <div className="space-y-4">
+            <div className="bg-white rounded-xl border border-slate-100 p-5">
+              <Phone size={20} className="text-brand-600 mb-2" />
+              <p className="text-sm text-slate-500">Call us</p>
+              <a href="tel:918816942362" className="font-semibold text-slate-800">+91 88169 42362</a>
             </div>
-
-            {/* Business Hours Secondary Card */}
-            <div className="rounded-[24px] bg-white border border-[#e8e6e0] p-6 flex items-center gap-4 shadow-sm group hover:border-[#f7941d]/30 transition-all duration-300">
-              <div className="w-12 h-12 rounded-[14px] bg-[#f7941d]/10 text-[#f7941d] grid place-items-center shrink-0 group-hover:scale-105 transition-transform">
-                <Clock size={22} />
-              </div>
-              <div>
-                <h4 className="font-extrabold text-[#0e2a35] text-[0.95rem]">Operational Availability Hours</h4>
-                <p className="text-sm text-[#6b7b82] mt-0.5">We usually respond within business hours.</p>
-              </div>
+            <div className="bg-white rounded-xl border border-slate-100 p-5">
+              <Mail size={20} className="text-brand-600 mb-2" />
+              <p className="text-sm text-slate-500">Email us</p>
+              <a href="mailto:info@cavnerfintech.in" className="font-semibold text-slate-800">info@cavnerfintech.in</a>
+            </div>
+            <div className="bg-white rounded-xl border border-slate-100 p-5">
+              <MapPin size={20} className="text-brand-600 mb-2" />
+              <p className="text-sm text-slate-500">Location</p>
+              <p className="font-semibold text-slate-800">India</p>
             </div>
           </div>
 
-          {/* Right Column: Clean Interactive Submission Form */}
-          <div className="lg:col-span-7 bg-white border border-[#e8e6e0]/80 rounded-[24px] p-8 md:p-10 shadow-[0_25px_60px_-15px_rgba(14,42,53,0.04)]">
-            <div className="flex items-center gap-2.5 mb-8">
-              <MessageSquare size={20} className="text-[#f7941d]" />
-              <h3 className="text-xl font-extrabold text-[#0e2a35] tracking-tight">Drop Us a Message</h3>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              
-              <div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
-                <div className="flex flex-col">
-                  <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider mb-2 text-[#0e2a35]/70">Full Name</label>
-                  <input 
-                    type="text" id="name" name="name" required value={formData.name} onChange={handleChange} placeholder="John Doe"
-                    className="w-full h-12 px-4 rounded-[14px] border border-[#e8e6e0] bg-[#fdfcf9] outline-none text-[0.925rem] font-medium transition-all text-[#0e2a35] focus:border-[#f7941d] focus:bg-white focus:ring-4 focus:ring-[#f7941d]/10 placeholder:text-slate-400"
-                  />
-                </div>
-                
-                <div className="flex flex-col">
-                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider mb-2 text-[#0e2a35]/70">Email Address</label>
-                  <input 
-                    type="email" id="email" name="email" required value={formData.email} onChange={handleChange} placeholder="john@example.com"
-                    className="w-full h-12 px-4 rounded-[14px] border border-[#e8e6e0] bg-[#fdfcf9] outline-none text-[0.925rem] font-medium transition-all text-[#0e2a35] focus:border-[#f7941d] focus:bg-white focus:ring-4 focus:ring-[#f7941d]/10 placeholder:text-slate-400"
-                  />
-                </div>
+          {/* Form */}
+          <div className="lg:col-span-2">
+            {sent ? (
+              <div className="bg-white rounded-xl border border-slate-100 shadow-sm p-10 text-center">
+                <CheckCircle2 size={48} className="text-emerald-500 mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-slate-800">Message Sent!</h3>
+                <p className="text-slate-500 mt-1">We'll get back to you within 24 hours.</p>
               </div>
-
-              <div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
-                <div className="flex flex-col">
-                  <label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider mb-2 text-[#0e2a35]/70">Phone Number</label>
-                  <input 
-                    type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleChange} placeholder="+91 XXXXX XXXXX"
-                    className="w-full h-12 px-4 rounded-[14px] border border-[#e8e6e0] bg-[#fdfcf9] outline-none text-[0.925rem] font-medium transition-all text-[#0e2a35] focus:border-[#f7941d] focus:bg-white focus:ring-4 focus:ring-[#f7941d]/10 placeholder:text-slate-400"
-                  />
+            ) : (
+              <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-slate-100 shadow-sm p-6 space-y-4">
+                {error && <div className="bg-rose-50 text-rose-600 text-sm px-4 py-3 rounded-lg">{error}</div>}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input name="name" value={form.name} onChange={handleChange} placeholder="Your Name *" required className="px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                  <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email *" required className="px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
                 </div>
-                
-                <div className="flex flex-col">
-                  <label htmlFor="subject" className="text-xs font-bold uppercase tracking-wider mb-2 text-[#0e2a35]/70">Inquiry Department</label>
-                  <div className="relative">
-                    <select 
-                      id="subject" name="subject" value={formData.subject} onChange={handleChange}
-                      className="w-full h-12 pl-4 pr-10 rounded-[14px] border border-[#e8e6e0] bg-[#fdfcf9] outline-none text-[0.925rem] font-medium transition-all text-[#0e2a35] focus:border-[#f7941d] focus:bg-white focus:ring-4 focus:ring-[#f7941d]/10 appearance-none cursor-pointer"
-                    >
-                      <option>General Inquiry</option>
-                      <option>Business Loan Support</option>
-                      <option>Personal / Home Loan Support</option>
-                      <option>Partner Partnership Program</option>
-                    </select>
-                    <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#0e2a35]/50 pointer-events-none" />
-                  </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input name="phone" value={form.phone} onChange={handleChange} placeholder="Phone" maxLength="10" className="px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                  <input name="subject" value={form.subject} onChange={handleChange} placeholder="Subject" className="px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
                 </div>
-              </div>
-
-              <div className="flex flex-col">
-                <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider mb-2 text-[#0e2a35]/70">Detailed Message</label>
-                <textarea 
-                  id="message" name="message" required rows="4" value={formData.message} onChange={handleChange} placeholder="Describe your query in detail..."
-                  className="w-full p-4 rounded-[14px] border border-[#e8e6e0] bg-[#fdfcf9] outline-none text-[0.925rem] font-medium transition-all text-[#0e2a35] focus:border-[#f7941d] focus:bg-white focus:ring-4 focus:ring-[#f7941d]/10 resize-none placeholder:text-slate-400"
-                />
-              </div>
-
-              <button 
-                type="submit"
-                className="group flex items-center justify-center gap-2 h-12 px-8 rounded-full font-bold text-sm tracking-wide transition-all mt-2 bg-[#f7941d] text-white shadow-[0_12px_30px_-6px_rgba(247,148,29,0.3)] hover:bg-[#e08316] hover:shadow-[0_14px_35px_-6px_rgba(247,148,29,0.4)] active:scale-[0.98]"
-              >
-                <span>Send Message</span>
-                <Send size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </button>
-
-            </form>
+                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Your Message *" required rows={5} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <button type="submit" disabled={loading} className="flex items-center justify-center gap-2 w-full bg-brand-700 text-white py-2.5 rounded-lg hover:bg-brand-800 disabled:opacity-50">
+                  {loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />} Send Message
+                </button>
+              </form>
+            )}
           </div>
-
         </div>
       </div>
-    </section>
+    </>
   );
-}
+};
+
+export default ContactUs;
