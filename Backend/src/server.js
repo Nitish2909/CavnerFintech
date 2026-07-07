@@ -16,6 +16,7 @@ import adminManageRoutes from "../routes/adminManageRoutes.js";
 import productRoutes from "../routes/productRoutes.js";
 import publicRoutes from "../routes/publicRoutes.js";
 import applicationRoutes from "../routes/applicationRoutes.js";
+import amortizationCalculatorRoutes from "../routes/amortizationCalculatorRoutes.js"
 
 const app = express();
 
@@ -65,6 +66,7 @@ app.use("/api/admin/manage", adminManageRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/public", publicRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/loancalculator", amortizationCalculatorRoutes )
 
 // ---- Error handling ----
 app.use(notFound);
