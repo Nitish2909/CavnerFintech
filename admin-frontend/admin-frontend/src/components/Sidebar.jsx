@@ -54,12 +54,12 @@ const Sidebar = () => {
         }`}
       >
         <div className="flex items-center gap-2 px-6 py-5 border-b border-slate-800">
-          <div className="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center">
-            <Shield size={22} />
+          <div className="w-11 h-11 rounded-lg bg-brand-600 flex items-center justify-center">
+            <Shield size={27} />
           </div>
           <div>
             <h1 className="font-bold text-lg leading-tight">Cavner Wealth & Fintech Services</h1>
-            <p className="text-xs text-slate-400">Admin Panel</p>
+            <p className="text-sm text-slate-400">Admin Panel</p>
           </div>
         </div>
 
