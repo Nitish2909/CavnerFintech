@@ -34,7 +34,7 @@ export default function WhatsApp() {
       <div className="flex flex-col gap-3">
         {/* Phone */}
         <a
-          href="tel:+919971740584"
+          href="tel:+91 88169 42362"
           className="w-14 h-14 bg-blue-600 rounded-full shadow-2xl flex items-center justify-center text-white hover:bg-blue-700 transition-all hover:-translate-y-0.5"
           aria-label="Call us"
         >
@@ -43,7 +43,7 @@ export default function WhatsApp() {
 
         {/* WhatsApp */}
         <a
-          href="https://wa.me/919971740584"
+          href="https://wa.me/918816942362"
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-green-500 rounded-full shadow-2xl flex items-center justify-center text-white hover:bg-green-600 transition-all hover:-translate-y-0.5"

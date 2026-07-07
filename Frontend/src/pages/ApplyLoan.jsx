@@ -73,11 +73,11 @@ const ApplyLoan = () => {
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">Amount Requested (₹) *</label>
-                <input name="amountRequested" type="number" value={form.amountRequested} onChange={handleChange} required className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="amountRequested" type="number" required value={form.amountRequested} onChange={handleChange} required className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">Tenure (months) *</label>
-                <select name="tenureMonths" value={form.tenureMonths} onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500">
+                <select name="tenureMonths" value={form.tenureMonths}  onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500">
                   <option value="12">12 months</option>
                   <option value="24">24 months</option>
                   <option value="36">36 months</option>
@@ -99,7 +99,7 @@ const ApplyLoan = () => {
               </div>
               <div className="sm:col-span-2">
                 <label className="block text-sm text-slate-600 mb-1">Monthly Income (₹)</label>
-                <input name="monthlyIncome" type="number" value={form.monthlyIncome} onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="monthlyIncome" type="number" required value={form.monthlyIncome} onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div className="sm:col-span-2">
                 <label className="block text-sm text-slate-600 mb-1">Purpose of Loan</label>
@@ -114,31 +114,31 @@ const ApplyLoan = () => {
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-slate-600 mb-1">Full Name *</label>
-                <input name="applicantName" value={form.applicantName} onChange={handleChange} required className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="applicantName" required value={form.applicantName} onChange={handleChange} required className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">Email *</label>
-                <input name="email" type="email" value={form.email} onChange={handleChange} required className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="email" type="email" required value={form.email} onChange={handleChange} required className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">Phone *</label>
-                <input name="phone" value={form.phone} onChange={handleChange} required maxLength="10" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="phone" required value={form.phone} onChange={handleChange} required maxLength="10" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">PAN Number</label>
-                <input name="panNumber" value={form.panNumber} onChange={handleChange} maxLength="10" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="panNumber" required value={form.panNumber} onChange={handleChange} maxLength="10" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">City</label>
-                <input name="city" value={form.city} onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="city" required value={form.city} onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">State</label>
-                <input name="state" value={form.state} onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="state" required value={form.state} onChange={handleChange} className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
               <div>
                 <label className="block text-sm text-slate-600 mb-1">Pincode</label>
-                <input name="pincode" value={form.pincode} onChange={handleChange} maxLength="6" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
+                <input name="pincode" required value={form.pincode} onChange={handleChange} maxLength="6" className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500" />
               </div>
             </div>
           </div>

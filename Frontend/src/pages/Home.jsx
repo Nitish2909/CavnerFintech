@@ -19,6 +19,7 @@ const Home = () => {
     { icon: IndianRupee, title: "Best Interest Rates", desc: "Compare offers from 40+ banks and NBFCs to find the lowest rates." },
     { icon: Users, title: "Expert Guidance", desc: "Our financial advisors help you choose the right product for your needs." },
   ];
+  
 
   return (
     <>
@@ -91,8 +92,8 @@ const Home = () => {
               </div>
               <div className="flex gap-8 mt-10">
                 <div><p className="text-3xl font-bold">40+</p><p className="text-brand-200 text-sm">Partner Banks</p></div>
-                <div><p className="text-3xl font-bold">5L+</p><p className="text-brand-200 text-sm">Happy Customers</p></div>
-                <div><p className="text-3xl font-bold">₹2000Cr+</p><p className="text-brand-200 text-sm">Loans Disbursed</p></div>
+                <div><p className="text-3xl font-bold">1000+</p><p className="text-brand-200 text-sm">Happy Customers</p></div>
+                <div><p className="text-3xl font-bold">₹200Cr+</p><p className="text-brand-200 text-sm">Loans Disbursed</p></div>
               </div>
             </div>
             <div className="hidden lg:block">
@@ -106,7 +107,7 @@ const Home = () => {
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-slate-800 mb-2">Why Choose Cavner Fintech?</h2>
+            <h2 className="text-3xl font-bold text-slate-800 mb-2">Why Choose Cavner Wealth And FinTech?</h2>
             <p className="text-slate-500">Trusted by lakhs of Indians for their financial needs</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

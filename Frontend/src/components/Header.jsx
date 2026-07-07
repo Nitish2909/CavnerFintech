@@ -41,7 +41,7 @@ const navItems = [
     ],
   },
   {
-    label: "Government Services", href: "/government-services",
+    label: "Government Scheme", href: "/government-services",
     subMenu: [
       { label: "Pradhan Mantri MUDRA Yojana (PMMY)", href: "/government-services/mudra-yojana", icon: Home },
       { label: "PMEGP", href: "/government-services/pmegp", icon: TrendingUp },
@@ -55,6 +55,13 @@ const navItems = [
       { label: "Project Report", href: "/others-services/project-report", icon: FileText },
     ],
   },
+  {
+    label: "Cibil Score", href: "/cibil",
+  },
+  {
+    label: "EMI Calculator", href: "/emi",
+  },
+
 ];
 
 const Header = () => {
@@ -99,7 +106,7 @@ const Header = () => {
               </div>
               <div className="leading-tight">
                 <p className="font-bold text-slate-800 text-lg">Cavner</p>
-                <p className="text-xs text-brand-700 -mt-1">Wealth & Fintech</p>
+                <p className="text-xs text-brand-700 -mt-1">Wealth & FinTech</p>
               </div>
             </Link>
 
@@ -127,6 +134,7 @@ const Header = () => {
                 </div>
               ) : (
                 <div className="hidden md:flex items-center gap-2">
+                   <Link to="/amortizationcalculator" className="px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg">Amortization Calculator</Link>
                   <Link to="/login" className="px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg">Login</Link>
                   <Link to="/register" className="px-4 py-2 text-sm font-medium text-white bg-brand-700 hover:bg-brand-800 rounded-lg">Register</Link>
                 </div>

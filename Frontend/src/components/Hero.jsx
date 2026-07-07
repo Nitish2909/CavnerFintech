@@ -34,6 +34,22 @@ const HERO_SLIDES = [
       </div>
     ),
   },
+    {
+    mainText: "Apply Education Loan Online with",
+    brandHighlight: "Cavner Wealth & FinTech",
+    subText: "Fast Approval & Low Interest Rates",
+    illustration: (
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
+        <img
+          src="https://images.unsplash.com/photo-1665567032056-4d22d92638da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RWR1Y2F0aW9uJTIwbG9hbnxlbnwwfHwwfHx8MA%3D%3D"
+          alt="Apply For Personal Loan"
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-white/10" />
+      </div>
+    ),
+  },
   {
     mainText: "Smart Financial Solutions That Match Your Goals",
     brandHighlight: "Cavner Wealth and FinTech Brings Financial Solutions",
@@ -95,14 +111,14 @@ const HERO_SLIDES = [
     ),
   },
   {
-    mainText: "We Can also helps to ",
-    brandHighlight: "Create Project Report For Getting Loan",
-    subText: "",
+    mainText: " We also assist you in generating a",
+    brandHighlight: "Professional Project Report for Loan Approvals",
+    subText: "Ensure compliance with bank requirements to maximize your funding success.",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
         <img
-          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZSUyMGxvYW5zfGVufDB8fDB8fHww"
-          alt="Apply For Home Loan"
+          src="https://plus.unsplash.com/premium_photo-1661277697952-0cacde72c755?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdCUyMHJlcG9ydHxlbnwwfHwwfHx8MA%3D%3D"
+          alt="Happy family using laptop among moving boxes"
           className="w-full h-full object-cover object-center"
           loading="lazy"
         />
