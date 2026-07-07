@@ -42,7 +42,23 @@ const HERO_SLIDES = [
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
         <img
           src="https://images.unsplash.com/photo-1665567032056-4d22d92638da?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RWR1Y2F0aW9uJTIwbG9hbnxlbnwwfHwwfHx8MA%3D%3D"
-          alt="Apply For Personal Loan"
+          alt="Apply For Education Loan"
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent via-transparent to-white/10" />
+      </div>
+    ),
+  },
+   {
+    mainText: "Apply Car Loan Online with",
+    brandHighlight: "Cavner Wealth & FinTech Services",
+    subText: "Fast Approval & Low Interest Rates",
+    illustration: (
+      <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1661290470322-a313098e7c2a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q2FyJTIwTG9hbnxlbnwwfHwwfHx8MA%3D%3D"
+          alt="Apply For Car Loan"
           className="w-full h-full object-cover object-center"
           loading="lazy"
         />

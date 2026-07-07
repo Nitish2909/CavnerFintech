@@ -12,7 +12,7 @@ const SiteFooter = () => {
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-sm">CWF</div>
               <div>
                 <p className="font-bold text-white text-lg">Cavner</p>
-                <p className="text-xs text-brand-400 -mt-1">Wealth & FinTech</p>
+                <p className="text-xs text-brand-400 -mt-1">Wealth & FinTech Services</p>
               </div>
             </div>
             <p className="text-sm text-slate-400 mb-4">
@@ -62,7 +62,7 @@ const SiteFooter = () => {
         </div>
 
         <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Cavner Wealth & FinTech. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Cavner Wealth & FinTech Services. All rights reserved.</p>
           <div className="flex items-center gap-2">
             <Shield size={14} className="text-brand-500" />
             <span>Secured with bank-grade encryption</span>

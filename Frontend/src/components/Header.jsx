@@ -106,7 +106,7 @@ const Header = () => {
               </div>
               <div className="leading-tight">
                 <p className="font-bold text-slate-800 text-lg">Cavner</p>
-                <p className="text-xs text-brand-700 -mt-1">Wealth & FinTech</p>
+                <p className="text-xs text-brand-700 -mt-1">Wealth & FinTech Services</p>
               </div>
             </Link>
 
