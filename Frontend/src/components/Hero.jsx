@@ -4,7 +4,7 @@ import { ShieldCheck, Users, Landmark } from "lucide-react"; // Common fallback 
 const HERO_SLIDES = [
   {
     mainText: "Apply Home Loan Online with",
-    brandHighlight: "Cavner Wealth & FinTech",
+    brandHighlight: "Cavner Wealth & FinTech Services",
     subText: "Fast Approval & Low Interest Rates",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
@@ -20,7 +20,7 @@ const HERO_SLIDES = [
   },
   {
     mainText: "Apply Personal Loan Online with",
-    brandHighlight: "Cavner Wealth & FinTech",
+    brandHighlight: "Cavner Wealth & FinTech Services",
     subText: "Fast Approval & Low Interest Rates",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
@@ -36,7 +36,7 @@ const HERO_SLIDES = [
   },
     {
     mainText: "Apply Education Loan Online with",
-    brandHighlight: "Cavner Wealth & FinTech",
+    brandHighlight: "Cavner Wealth & FinTech Services",
     subText: "Fast Approval & Low Interest Rates",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full overflow-hidden bg-slate-50 flex items-center justify-center">
@@ -68,7 +68,7 @@ const HERO_SLIDES = [
   },
   {
     mainText: "Smart Financial Solutions That Match Your Goals",
-    brandHighlight: "Cavner Wealth and FinTech Brings Financial Solutions",
+    brandHighlight: "Cavner Wealth and FinTech Services Brings Financial Solutions",
     subText: "Compare 300+ Verified Lenders Instantly",
     illustration: (
       <div className="relative w-full h-full min-h-[180px] sm:min-h-[240px] md:min-h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100/40 p-6">
