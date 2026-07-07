@@ -58,9 +58,13 @@ const navItems = [
   {
     label: "Cibil Score", href: "/cibil",
   },
-  {
-    label: "EMI Calculator", href: "/emi",
+   {
+    label: "Amortization Calculator", href: "/amortizationcalculator",
   },
+  // {
+  //   label: "EMI Calculator", href: "/emi",
+  // },
+
 
 ];
 
@@ -134,7 +138,7 @@ const Header = () => {
                 </div>
               ) : (
                 <div className="hidden md:flex items-center gap-2">
-                   <Link to="/amortizationcalculator" className="px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg">Amortization Calculator</Link>
+                   {/* <Link to="/amortizationcalculator" className="px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg">Amortization Calculator</Link> */}
                   <Link to="/login" className="px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg">Login</Link>
                   <Link to="/register" className="px-4 py-2 text-sm font-medium text-white bg-brand-700 hover:bg-brand-800 rounded-lg">Register</Link>
                 </div>

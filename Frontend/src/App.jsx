@@ -25,6 +25,12 @@ import PMMY from "./pages/governmentSchemes/PMMY";
 import PMVidyalaxmiPortal from "./pages/governmentSchemes/PMVidyalaxmiPortal";
 import StandUpIndiaScheme from "./pages/governmentSchemes/StandUpIndiaScheme";
 import AmortizationCalculator from "./components/AmortizationCalculator";
+import NbfcFunding from "./pages/corporate/NbfcFunding";
+import BuilderFinance from "./pages/corporate/BuilderFinance";
+import NcdDebt from "./pages/corporate/NcdDebt";
+import SolarFunding from "./pages/corporate/SolarFunding";
+import CapexFinance from "./pages/corporate/CapexFinance";
+import FundingShare from "./pages/corporate/FundingShares";
 
 const Layout = ({ children }) => (
   <div className="min-h-screen flex flex-col">
@@ -196,11 +202,13 @@ const App = () => {
         path="/corporate/builder"
         element={
           <Layout>
-            <InfoPage
+            {/* <InfoPage
               title="Builder / Real Estate Finance"
               description="Specialized funding solutions for real estate developers and builders."
               path="/corporate/builder"
-            />
+            /> */}
+
+            <BuilderFinance/>
           </Layout>
         }
       />
@@ -208,11 +216,12 @@ const App = () => {
         path="/corporate/shares"
         element={
           <Layout>
-            <InfoPage
+            {/* <InfoPage
               title="Funding Against Shares"
               description="Get instant liquidity by leveraging your share portfolio without selling."
               path="/corporate/shares"
-            />
+            /> */}
+            <FundingShare/>
           </Layout>
         }
       />
@@ -220,11 +229,12 @@ const App = () => {
         path="/corporate/ncd"
         element={
           <Layout>
-            <InfoPage
+            {/* <InfoPage
               title="NCD & Structured Debt"
               description="Raise capital through non-convertible debentures and structured debt instruments."
               path="/corporate/ncd"
-            />
+            /> */}
+            <NcdDebt/>
           </Layout>
         }
       />
@@ -232,11 +242,12 @@ const App = () => {
         path="/corporate/solar"
         element={
           <Layout>
-            <InfoPage
+            {/* <InfoPage
               title="Solar / Renewable Energy Funding"
               description="Finance your solar and renewable energy projects with attractive terms."
               path="/corporate/solar"
-            />
+            /> */}
+            <SolarFunding/>
           </Layout>
         }
       />
@@ -244,11 +255,12 @@ const App = () => {
         path="/corporate/nbfc"
         element={
           <Layout>
-            <InfoPage
+            {/* <InfoPage
               title="NBFC / Corporate Funding"
               description="Growth capital and funding solutions for NBFCs and corporates."
               path="/corporate/nbfc"
-            />
+            /> */}
+            <NbfcFunding/>
           </Layout>
         }
       />
@@ -256,11 +268,12 @@ const App = () => {
         path="/corporate/capex"
         element={
           <Layout>
-            <InfoPage
+            {/* <InfoPage
               title="Project / Capex Finance"
               description="Long-term financing for capital expenditure and project expansion."
               path="/corporate/capex"
-            />
+            /> */}
+            <CapexFinance/>
           </Layout>
         }
       />
