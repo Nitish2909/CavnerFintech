@@ -58,7 +58,7 @@ const Sidebar = () => {
             <Shield size={22} />
           </div>
           <div>
-            <h1 className="font-bold text-lg leading-tight">Cavner Wealth & Fintech</h1>
+            <h1 className="font-bold text-lg leading-tight">Cavner Wealth & Fintech Services</h1>
             <p className="text-xs text-slate-400">Admin Panel</p>
           </div>
         </div>
