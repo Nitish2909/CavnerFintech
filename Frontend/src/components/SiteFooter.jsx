@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Shield, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import logo from "../../public/Cavner-Logo.png"
 
 const SiteFooter = () => {
   return (
@@ -9,7 +10,9 @@ const SiteFooter = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-sm">CWF</div>
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-sm">
+                <img src={logo} alt="cavner-logo" />
+              </div>
               <div>
                 <p className="font-bold text-white text-lg">Cavner</p>
                 <p className="text-xs text-brand-400 -mt-1">Wealth & FinTech Services</p>
