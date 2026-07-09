@@ -221,7 +221,7 @@ const Header = () => {
                   Wealth & FinTech
                 </p>
 
-                <span className="text-xs text-slate-500 tracking-wide -mt-1">
+                <span className="text-xs text-blue-600 tracking-wide -mt-1">
                   Services
                 </span>
               </div>

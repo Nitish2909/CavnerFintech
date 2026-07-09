@@ -19,7 +19,6 @@ const Home = () => {
     { icon: IndianRupee, title: "Best Interest Rates", desc: "Compare offers from 40+ banks and NBFCs to find the lowest rates." },
     { icon: Users, title: "Expert Guidance", desc: "Our financial advisors help you choose the right product for your needs." },
   ];
-  
 
   return (
     <>
