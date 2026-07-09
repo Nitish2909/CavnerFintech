@@ -17,6 +17,8 @@ import productRoutes from "../routes/productRoutes.js";
 import publicRoutes from "../routes/publicRoutes.js";
 import applicationRoutes from "../routes/applicationRoutes.js";
 import amortizationCalculatorRoutes from "../routes/amortizationCalculatorRoutes.js"
+import AddAgentRoutes from "../routes/AddAgentRoutes.js"
+import AddEmployeeRoutes from "../routes/addEmployeeRoutes.js"
 
 const app = express();
 
@@ -67,6 +69,8 @@ app.use("/api/products", productRoutes);
 app.use("/api/public", publicRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/loancalculator", amortizationCalculatorRoutes )
+app.use("/api/agent", AddAgentRoutes); 
+app.use("/api/employee", AddEmployeeRoutes)
 
 // ---- Error handling ----
 app.use(notFound);
