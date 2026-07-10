@@ -35,6 +35,8 @@ import AddEmployees from "./pages/EmployeeCorner/Employees/AddEmployees";
 import AddAgents from "./pages/EmployeeCorner/Agents/AddAgents";
 import AddTeam from "./pages/EmployeeCorner/Teams/AddTeam";
 import AddStatus from "./pages/Call/AddStatus";
+import VendorCode from "./pages/Partner/VendorCode";
+import AddVendorCode from "./pages/Partner/AddVendorCode";
 
 export default function App() {
   return (
@@ -82,9 +84,12 @@ export default function App() {
         <Route path="/add-teams" element={<AddTeam />} />
 
         {/* Partners & Vendor Subtree Management */}
-        <Route path="/partner/add-vendor" element={<AddVendorExecutive />} />
+        <Route path="/partner/add-vendor-executive" element={<AddVendorExecutive />} />
         <Route path="/partner/vendor-list" element={<VendorList />} />
         <Route path="/partner/vendor-rm" element={<VendorRM />} />
+        <Route path="/partner/vendor-code" element={<VendorCode />} />
+         <Route path="/partner/add-vendor-code" element={<AddVendorCode />} />
+
 
         {/* System Settings Subtree */}
         <Route path="/setting/company" element={<CompanySetting />} />

@@ -111,7 +111,7 @@ export default function Sidebar() {
                   <NavLink to="/business/grab-lead" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Grab Lead</NavLink>
                   <NavLink to="/business/lead-funnel" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Lead Funnel</NavLink>
                   <NavLink to="/business/lead-tracker" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Lead Tracker</NavLink>
-                  <NavLink to="/business/login-mis" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Login MIS</NavLink>
+                  {/* <NavLink to="/business/login-mis" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Login MIS</NavLink> */}
                   <NavLink to="/business/my-lead" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>My Lead</NavLink>
                 </div>
               )}
@@ -169,9 +169,10 @@ export default function Sidebar() {
               </button>
               {openMenus.partner && (
                 <div className="ml-8 pl-4 border-l border-gray-100 space-y-0.5 py-1">
-                  <NavLink to="/partner/add-vendor" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Add Executive</NavLink>
+                  <NavLink to="/partner/add-vendor-executive" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Add Executive</NavLink>
                   <NavLink to="/partner/vendor-list" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Vendor List</NavLink>
                   <NavLink to="/partner/vendor-rm" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Vendor RM</NavLink>
+                    <NavLink to="/partner/vendor-code" className={({ isActive }) => `${subLinkBaseClass} ${isActive ? subActiveLinkClass : subInactiveLinkClass}`}>Vendor Code</NavLink>
                 </div>
               )}
             </div>
