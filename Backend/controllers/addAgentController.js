@@ -4,11 +4,12 @@ import Agent from "../models/AddAgents.js";
 const AddAgentController = async (req, res) => {
     try {
         // destructure 
-        const { fullname, phone, emailId, password, address, residenceaddress, designationname, joiningdate, dateofbirth, fathername, state, district, district, city, pincode, aadharfront, aadharback, pancard, selfie, signature } = req.body;
+        const { fullname, phone, emailId, password, address, residenceaddress, designationname, joiningdate, dateofbirth, fathername, state, district, city, pincode, aadharfront, aadharback, pancard, selfie, signature } = req.body;
 
         //check
-        if (!fullname || !phone || !emailId || !password || !address || !residenceaddress || !designationname || !joiningdate || !dateofbirth || !fathername || !state || !district || !district || !city || !pincode || !aadharfront || !aadharback || !pancard || !selfie || !signature) {
+        if (!fullname || !phone || !emailId || !password || !address || !residenceaddress || !designationname || !joiningdate || !dateofbirth || !fathername || !state || !district || !city || !pincode || !aadharfront || !aadharback || !pancard || !selfie || !signature) {
             return res.status(400).json({
+                success:false,
                 message: "Please fill all the required field"
             })
         }
@@ -53,5 +54,5 @@ const getAllAgents = async (req, res) => {
 
 }
 
-export default { AddAgentController, getAllAgents };
+export  { AddAgentController, getAllAgents };
 

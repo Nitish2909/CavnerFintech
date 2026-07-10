@@ -1,6 +1,6 @@
-import Employee from "../models/AddEmployee";
+import Employee from "../models/AddEmployee.js";
 
-const addEmployeeController = async (req, res) => {
+export const addEmployeeController = async (req, res) => {
     try {
         // Destructure the request body
         const { fullname, phone, emailId, password, address,designationname, joiningdate, dateofbirth, fathername, state, district, city, pincode, aadharfront, aadharback, pancard, selfie, signature } = req.body; 
@@ -44,7 +44,7 @@ const addEmployeeController = async (req, res) => {
 
 };
 
-const getAllEmployees = async (req, res) => {
+export const getAllEmployees = async (req, res) => {
     try {
         const employees = await Employee.find();
         res.status(200).json({ success: true, data: employees });
@@ -53,4 +53,3 @@ const getAllEmployees = async (req, res) => {
     }
 };
 
-export default { addEmployeeController, getAllEmployees };

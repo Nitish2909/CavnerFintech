@@ -19,8 +19,13 @@ import applicationRoutes from "../routes/applicationRoutes.js";
 import amortizationCalculatorRoutes from "../routes/amortizationCalculatorRoutes.js"
 import AddAgentRoutes from "../routes/AddAgentRoutes.js"
 import AddEmployeeRoutes from "../routes/addEmployeeRoutes.js"
+import fileupload from 'express-fileupload'
+import { protect } from "../middlewares/authMiddleware.js";
 
 const app = express();
+app.use(fileupload({
+  useTempFiles: true
+}))
 
 // ---- Security & core middleware ----
 app.use(helmet());
@@ -46,6 +51,7 @@ const apiLimiter = rateLimit({
 });
 app.use("/api", apiLimiter);
 
+
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 20,
@@ -67,7 +73,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/admin/manage", adminManageRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/public", publicRoutes);
-app.use("/api/applications", applicationRoutes);
+app.use("/api/applications", protect, applicationRoutes);
 app.use("/api/loancalculator", amortizationCalculatorRoutes )
 app.use("/api/agent", AddAgentRoutes); 
 app.use("/api/employee", AddEmployeeRoutes)

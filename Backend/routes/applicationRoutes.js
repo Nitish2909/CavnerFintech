@@ -7,7 +7,7 @@ import { protect, optionalAuth } from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
-router.post("/loan", uploadFields, loanApplicationValidator, validate, applyLoan);
+router.post("/loan", loanApplicationValidator, validate, applyLoan);
 router.post("/credit-card", creditCardApplicationValidator, validate, applyCreditCard);
 router.get("/my-applications", protect, getMyApplications);
 router.post("/contact", contactValidator, validate, contactUs);

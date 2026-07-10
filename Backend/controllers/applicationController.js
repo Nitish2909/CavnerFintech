@@ -5,6 +5,7 @@ import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
 import { ApiError, asyncHandler, sendResponse } from "../utils/apiResponse.js";
 
 export const applyLoan = asyncHandler(async (req, res) => {
+  console.log("success")
   const {
     loanType,
     loanProductId,
@@ -22,6 +23,7 @@ export const applyLoan = asyncHandler(async (req, res) => {
     state,
     pincode,
   } = req.body;
+  // console.log(req.user)
 
   const application = await LoanApplication.create({
     user: req.user?._id || null,
@@ -48,9 +50,14 @@ export const applyLoan = asyncHandler(async (req, res) => {
     for (const field of docFields) {
       const files = req.files[field];
       if (!files) continue;
-      for (const file of files) {
-        const { url, publicId } = await uploadToCloudinary(file.path, `cavner/loan-applications/${application._id}`);
-        application.documents.push({ name: file.fieldname, url, publicId });
+      const fileList = Array.isArray(files) ? files : [files];
+      for (const file of fileList) {
+        if (!file.tempFilePath) {
+        console.error(`Missing tempFilePath for field: ${field}. Ensure useTempFiles is enabled.`);
+        continue;
+      }
+        const { url, publicId } = await uploadToCloudinary(file.tempFilePath);
+        application.documents.push({ name: field, url, publicId });
       }
     }
     await application.save();
