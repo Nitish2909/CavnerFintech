@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -161,67 +162,61 @@ const Header = () => {
   return (
     <>
       {/* Top bar */}
-      <div className="bg-brand-800 text-white text-sm hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between">
-          <p className="text-brand-100">Securing India's Financial Future</p>
-          <div className="flex items-center gap-4">
+      <div className="bg-brand-800 text-white text-sm hidden md:block border-b border-brand-700/50 backdrop-blur-sm bg-opacity-95">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+          <p className="text-brand-100 font-medium tracking-wide animate-pulse">Securing India's Financial Future</p>
+          <div className="flex items-center gap-5">
             <Link
               to="/partner-login"
-              className="hover:text-white transition-colors"
+              className="hover:text-brand-200 transition-colors duration-300 relative group py-0.5"
             >
               Partner Login
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-200 transition-all duration-300 group-hover:w-full" />
             </Link>
-            <Link to="/partner" className="hover:text-white transition-colors">
+            <Link 
+              to="/partner" 
+              className="hover:text-brand-200 transition-colors duration-300 relative group py-0.5"
+            >
               Become a Partner
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-200 transition-all duration-300 group-hover:w-full" />
             </Link>
             <a
               href="tel:918816942362"
-              className="flex items-center gap-1 hover:text-white"
+              className="flex items-center gap-1.5 bg-brand-700 hover:bg-brand-600 px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 shadow-sm"
             >
-              <Phone size={14} /> +91 88169 42362
+              <Phone size={13} className="animate-bounce" /> +918816942362
             </a>
           </div>
         </div>
       </div>
 
       {/* Main header */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
+      <header className="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 transition-all duration-300 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            {/* <Link to="/" className="flex items-center gap-2.5 shrink-0">
-              <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-brand-600 to-brand-800 flex items-center justify-center text-white font-bold text-sm">
-                <img src={logo} alt="cavner-logo" />
-              </div>
-              <div className="leading-tight">
-                <p className="font-bold text-slate-800 text-lg">Cavner</p>
-                <p className="text-xs text-brand-700 -mt-1">Wealth & FinTech Services</p>
-              </div>
-            </Link> */}
             <Link
               to="/"
-              className="group flex items-center gap-3 shrink-0 transition-all duration-300"
+              className="group flex items-center gap-3.5 shrink-0 transition-all duration-300"
             >
-              {/* Logo */}
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-md border border-slate-200 flex items-center justify-center overflow-hidden group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
+              {/* Logo Wrapper */}
+              <div className="w-14 h-14 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center overflow-hidden group-hover:shadow-xl group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 ease-out">
                 <img
                   src={logo}
                   alt="Cavner Wealth & FinTech Services"
-                  className="w-11 h-11 object-contain"
+                  className="w-11 h-11 object-contain transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
 
               {/* Company Name */}
               <div className="leading-tight">
-                <h1 className="text-lg font-extrabold text-slate-900 tracking-tight ">
+                <h1 className="text-xl font-black text-slate-900 tracking-tight transition-colors duration-300 group-hover:text-brand-700">
                   Cavner
                 </h1>
-
-                <p className="text-xs font-medium text-blue-600 -mt-1">
+                <p className="text-xs font-bold text-blue-600 -mt-0.5 tracking-wider uppercase">
                   Wealth & FinTech
                 </p>
-
-                <span className="text-xs text-blue-600 tracking-wide -mt-1">
+                <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-widest block mt-0.5">
                   Services
                 </span>
               </div>
@@ -229,14 +224,14 @@ const Header = () => {
 
             {/* Search - desktop */}
             <div className="hidden lg:flex flex-1 max-w-md mx-8">
-              <div className="relative w-full">
+              <div className="relative w-full group">
                 <Search
                   size={18}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-600 transition-colors duration-300"
                 />
                 <input
                   placeholder="Search loans, cards, investments..."
-                  className="w-full pl-10 pr-4 py-2 text-sm bg-slate-50 rounded-lg border border-slate-200 focus:outline-none focus:border-brand-500"
+                  className="w-full pl-11 pr-4 py-2.5 text-sm bg-slate-50 rounded-xl border border-slate-200 transition-all duration-300 group-hover:bg-slate-100 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 shadow-inner"
                 />
               </div>
             </div>
@@ -244,32 +239,31 @@ const Header = () => {
             {/* Right actions */}
             <div className="flex items-center gap-3">
               {user ? (
-                <div className="hidden md:flex items-center gap-2">
+                <div className="hidden md:flex items-center gap-3">
                   <Link
                     to="/user/dashboard"
-                    className="flex items-center gap-1.5 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg"
+                    className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 border border-transparent hover:border-slate-200 rounded-xl transition-all duration-300"
                   >
-                    <LayoutDashboard size={16} /> Dashboard
+                    <LayoutDashboard size={16} className="text-brand-600" /> Dashboard
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-1.5 px-3 py-2 text-sm text-rose-600 hover:bg-rose-50 rounded-lg"
+                    className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50 border border-transparent hover:border-rose-100 rounded-xl transition-all duration-300 hover:shadow-sm"
                   >
                     <LogOut size={16} /> Logout
                   </button>
                 </div>
               ) : (
-                <div className="hidden md:flex items-center gap-2">
-                  {/* <Link to="/amortizationcalculator" className="px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg">Amortization Calculator</Link> */}
+                <div className="hidden md:flex items-center gap-2.5">
                   <Link
                     to="/login"
-                    className="px-4 py-2 text-sm font-medium text-brand-700 hover:bg-brand-50 rounded-lg"
+                    className="px-4 py-2 text-sm font-bold text-brand-700 hover:bg-brand-50 rounded-xl border border-transparent hover:border-brand-200 transition-all duration-300 active:scale-95"
                   >
                     Login
                   </Link>
                   <Link
                     to="/register"
-                    className="px-4 py-2 text-sm font-medium text-white bg-brand-700 hover:bg-brand-800 rounded-lg"
+                    className="px-5 py-2 text-sm font-bold text-white bg-brand-700 hover:bg-brand-800 rounded-xl shadow-md hover:shadow-lg hover:shadow-brand-700/20 transition-all duration-300 transform active:scale-95 hover:-translate-y-0.5"
                   >
                     Register
                   </Link>
@@ -277,46 +271,50 @@ const Header = () => {
               )}
               <button
                 onClick={() => setOpen(!open)}
-                className="lg:hidden p-2 text-slate-700"
+                className="lg:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-xl transition-colors duration-200 active:scale-90"
               >
-                {open ? <X size={22} /> : <Menu size={22} />}
+                {open ? <X size={24} className="animate-spin duration-200" /> : <Menu size={24} />}
               </button>
             </div>
           </div>
         </div>
 
         {/* Sub nav - desktop */}
-        <nav className="hidden lg:block border-t border-slate-100 bg-white">
+        <nav className="hidden lg:block border-t border-slate-100 bg-slate-50/50 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4">
-            <ul className="flex items-center gap-1 h-11">
+            <ul className="flex items-center gap-1 h-12">
               {navItems.map((item) => (
-                <li key={item.label} className="relative group">
+                <li key={item.label} className="relative group/nav py-1.5">
                   <Link
                     to={item.href}
-                    className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-700 hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors"
+                    className="flex items-center gap-1 px-3.5 py-1.5 text-sm font-semibold text-slate-600 hover:text-brand-700 hover:bg-white border border-transparent hover:border-slate-200 shadow-transparent hover:shadow-sm rounded-xl transition-all duration-300 ease-out"
                   >
                     {item.label}
                     {item.subMenu && (
                       <ChevronDown
                         size={14}
-                        className="group-hover:rotate-180 transition-transform"
+                        className="group-hover/nav:rotate-180 transition-transform duration-300 ease-in-out text-slate-400 group-hover/nav:text-brand-600"
                       />
                     )}
                   </Link>
                   {item.subMenu && (
-                    <div className="absolute left-0 top-full mt-0 w-64 bg-white shadow-xl rounded-lg border border-slate-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                    <div className="absolute left-0 top-full mt-1 w-72 bg-white shadow-2xl rounded-2xl border border-slate-100 py-2.5 opacity-0 invisible translate-y-2 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-300 cubic-bezier(0.16, 1, 0.3, 1) z-50">
                       {item.subMenu.map((sub) => {
                         const Icon = sub.icon;
                         return (
                           <Link
                             key={sub.href}
                             to={sub.href}
-                            className="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-700 hover:bg-brand-50 hover:text-brand-700"
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-slate-600 hover:bg-brand-50 hover:text-brand-700 transition-all duration-200 mx-1.5 rounded-xl group/sub"
                           >
-                            {Icon && (
-                              <Icon size={16} className="text-brand-600" />
+                            {Icon ? (
+                              <div className="p-1.5 rounded-lg bg-slate-50 group-hover/sub:bg-white group-hover/sub:scale-110 transition-all duration-200 shadow-sm">
+                                <Icon size={16} className="text-brand-600" />
+                              </div>
+                            ) : (
+                              <div className="w-2 h-2 rounded-full bg-slate-300 group-hover/sub:bg-brand-500 group-hover/sub:scale-125 transition-all duration-200 ml-1.5 mr-0.5" />
                             )}
-                            {sub.label}
+                            <span className="transition-transform duration-200 group-hover/sub:translate-x-1">{sub.label}</span>
                           </Link>
                         );
                       })}
@@ -329,93 +327,113 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Mobile drawer */}
-      {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setOpen(false)}
-          />
-          <div className="absolute right-0 top-0 h-full w-80 max-w-[85%] bg-white overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b">
-              <span className="font-bold text-slate-800">Menu</span>
-              <button onClick={() => setOpen(false)}>
-                <X size={22} />
-              </button>
-            </div>
-            <div className="p-4 space-y-1">
-              {navItems.map((item) => (
-                <div key={item.label}>
-                  {item.subMenu ? (
-                    <>
-                      <button
-                        onClick={() => toggleSubMenu(item.label)}
-                        className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg"
-                      >
-                        {item.label}
-                        <ChevronDown
-                          size={16}
-                          className={
-                            activeSubMenu === item.label ? "rotate-180" : ""
-                          }
-                        />
-                      </button>
-                      {activeSubMenu === item.label && (
-                        <div className="pl-4 space-y-0.5">
-                          {item.subMenu.map((sub) => (
+      {/* Mobile drawer / Slide-out Menu Slider */}
+      <div className={`fixed inset-0 z-50 lg:hidden transition-all duration-500 ${open ? "visible opacity-100" : "invisible opacity-0"}`}>
+        {/* Backdrop overlay */}
+        <div
+          className={`absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-500 ${open ? "opacity-100" : "opacity-0"}`}
+          onClick={() => setOpen(false)}
+        />
+        {/* Sliding panel drawer container */}
+        <div className={`absolute right-0 top-0 h-full w-85 max-w-[85%] bg-white shadow-2xl flex flex-col transition-transform duration-500 ease-out transform ${open ? "translate-x-0" : "translate-x-full"}`}>
+          <div className="flex items-center justify-between p-4 border-b border-slate-100 bg-slate-50">
+            <span className="font-extrabold text-slate-800 tracking-tight text-lg">Menu Navigation</span>
+            <button 
+              onClick={() => setOpen(false)}
+              className="p-2 text-slate-500 hover:bg-slate-200 rounded-xl transition-colors duration-200"
+            >
+              <X size={20} />
+            </button>
+          </div>
+          <div className="p-4 flex-1 overflow-y-auto space-y-1.5 custom-scrollbar">
+            {navItems.map((item) => (
+              <div key={item.label} className="border-b border-slate-50 last:border-0 pb-1">
+                {item.subMenu ? (
+                  <>
+                    <button
+                      onClick={() => toggleSubMenu(item.label)}
+                      className={`flex items-center justify-between w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 ${
+                        activeSubMenu === item.label 
+                          ? "bg-brand-50 text-brand-700 shadow-sm" 
+                          : "text-slate-700 hover:bg-slate-50"
+                      }`}
+                    >
+                      {item.label}
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-300 ${
+                          activeSubMenu === item.label ? "rotate-180 text-brand-600" : "text-slate-400"
+                        }`}
+                      />
+                    </button>
+                    
+                    {/* Collapsible Submenu Container Slide Accordion Effect */}
+                    <div 
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        activeSubMenu === item.label ? "max-h-[500px] opacity-100 mt-1 py-1" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="pl-3 pr-1 space-y-1 border-l-2 border-brand-100 ml-4">
+                        {item.subMenu.map((sub) => {
+                          const SubIcon = sub.icon;
+                          return (
                             <Link
                               key={sub.href}
                               to={sub.href}
                               onClick={() => setOpen(false)}
-                              className="block px-3 py-2 text-sm text-slate-600 hover:bg-brand-50 rounded-lg"
+                              className="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-700 rounded-xl transition-all duration-150"
                             >
-                              {sub.label}
+                              {SubIcon && <SubIcon size={15} className="text-brand-500 shrink-0" />}
+                              <span>{sub.label}</span>
                             </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      onClick={() => setOpen(false)}
-                      className="block px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-brand-50 rounded-lg"
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
-              <hr className="my-3" />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    to={item.href}
+                    onClick={() => setOpen(false)}
+                    className="block px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-700 rounded-xl transition-all duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+            
+            <div className="pt-4 space-y-3">
+              <hr className="border-slate-100" />
               {user ? (
-                <>
+                <div className="space-y-1.5">
                   <Link
                     to="/user/dashboard"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-50 rounded-lg"
+                    className="flex items-center gap-2.5 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 border border-slate-100 rounded-xl shadow-sm transition-all duration-200"
                   >
-                    <LayoutDashboard size={16} /> Dashboard
+                    <LayoutDashboard size={16} className="text-brand-600" /> Dashboard
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-2 w-full px-3 py-2.5 text-sm text-rose-600 hover:bg-rose-50 rounded-lg"
+                    className="flex items-center gap-2.5 w-full px-4 py-3 text-sm font-semibold text-rose-600 hover:bg-rose-50 rounded-xl transition-all duration-200"
                   >
                     <LogOut size={16} /> Logout
                   </button>
-                </>
+                </div>
               ) : (
-                <div className="flex gap-2 pt-2">
+                <div className="flex flex-col gap-2.5 pt-1">
                   <Link
                     to="/login"
                     onClick={() => setOpen(false)}
-                    className="flex-1 text-center px-3 py-2 text-sm font-medium text-brand-700 border border-brand-300 rounded-lg"
+                    className="w-full text-center px-4 py-2.5 text-sm font-bold text-brand-700 border-2 border-brand-200 hover:border-brand-300 hover:bg-brand-50/50 rounded-xl transition-all duration-200 active:scale-95"
                   >
                     Login
                   </Link>
                   <Link
                     to="/register"
                     onClick={() => setOpen(false)}
-                    className="flex-1 text-center px-3 py-2 text-sm font-medium text-white bg-brand-700 rounded-lg"
+                    className="w-full text-center px-4 py-2.5 text-sm font-bold text-white bg-brand-700 hover:bg-brand-800 shadow-md rounded-xl transition-all duration-200 active:scale-95"
                   >
                     Register
                   </Link>
@@ -424,7 +442,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };

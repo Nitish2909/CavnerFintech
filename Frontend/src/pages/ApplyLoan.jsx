@@ -57,7 +57,7 @@ const ApplyLoan = () => {
 
         {error && <div className="bg-rose-50 text-rose-600 text-sm px-4 py-3 rounded-lg mb-4">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" encType="multipart/form-data">
           {/* Loan details */}
           <div className="bg-white rounded-xl border border-slate-100 shadow-sm p-6">
             <h3 className="font-bold text-slate-800 mb-4">Loan Details</h3>

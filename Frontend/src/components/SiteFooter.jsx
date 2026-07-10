@@ -57,7 +57,7 @@ const SiteFooter = () => {
           <div>
             <h3 className="font-semibold text-white mb-4">Get in Touch</h3>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2"><Phone size={16} className="mt-0.5 text-brand-400 shrink-0" /> <a href="tel:918816942362">+91 88169 42362</a></li>
+              <li className="flex items-start gap-2"><Phone size={16} className="mt-0.5 text-brand-400 shrink-0" /> <a href="tel:9089801234">+91 8816942362</a></li>
               <li className="flex items-start gap-2"><Mail size={16} className="mt-0.5 text-brand-400 shrink-0" /> <a href="mailto:info@cavnerfintech.in">info@cavnerfintech.in</a></li>
               <li className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 text-brand-400 shrink-0" /> India</li>
             </ul>
