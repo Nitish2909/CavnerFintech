@@ -34,6 +34,7 @@ import Offers from "./pages/Setting/Offers";
 import AddEmployees from "./pages/EmployeeCorner/Employees/AddEmployees";
 import AddAgents from "./pages/EmployeeCorner/Agents/AddAgents";
 import AddTeam from "./pages/EmployeeCorner/Teams/AddTeam";
+import AddStatus from "./pages/Call/AddStatus";
 
 export default function App() {
   return (
@@ -50,18 +51,18 @@ export default function App() {
         <Route path="/accounts/payout" element={<Payout />} />
 
         {/* Business Operations Subtree */}
-  
+
         <Route path="/business/add-lead" element={<AddLead />} />
         <Route path="/business/grab-lead" element={<GrabLead />} />
         <Route path="/business/lead-funnel" element={<LeadFunnel />} />
         <Route path="/business/lead-tracker" element={<LeadTracker />} />
         <Route path="/business/login-mis" element={<LoginMis />} />
         <Route path="/business/my-lead" element={<MyLead />} />
-        
 
         {/* Call / Dialer Subtree */}
         <Route path="/call/call-log" element={<CallLog />} />
         <Route path="/call/import-data" element={<ImportData />} />
+        <Route path="/call/calling-status" element={<AddStatus />} />
 
         {/* Employee Control Room Modules */}
         <Route path="/employee-corner/my-team" element={<MyTeam />} />
@@ -71,15 +72,14 @@ export default function App() {
         />
         <Route path="/employee-corner/partner" element={<Partner />} />
 
-
         {/* Add Employees */}
-         <Route path="/add-employees" element={<AddEmployees/>} />
+        <Route path="/add-employees" element={<AddEmployees />} />
 
-         {/* Add Agents */}
-         <Route path="/add-agents" element={<AddAgents/>} />
+        {/* Add Agents */}
+        <Route path="/add-agents" element={<AddAgents />} />
 
-         {/* Add Teams */}
-            <Route path="/add-teams" element={<AddTeam/>} />
+        {/* Add Teams */}
+        <Route path="/add-teams" element={<AddTeam />} />
 
         {/* Partners & Vendor Subtree Management */}
         <Route path="/partner/add-vendor" element={<AddVendorExecutive />} />
