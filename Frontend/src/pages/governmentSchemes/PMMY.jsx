@@ -4,285 +4,301 @@ const PMMY = () => {
   const products = [
     {
       name: "Shishu 🌱",
-      desc: "Perfect for micro start-ups and new tiny ventures.",
+      desc: "Perfect for micro start-ups and new tiny ventures looking for immediate operational support.",
       limit: "Loans up to ₹50,000",
-      color: "border-emerald-500 text-emerald-800 bg-emerald-50/60 shadow-emerald-100/50",
-      badgeColor: "bg-emerald-500",
+      accentClass: "border-l-emerald-500",
+      badgeBg: "bg-emerald-500",
+      limitColor: "text-emerald-700"
     },
     {
       name: "Kishor 🚀",
-      desc: "For operational businesses requiring scaling capital.",
+      desc: "For operational businesses requiring critical scaling capital to expand capacity.",
       limit: "₹50,000 to ₹5 Lakhs",
-      color: "border-blue-500 text-blue-800 bg-blue-50/60 shadow-blue-100/50",
-      badgeColor: "bg-blue-500",
+      accentClass: "border-l-blue-500",
+      badgeBg: "bg-blue-500",
+      limitColor: "text-blue-700"
     },
     {
       name: "Tarun 🏆",
-      desc: "For established units aiming for massive growth.",
+      desc: "For established business entities aiming for massive growth and asset procurement.",
       limit: "₹5 Lakhs to ₹10 Lakhs",
-      color: "border-orange-500 text-orange-800 bg-orange-50/60 shadow-orange-100/50",
-      badgeColor: "bg-orange-500",
+      accentClass: "border-l-amber-500",
+      badgeBg: "bg-amber-500",
+      limitColor: "text-amber-700"
     },
     {
       name: "Tarun Plus 🔥",
-      desc: "Exclusive upgrade reward for clean repayment history.",
+      desc: "Exclusive scale upgrade reward for candidates demonstrating clean repayment history.",
       limit: "₹10 Lakhs to ₹20 Lakhs",
-      color: "border-purple-500 text-purple-800 bg-purple-50/60 shadow-purple-100/50",
-      badgeColor: "bg-purple-500",
+      accentClass: "border-l-purple-500",
+      badgeBg: "bg-purple-500",
+      limitColor: "text-purple-700"
     },
   ];
 
-  const subsidyMatrix = [
-    { category: "General", urban: "15%", rural: "25%" },
-    { category: "Special*", urban: "25%", rural: "35%" },
-  ];
-
   return (
-    <div className="max-w-7xl mx-auto p-4 md:p-8 font-sans text-gray-800 antialiased bg-slate-50/30 rounded-3xl my-6">
-      
-      {/* Premium Hero Header Section */}
-      <div className="w-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 border border-slate-800 rounded-3xl flex items-center flex-col p-8 md:p-14 shadow-xl text-center mb-10 relative overflow-hidden">
-        {/* Abstract Background Glows */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
-
-        <span className="bg-indigo-500/20 text-indigo-300 font-semibold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-4 border border-indigo-500/30 backdrop-blur-sm">
-          Govt. of India Initiative
-        </span>
-        <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight max-w-4xl leading-tight">
-          Pradhan Mantri MUDRA Yojana (PMMY)
-        </h1>
-        <p className="text-slate-300 max-w-3xl leading-relaxed mb-6 text-base md:text-lg">
-          Launched by the Hon’ble Prime Minister, PMMY provides credit bridges up to <strong>₹20 Lakhs</strong> to support non-corporate, non-farm small and micro enterprises across India.
-        </p>
-
-        {/* 20 High-Impact Core Architecture Facts */}
-        <div className="w-full max-w-5xl text-left bg-slate-950/40 border border-white/5 rounded-2xl p-6 md:p-8 mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 text-xs md:text-sm text-slate-300">
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Target Segments:</strong> Explicitly covers small manufacturing units, service sector entities, artisans, shopkeepers, and fruit/vegetable vendors.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Allied Agriculture Scope:</strong> Extends funding eligibility to pisciculture, poultry farming, dairy processing, sorting, grading, and aggregations.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Zero Collateral Security:</strong> Borrowers are not required to provide third-party guarantees or real-estate hypothecations to access lines.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Credit Guarantee Pool:</strong> Funded structures are backed safely by the National Credit Guarantee Trustee Company (NCGTC) security coverage.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Flexible Processing Fees:</strong> Zero upfront structural charges or administrative fees apply directly to the baseline Shishu application tier.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>MUDRA Card Interface:</strong> Working capital limits are loaded onto a RuPay debit card for fluid, on-demand ATM cash withdrawals.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Repayment Tenures:</strong> Offers a highly adaptive amortized loan repayment horizon stretching across a term period of 3 to 5 years.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Interest Arbitrage:</strong> Commercial banks set baseline rates tied explicitly to the Marginal Cost of Funds Based Lending Rate (MCLR).</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>No Minimum Cutoff:</strong> Tiny entrepreneurs can securely apply for ultra-micro lines under the Shishu scheme with zero base scale rules.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Gender Empowerment Focus:</strong> Partnering financial nodes often extend customized, reduced rate segments for solo women entrepreneurs.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Diverse Delivery Nodes:</strong> Monitored outlays are fully operational across Scheduled Commercial Banks, Regional Rural Banks (RRBs), and NBFCs.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>End-Use Verification:</strong> Loans are dedicated precisely for equipment purchases, raw inventories, and operational working capital expansions.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>No Corporate Inclusions:</strong> Public/private limited corporations outside micro limits cannot access this localized MSME pool.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Pan-India Accessibility:</strong> Available throughout rural, urban, and semi-urban clusters across all functional commercial bank windows.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Dynamic Tarun Plus Tier:</strong> Scaled up limits to a maximum of ₹20 Lakhs for candidates demonstrating consistent repayment tracks.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Financial Literacy Links:</strong> Combines formal capital delivery models with targeted enterprise development programs for small units.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Formalizing Shadow Credit:</strong> Migrates traditional unorganized micro-business debts into institutional, low-risk banking books.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Co-Lending Synergies:</strong> Enables collaborative structural capital syndication between modern FinTech channels and public sector banks.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Strict De-Duplication Rules:</strong> Applicants are checked against central credit bureaus to assure clear status across standard lending nodes.</span>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-indigo-400 mt-0.5">⚡</span>
-            <span><strong>Digital-First Process:</strong> Eliminates manual files by integrating fast verification cycles via JanSamarth and UdyamiMitra portals.</span>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-4 w-full max-w-3xl mt-2">
-          <div className="px-6 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-2xl shadow-inner flex-1 min-w-[260px] backdrop-blur-md">
-            🛡️ <span className="font-bold text-indigo-300 underline decoration-indigo-400 decoration-2">100% Collateral-Free</span> Business Funding
-          </div>
-          <div className="px-6 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-2xl shadow-inner flex-1 min-w-[260px] backdrop-blur-md">
-            🏢 Disbursed via <span className="text-blue-300 font-semibold">Commercial Banks, RRBs, SFBs & NBFCs</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Interactive Products Showcase Grid */}
-      <div className="mb-14">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
-            MUDRA Tiered Credit Architecture
-          </h2>
-          <p className="text-gray-500 mt-2 text-sm md:text-base">Four uniquely tailored funding stages aligned with your business maturity lifecycle.</p>
-        </div>
+    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8 font-sans antialiased text-slate-900 selection:bg-indigo-500 selection:text-white">
+      <div className="max-w-7xl mx-auto space-y-8">
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, idx) => (
-            <div
-              key={idx}
-              className={`p-6 border-t-4 rounded-2xl shadow-md bg-white flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${product.color}`}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-extrabold tracking-tight text-gray-900">{product.name}</h3>
-                  <span className={`w-2.5 h-2.5 rounded-full ${product.badgeColor}`} />
-                </div>
-                <p className="text-xs text-gray-600 font-medium leading-relaxed mb-4">{product.desc}</p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-gray-100">
-                <span className="text-xs uppercase font-semibold text-gray-400 tracking-wider block mb-1">Funding Scale</span>
-                <span className="text-base font-black tracking-tight">{product.limit}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Framework Sections */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
-        
-        {/* Comprehensive Scheme Eligibility Section */}
-        <div className="lg:col-span-1 p-6 md:p-8 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-          <h2 className="text-2xl font-bold text-gray-950 mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
-            <span className="bg-indigo-50 p-2 rounded-xl text-indigo-600 text-xl">📋</span> Who is Eligible?
-          </h2>
-          <ul className="space-y-4 text-sm md:text-base text-gray-600">
-            <li className="flex items-start gap-3">
-              <span className="text-emerald-500 font-bold bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5 text-xs">✓</span>
-              <span><strong>Eligible Formations:</strong> Proprietary concerns, small partnership firms, LLPs, and Private Limited companies.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-emerald-500 font-bold bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5 text-xs">✓</span>
-              <span><strong>Sector Types:</strong> Small manufacturing units, service sector entities, shopkeepers, fruit/vegetable vendors, and truck operators.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-emerald-500 font-bold bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5 text-xs">✓</span>
-              <span><strong>Allied Agriculture:</strong> Income-generating activities directly allied to agriculture (poultry, dairy, beekeeping, fishery) are eligible.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-emerald-500 font-bold bg-emerald-50 px-1.5 py-0.5 rounded-md mt-0.5 text-xs">✓</span>
-              <span><strong>Credit Rating:</strong> The applicant must hold a zero default track record across all commercial lending institutions.</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Dynamic How to Apply & Portal Links Section */}
-        <div className="lg:col-span-1 p-6 md:p-8 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-          <h2 className="text-2xl font-bold text-gray-950 mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
-            <span className="bg-blue-50 p-2 rounded-xl text-blue-600 text-xl">🚀</span> Apply in Simple Steps
-          </h2>
+        {/* Premium Hero Header Section */}
+        <header className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-8 sm:p-12 text-center shadow-xl shadow-indigo-950/10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent pointer-events-none" />
           
-          <div className="mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-2xl border border-blue-100">
-            <p className="font-bold text-xs uppercase tracking-wider text-blue-800 mb-2">Verified Digital Application Channels:</p>
-            <ul className="space-y-2 text-xs md:text-sm">
-              <li>
-                🔗 <a href="https://www.udyamimitra.in" target="_blank" rel="noreferrer" className="text-blue-600 font-bold hover:underline">UdyamiMitra Portal</a> (Official Hub)
-              </li>
-              <li>
-                🔗 <a href="https://www.jansamarth.in" target="_blank" rel="noreferrer" className="text-blue-600 font-bold hover:underline">JanSamarth National Portal</a>
-              </li>
-            </ul>
+          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-200 backdrop-blur-sm mb-4 border border-white/5">
+            Govt. of India Initiative
+          </span>
+          
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+            Pradhan Mantri MUDRA Yojana (PMMY)
+          </h1>
+          
+          <p className="mt-4 text-base sm:text-lg text-slate-300 max-w-3xl mx-auto font-normal">
+            Launched by the Hon’ble Prime Minister, PMMY provides key credit bridges up to <span className="text-white font-semibold">₹20 Lakhs</span> to support non-corporate, non-farm small and micro enterprises across India.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 max-w-3xl mx-auto">
+            <div className="px-5 py-3 bg-white/5 border border-white/10 text-slate-200 text-xs sm:text-sm font-medium rounded-xl backdrop-blur-md shadow-inner flex-1 min-w-[240px]">
+              🛡️ <span className="font-bold text-indigo-300">100% Collateral-Free</span> Business Funding
+            </div>
+            <div className="px-5 py-3 bg-white/5 border border-white/10 text-slate-200 text-xs sm:text-sm font-medium rounded-xl backdrop-blur-md shadow-inner flex-1 min-w-[240px]">
+              🏢 Disbursed via <span className="text-indigo-300 font-bold">Commercial Banks, RRBs, SFBs & NBFCs</span>
+            </div>
           </div>
+        </header>
 
-          <ol className="space-y-4 text-xs md:text-sm text-gray-600">
-            <li className="flex gap-3">
-              <span className="bg-slate-100 text-slate-700 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">1</span>
-              <span><strong>Choose Channel:</strong> Access the digital UdyamiMitra portal online or step directly into your local commercial/regional rural bank branch.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="bg-slate-100 text-slate-700 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">2</span>
-              <span><strong>Select Category:</strong> Formulate your operational budget to choose between Shishu, Kishor, or Tarun applications.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="bg-slate-100 text-slate-700 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">3</span>
-              <span><strong>Submit Profile:</strong> Input personal KYC data, precise structural details of the enterprise, and attach required credentials.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="bg-slate-100 text-slate-700 font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">4</span>
-              <span><strong>Disbursal:</strong> The bank analyzes project capacity and processes direct capital disbursal along with a MUDRA Card.</span>
-            </li>
-          </ol>
-        </div>
-
-        {/* Structured Documents Checklist Section */}
-        <div className="lg:col-span-1 p-6 md:p-8 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-          <h2 className="text-2xl font-bold text-gray-950 mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
-            <span className="bg-purple-50 p-2 rounded-xl text-purple-600 text-xl">📂</span> Documents Required
+        {/* Core Architecture Facts - 2 Column Clean Breakdown */}
+        <section className="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm">
+          <h2 className="text-xl font-bold tracking-tight text-slate-900 border-b border-slate-100 pb-4 mb-6">
+            Core Scheme Architecture & Parameters
           </h2>
-          <div className="space-y-4 text-xs md:text-sm text-gray-600">
-            <div>
-              <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-1.5">🪪 Personal KYC</h4>
-              <p className="pl-5 leading-relaxed">Proof of Identity & Address (Aadhaar Card, Voters ID, PAN Card, Driving License) along with passport-size photographs.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm text-slate-600">
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Target Segments:</strong> Explicitly covers small manufacturing units, service sector entities, artisans, shopkeepers, and fruit/vegetable vendors.</span>
             </div>
-            <div>
-              <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-1.5">🏭 Business Legitimacy</h4>
-              <p className="pl-5 leading-relaxed">Proof of business continuity & establishment (Shop & Establishment certificate, Udyam Registration, GST returns, Partnership deeds).</p>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Allied Agriculture Scope:</strong> Extends funding eligibility to pisciculture, poultry farming, dairy processing, sorting, grading, and aggregations.</span>
             </div>
-            <div>
-              <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-1.5">📊 Financial Health</h4>
-              <p className="pl-5 leading-relaxed">Last 6 to 12 months corporate bank statements. For higher tiers (Kishor/Tarun), balance sheets, asset quotations, and income tax statements are requested.</p>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Zero Collateral Security:</strong> Borrowers are not required to provide third-party guarantees or real-estate hypothecations to access lines.</span>
             </div>
-            <div>
-              <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-1.5">🎖️ Category Proofs</h4>
-              <p className="pl-5 leading-relaxed">SC, ST, OBC, or Minority community verification certificates (if claiming category incentives).</p>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Credit Guarantee Pool:</strong> Funded structures are backed safely by the National Credit Guarantee Trustee Company (NCGTC) security coverage.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Flexible Processing Fees:</strong> Zero upfront structural charges or administrative fees apply directly to the baseline Shishu application tier.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>MUDRA Card Interface:</strong> Working capital limits are loaded onto a RuPay debit card for fluid, on-demand ATM cash withdrawals.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Repayment Tenures:</strong> Offers a highly adaptive amortized loan repayment horizon stretching across a term period of 3 to 5 years.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Interest Arbitrage:</strong> Commercial banks set baseline rates tied explicitly to the Marginal Cost of Funds Based Lending Rate (MCLR).</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>No Minimum Cutoff:</strong> Tiny entrepreneurs can securely apply for ultra-micro lines under the Shishu scheme with zero base scale rules.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Gender Empowerment Focus:</strong> Partnering financial nodes often extend customized, reduced rate segments for solo women entrepreneurs.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Diverse Delivery Nodes:</strong> Monitored outlays are fully operational across Scheduled Commercial Banks, Regional Rural Banks (RRBs), and NBFCs.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>End-Use Verification:</strong> Loans are dedicated precisely for equipment purchases, raw inventories, and operational working capital expansions.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>No Corporate Inclusions:</strong> Public/private limited corporations outside micro limits cannot access this localized MSME pool.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Pan-India Accessibility:</strong> Available throughout rural, urban, and semi-urban clusters across all functional commercial bank windows.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Dynamic Tarun Plus Tier:</strong> Scaled up limits to a maximum of ₹20 Lakhs for candidates demonstrating consistent repayment tracks.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Financial Literacy Links:</strong> Combines formal capital delivery models with targeted enterprise development programs for small units.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Formalizing Shadow Credit:</strong> Migrates traditional unorganized micro-business debts into institutional, low-risk banking books.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Co-Lending Synergies:</strong> Enables collaborative structural capital syndication between modern FinTech channels and public sector banks.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Strict De-Duplication Rules:</strong> Applicants are checked against central credit bureaus to assure clear status across standard lending nodes.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-indigo-600 font-bold mt-0.5">⚡</span>
+              <span><strong>Digital-First Process:</strong> Eliminates manual files by integrating fast verification cycles via JanSamarth and UdyamiMitra portals.</span>
             </div>
           </div>
+        </section>
+
+        {/* Tiered Credit Architecture Grid */}
+        <section className="space-y-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-950">
+              MUDRA Tiered Credit Architecture
+            </h2>
+            <p className="text-slate-500 text-sm mt-1">
+              Four uniquely tailored funding stages aligned with your business maturity lifecycle.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {products.map((product, idx) => (
+              <div
+                key={idx}
+                className={`p-6 bg-white border border-slate-200/80 rounded-xl shadow-xs border-l-4 ${product.accentClass} flex flex-col justify-between hover:shadow-md transition-all duration-200`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <h3 className="text-lg font-bold text-slate-900 tracking-tight">{product.name}</h3>
+                    <span className={`w-2 h-2 rounded-full shrink-0 ${product.badgeBg}`} />
+                  </div>
+                  <p className="text-xs text-slate-500 leading-relaxed">{product.desc}</p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-slate-100">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">Funding Scale</span>
+                  <span className={`text-base font-black tracking-tight ${product.limitColor}`}>{product.limit}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Framework Breakdowns - 3 Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          {/* Eligibility Section */}
+          <div className="p-6 bg-white border border-slate-200 rounded-xl shadow-xs flex flex-col justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-slate-950 mb-4 pb-3 border-b border-slate-100 flex items-center gap-2">
+                <span className="text-indigo-600">📋</span> Who is Eligible?
+              </h3>
+              <ul className="space-y-3.5 text-xs sm:text-sm text-slate-600">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded text-[11px]">✓</span>
+                  <span><strong>Formations:</strong> Proprietary concerns, small partnership firms, LLPs, and Private Limited companies.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded text-[11px]">✓</span>
+                  <span><strong>Sectors:</strong> Small manufacturing units, service sector entities, shopkeepers, vendors, and truck operators.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded text-[11px]">✓</span>
+                  <span><strong>Agri-Allied:</strong> Income activities directly allied to agriculture (poultry, dairy, beekeeping, fishery).</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded text-[11px]">✓</span>
+                  <span><strong>Credit Rating:</strong> The applicant must hold a zero default track record across institutional lenders.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Steps & Portals Section */}
+          <div className="p-6 bg-white border border-slate-200 rounded-xl shadow-xs flex flex-col justify-between">
+            <div>
+              <h3 className="text-lg font-bold text-slate-950 mb-4 pb-3 border-b border-slate-100 flex items-center gap-2">
+                <span className="text-indigo-600">🚀</span> Apply in Simple Steps
+              </h3>
+              
+              <div className="mb-4 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <p className="font-bold text-[10px] uppercase tracking-wider text-slate-500 mb-1.5">Application Channels:</p>
+                <div className="space-y-1 text-xs">
+                  <div>
+                    <a href="https://www.udyamimitra.in" target="_blank" rel="noreferrer" className="text-indigo-600 font-bold hover:underline inline-flex items-center gap-1">
+                      🔗 UdyamiMitra Portal <span className="text-slate-400 font-normal">(Official)</span>
+                    </a>
+                  </div>
+                  <div>
+                    <a href="https://www.jansamarth.in" target="_blank" rel="noreferrer" className="text-indigo-600 font-bold hover:underline inline-flex items-center gap-1">
+                      🔗 JanSamarth National Portal
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <ol className="space-y-3 text-xs text-slate-600">
+                <li className="flex gap-2.5">
+                  <span className="bg-slate-100 text-slate-700 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[11px]">1</span>
+                  <span><strong>Choose Channel:</strong> Access the digital UdyamiMitra portal online or visit your local banking branch.</span>
+                </li>
+                <li className="flex gap-2.5">
+                  <span className="bg-slate-100 text-slate-700 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[11px]">2</span>
+                  <span><strong>Select Category:</strong> Formulate your operational budget to choose between Shishu, Kishor, or Tarun steps.</span>
+                </li>
+                <li className="flex gap-2.5">
+                  <span className="bg-slate-100 text-slate-700 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[11px]">3</span>
+                  <span><strong>Submit Profile:</strong> Input personal KYC data, structural business details, and attach credentials.</span>
+                </li>
+                <li className="flex gap-2.5">
+                  <span className="bg-slate-100 text-slate-700 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[11px]">4</span>
+                  <span><strong>Disbursal:</strong> The bank analyzes project capacity and processes the direct capital release with a MUDRA Card.</span>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          {/* Documents Required Section */}
+          <div className="p-6 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <h3 className="text-lg font-bold text-slate-950 mb-4 pb-3 border-b border-slate-100 flex items-center gap-2">
+                <span className="text-indigo-600">📂</span> Documents Required
+            </h3>
+            <div className="space-y-3.5 text-xs text-slate-600">
+              <div>
+                <h4 className="font-bold text-slate-900 flex items-center gap-1">🪪 Personal KYC</h4>
+                <p className="mt-0.5 text-slate-500 leading-normal">Proof of Identity & Address (Identification Papers, Voters ID, PAN Card, Driving License) with recent passport photographs.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 flex items-center gap-1">🏭 Business Legitimacy</h4>
+                <p className="mt-0.5 text-slate-500 leading-normal">Establishment proof (Shop & Establishment certificate, Udyam Registration, GST filings, Partnership deeds).</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 flex items-center gap-1">📊 Financial Health</h4>
+                <p className="mt-0.5 text-slate-500 leading-normal">Past 6 to 12 months bank statements. Tiers like Kishor/Tarun require balance sheets, tool quotations, and tax returns.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 flex items-center gap-1">🎖️ Category Proofs</h4>
+                <p className="mt-0.5 text-slate-500 leading-normal">Community verification certificates if requesting specific statutory category incentives.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
+        {/* Safety Compliance Banner */}
+        <footer className="p-4 bg-amber-50/80 border border-amber-200 rounded-xl text-amber-900 text-xs sm:text-sm flex items-start gap-3 shadow-xs">
+          <span className="text-base shrink-0 mt-0.5">⚠️</span> 
+          <div>
+            <strong className="text-amber-950 font-bold block mb-0.5">Zero Authorized Middlemen Policy</strong>
+            MUDRA has not deployed any third-party agents, consultants, or brokers to process credit applications. Ensure all application files are logged exclusively via official banking channels or listed digital portals to shield against fraudulent operations.
+          </div>
+        </footer>
+        
       </div>
-
-      {/* Safety Compliance Banner */}
-      <div className="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-900 font-medium text-xs md:text-sm flex items-start gap-3 shadow-inner">
-        <span className="text-lg shrink-0 mt-0.5">⚠️</span> 
-        <div>
-          <strong className="text-amber-950 font-bold block mb-0.5">Zero Authorized Middlemen Policy</strong>
-          MUDRA has not deployed any local agents, consultants, or brokers to process loans. Ensure all files are logged exclusively via official banking units or authorized digital portals to shield against fraudulent operations.
-        </div>
-      </div>
-      
     </div>
   );
 };
