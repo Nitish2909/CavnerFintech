@@ -119,194 +119,199 @@ export default function LeadFunnel() {
   const currentEntries = filteredLeads.slice(indexOfFirstEntry, indexOfLastEntry);
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6 font-sans text-slate-700">
+    <div className="min-h-screen bg-slate-50/70 p-4 sm:p-8 font-sans text-slate-600 antialiased">
       
       {/* --- HEADER --- */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-b border-slate-200/60 pb-5">
         <div>
-          <span className="text-xs font-semibold text-purple-600 tracking-wider uppercase block mb-1">Lead Funnel</span>
-          <h1 className="text-2xl font-bold text-slate-900">Lead capture & routing</h1>
-          <p className="text-sm text-slate-500 mt-0.5">Keep an eye on every lead movement, call touchpoint, and grab status.</p>
+          <span className="text-xs font-bold text-indigo-600 tracking-widest uppercase block mb-1">Pipeline Workspace</span>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Lead Capture &amp; Routing</h1>
+          <p className="text-sm text-slate-500 mt-1">Keep an eye on every lead movement, call touchpoint, and assignment state.</p>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm">
-            <Download size={16} /> Export
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <button className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 transition-all shadow-sm active:scale-95">
+            <Download size={16} className="text-slate-500" /> Export
           </button>
-          <button className="flex items-center gap-2 bg-indigo-900 hover:bg-indigo-950 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm">
-            <Users size={16} /> View team
+          <button className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-sm active:scale-95 shadow-slate-900/10">
+            <Users size={16} /> View Team
           </button>
         </div>
       </div>
 
       {/* --- KPI METRIC CARDS --- */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
         {/* Today Leads */}
-        <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-blue-50 text-blue-600">
-            <CalendarIcon size={20} />
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex items-center gap-4 hover:shadow-md transition-all duration-200 group">
+          <div className="p-3.5 rounded-xl bg-blue-50 text-blue-600 group-hover:scale-105 transition-transform">
+            <CalendarIcon size={22} />
           </div>
           <div>
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Today Leads</div>
-            <div className="text-2xl font-bold text-slate-900">{kpis.todayLeads}</div>
+            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Today Leads</div>
+            <div className="text-2xl font-black text-slate-900 mt-0.5">{kpis.todayLeads}</div>
           </div>
         </div>
         {/* Not Grabbed */}
-        <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-orange-50 text-orange-600">
-            <RefreshCw size={20} className="animate-spin-slow" />
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex items-center gap-4 hover:shadow-md transition-all duration-200 group">
+          <div className="p-3.5 rounded-xl bg-amber-50 text-amber-600 group-hover:scale-105 transition-transform">
+            <RefreshCw size={22} className="animate-[spin_4s_linear_infinite]" />
           </div>
           <div>
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Not Grabbed</div>
-            <div className="text-2xl font-bold text-slate-900">{kpis.notGrabbed}</div>
+            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Not Grabbed</div>
+            <div className="text-2xl font-black text-slate-900 mt-0.5">{kpis.notGrabbed}</div>
           </div>
         </div>
         {/* Grabbed */}
-        <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-cyan-50 text-cyan-600">
-            <Check size={20} />
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex items-center gap-4 hover:shadow-md transition-all duration-200 group">
+          <div className="p-3.5 rounded-xl bg-emerald-50 text-emerald-600 group-hover:scale-105 transition-transform">
+            <Check size={22} />
           </div>
           <div>
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Grabbed</div>
-            <div className="text-2xl font-bold text-slate-900">{kpis.grabbed}</div>
+            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Grabbed</div>
+            <div className="text-2xl font-black text-slate-900 mt-0.5">{kpis.grabbed}</div>
           </div>
         </div>
         {/* Highest Lead */}
-        <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-emerald-50 text-emerald-600">
-            <Users size={20} />
+        <div className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex items-center gap-4 hover:shadow-md transition-all duration-200 group">
+          <div className="p-3.5 rounded-xl bg-violet-50 text-violet-600 group-hover:scale-105 transition-transform">
+            <Users size={22} />
           </div>
           <div>
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Highest Lead</div>
-            <div className="text-2xl font-bold text-slate-900">{kpis.highestLead}</div>
+            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Highest Lead</div>
+            <div className="text-2xl font-black text-slate-900 mt-0.5">{kpis.highestLead}</div>
           </div>
         </div>
       </div>
 
       {/* --- QUICK FILTERS PANEL --- */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 mb-6">
-        <div className="flex justify-between items-center mb-4">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-8 relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
           <div>
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-0.5">Quick Filters</span>
-            <h3 className="text-md font-bold text-slate-900">Slice lead board</h3>
+            <span className="text-[11px] font-bold text-indigo-500 uppercase tracking-wider block mb-0.5">Segment Engine</span>
+            <h3 className="text-lg font-bold text-slate-900 tracking-tight">Slice Lead Board</h3>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2.5 self-end sm:self-center">
             <button 
               onClick={handleResetFilters}
-              className="px-4 py-1.5 border border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold text-sm rounded-lg transition"
+              className="px-4 py-2 border border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold text-sm rounded-xl transition active:scale-95"
             >
               Reset
             </button>
             <button 
               onClick={handleApplyFilters}
-              className="px-4 py-1.5 bg-purple-600 text-white hover:bg-purple-700 font-semibold text-sm rounded-lg transition shadow-sm"
+              className="px-5 py-2 bg-indigo-600 text-white hover:bg-indigo-700 font-semibold text-sm rounded-xl transition shadow-sm active:scale-95 shadow-indigo-600/10"
             >
-              Apply
+              Apply Filter
             </button>
           </div>
         </div>
 
         {/* Filters Matrix Inputs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Grab By */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Grab by</label>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Grab By</label>
             <div className="relative">
               <User size={16} className="absolute left-3 top-3 text-slate-400" />
               <input 
                 type="text" name="grabBy" value={filters.grabBy} onChange={handleFilterChange}
                 placeholder="e.g. Agent name" 
-                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50"
+                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 placeholder:text-slate-400 text-slate-800"
               />
             </div>
           </div>
 
           {/* Mobile no. */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Mobile no.</label>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Mobile No.</label>
             <div className="relative">
               <Phone size={16} className="absolute left-3 top-3 text-slate-400" />
               <input 
                 type="text" name="mobile" value={filters.mobile} onChange={handleFilterChange}
                 placeholder="Customer number" 
-                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50"
+                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 placeholder:text-slate-400 text-slate-800"
               />
             </div>
           </div>
 
           {/* Lead status dropdown */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Lead status</label>
-            <select 
-              name="leadStatus" value={filters.leadStatus} onChange={handleFilterChange}
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50 appearance-none"
-            >
-              <option>Any status</option>
-              <option>Grabbed</option>
-              <option>Not Grabbed</option>
-              <option>Highest Lead</option>
-            </select>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Lead Status</label>
+            <div className="relative">
+              <select 
+                name="leadStatus" value={filters.leadStatus} onChange={handleFilterChange}
+                className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 appearance-none text-slate-800 font-medium cursor-pointer"
+              >
+                <option>Any status</option>
+                <option>Grabbed</option>
+                <option>Not Grabbed</option>
+                <option>Highest Lead</option>
+              </select>
+              <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+                <ChevronRight size={14} className="transform rotate-90" />
+              </div>
+            </div>
           </div>
 
           {/* Product */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Product</label>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Product</label>
             <div className="relative">
               <Package size={16} className="absolute left-3 top-3 text-slate-400" />
               <input 
                 type="text" name="product" value={filters.product} onChange={handleFilterChange}
                 placeholder="Product name" 
-                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50"
+                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 placeholder:text-slate-400 text-slate-800"
               />
             </div>
           </div>
 
           {/* Source */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Source</label>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Source</label>
             <div className="relative">
               <MapPin size={16} className="absolute left-3 top-3 text-slate-400" />
               <input 
                 type="text" name="source" value={filters.source} onChange={handleFilterChange}
                 placeholder="Referral, online..." 
-                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50"
+                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 placeholder:text-slate-400 text-slate-800"
               />
             </div>
           </div>
 
           {/* Call Status */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Call status</label>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Call Status</label>
             <div className="relative">
               <PhoneCall size={16} className="absolute left-3 top-3 text-slate-400" />
               <input 
                 type="text" name="callStatus" value={filters.callStatus} onChange={handleFilterChange}
                 placeholder="Call state" 
-                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50"
+                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 placeholder:text-slate-400 text-slate-800"
               />
             </div>
           </div>
 
           {/* Status Keyword */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Status keyword</label>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Status Keyword</label>
             <div className="relative">
               <Search size={16} className="absolute left-3 top-3 text-slate-400" />
               <input 
                 type="text" name="statusKeyword" value={filters.statusKeyword} onChange={handleFilterChange}
                 placeholder="e.g. callback" 
-                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50"
+                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 placeholder:text-slate-400 text-slate-800"
               />
             </div>
           </div>
 
           {/* Calendar */}
           <div>
-            <label className="text-xs font-semibold text-slate-500 mb-1 block">Calendar</label>
+            <label className="text-xs font-bold text-slate-700 mb-1.5 block">Calendar</label>
             <div className="relative">
               <CalendarIcon size={16} className="absolute left-3 top-3 text-slate-400 pointer-events-none" />
               <input 
                 type="date" name="date" value={filters.date} onChange={handleFilterChange}
-                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50 text-slate-600"
+                className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors bg-slate-50/50 text-slate-800 font-medium"
               />
             </div>
           </div>
@@ -314,31 +319,38 @@ export default function LeadFunnel() {
       </div>
 
       {/* --- LIVE FUNNEL DATA TABLE --- */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <h3 className="font-bold text-slate-900 text-lg">Live funnel</h3>
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="p-5 border-b border-slate-100 bg-slate-50/40 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="flex items-center gap-3">
+            <h3 className="font-extrabold text-slate-900 text-lg tracking-tight">Live Funnel</h3>
+            <span className="bg-indigo-50 text-indigo-700 text-xs px-2.5 py-0.5 rounded-full font-bold">
+              {filteredLeads.length} total
+            </span>
+          </div>
           
-          <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-            <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+            <div className="flex items-center gap-2 text-xs text-slate-500 font-semibold justify-between sm:justify-start border border-slate-200 bg-white rounded-xl px-3 py-1.5 shadow-sm">
+              <span>Show</span>
               <select 
                 value={entriesPerPage} 
                 onChange={(e) => { setEntriesPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                className="border border-slate-200 rounded px-1.5 py-1 bg-slate-50"
+                className="border-none rounded font-bold px-1 text-slate-800 bg-transparent focus:outline-none cursor-pointer"
               >
                 <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={25}>25</option>
               </select>
-              <span>entries per page</span>
+              <span>entries</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-slate-500">Search:</span>
+            <div className="flex items-center relative">
+              <Search size={16} className="absolute left-3.5 text-slate-400 pointer-events-none" />
               <input 
                 type="text" 
+                placeholder="Quick lookup..."
                 value={globalSearch}
                 onChange={(e) => { setGlobalSearch(e.target.value); setCurrentPage(1); }}
-                className="border border-slate-200 rounded-lg px-2.5 py-1 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full sm:w-64 pl-9 pr-3 py-2 border border-slate-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 placeholder:text-slate-400 text-slate-800 shadow-sm transition-all"
               />
             </div>
           </div>
@@ -346,61 +358,65 @@ export default function LeadFunnel() {
 
         {/* Table Content */}
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-collapse m-0">
             <thead>
-              <tr className="bg-slate-50/70 border-b border-slate-100 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                <th className="py-3 px-4 w-12">#</th>
-                <th className="py-3 px-4">Lead Info</th>
-                <th className="py-3 px-4">Customer</th>
-                <th className="py-3 px-4">Contact</th>
-                <th className="py-3 px-4">Requirement</th>
-                <th className="py-3 px-4">Created</th>
-                <th className="py-3 px-4">Lead Status</th>
-                <th className="py-3 px-4">Call Status</th>
-                <th className="py-3 px-4 text-center">Action</th>
+              <tr className="bg-slate-50/70 border-b border-slate-200/80 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
+                <th className="py-4 px-5 w-12 text-center">#</th>
+                <th className="py-4 px-5">Lead Owner</th>
+                <th className="py-4 px-5">Customer</th>
+                <th className="py-4 px-5">Contact No.</th>
+                <th className="py-4 px-5">Requirement Structure</th>
+                <th className="py-4 px-5">Created Date</th>
+                <th className="py-4 px-5">Lead Status</th>
+                <th className="py-4 px-5">Call Engagement</th>
+                <th className="py-4 px-5 text-right">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm">
               {currentEntries.length > 0 ? (
                 currentEntries.map((lead, idx) => (
-                  <tr key={lead.id} className="hover:bg-slate-50/50 transition">
-                    <td className="py-3.5 px-4 font-medium text-slate-400">{indexOfFirstEntry + idx + 1}</td>
-                    <td className="py-3.5 px-4">
+                  <tr key={lead.id} className="hover:bg-slate-50/50 transition duration-150 group">
+                    <td className="py-4 px-5 text-center font-bold text-slate-400 group-hover:text-slate-600 transition-colors">{indexOfFirstEntry + idx + 1}</td>
+                    <td className="py-4 px-5">
                       <div className="font-semibold text-slate-900">{lead.grabBy || 'Unassigned'}</div>
-                      <div className="text-xs text-slate-400">Keyword: {lead.statusKeyword}</div>
+                      <div className="text-xs font-medium text-slate-400 mt-0.5">Keyword: <span className="text-slate-500 font-semibold">{lead.statusKeyword}</span></div>
                     </td>
-                    <td className="py-3.5 px-4 font-medium text-slate-700">{lead.customer}</td>
-                    <td className="py-3.5 px-4 text-slate-500">{lead.mobile}</td>
-                    <td className="py-3.5 px-4">
-                      <div className="text-slate-800 font-medium">{lead.product}</div>
-                      <div className="text-xs text-slate-400">{lead.requirement}</div>
+                    <td className="py-4 px-5 font-bold text-slate-800">{lead.customer}</td>
+                    <td className="py-4 px-5 font-medium text-slate-600 tracking-wide">{lead.mobile}</td>
+                    <td className="py-4 px-5">
+                      <div className="text-slate-900 font-semibold">{lead.product}</div>
+                      <div className="text-xs text-slate-500 font-medium mt-0.5">{lead.requirement}</div>
                     </td>
-                    <td className="py-3.5 px-4 text-slate-500">{lead.created}</td>
-                    <td className="py-3.5 px-4">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
-                        lead.leadStatus === 'Grabbed' ? 'bg-cyan-50 text-cyan-700' :
-                        lead.leadStatus === 'Highest Lead' ? 'bg-emerald-50 text-emerald-700' :
-                        'bg-orange-50 text-orange-700'
+                    <td className="py-4 px-5 font-medium text-slate-500 whitespace-nowrap">{lead.created}</td>
+                    <td className="py-4 px-5 whitespace-nowrap">
+                      <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold tracking-wide ${
+                        lead.leadStatus === 'Grabbed' ? 'bg-cyan-50 text-cyan-700 border border-cyan-100' :
+                        lead.leadStatus === 'Highest Lead' ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' :
+                        'bg-amber-50 text-amber-700 border border-amber-100'
                       }`}>
                         {lead.leadStatus}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4">
-                      <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium">
+                    <td className="py-4 px-5 whitespace-nowrap">
+                      <span className="text-xs bg-slate-100 text-slate-700 border border-slate-200/60 px-2.5 py-1 rounded-lg font-bold">
                         {lead.callStatus}
                       </span>
                     </td>
-                    <td className="py-3.5 px-4 text-center">
-                      <button className="text-purple-600 hover:text-purple-900 font-semibold text-xs">
-                        View details
+                    <td className="py-4 px-5 text-right whitespace-nowrap">
+                      <button className="text-indigo-600 hover:text-indigo-900 font-bold text-xs bg-indigo-50 hover:bg-indigo-100/80 px-3 py-1.5 rounded-lg transition active:scale-95">
+                        View Details
                       </button>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={9} className="py-10 text-center bg-purple-50/30 text-slate-400 font-medium">
-                    No leads found
+                  <td colSpan={9} className="py-14 text-center bg-slate-50/20">
+                    <div className="max-w-xs mx-auto flex flex-col items-center justify-center">
+                      <Search size={32} className="text-slate-300 mb-2" />
+                      <p className="text-slate-400 font-bold text-sm">No Matching Records Found</p>
+                      <p className="text-slate-400 text-xs mt-0.5">Try widening your filters or global lookup queries.</p>
+                    </div>
                   </td>
                 </tr>
               )}
@@ -409,24 +425,27 @@ export default function LeadFunnel() {
         </div>
 
         {/* --- FOOTER PAGINATION --- */}
-        <div className="p-4 bg-slate-50/50 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs font-semibold text-slate-500">
-          <div>
-            Showing {totalEntries === 0 ? 0 : indexOfFirstEntry + 1} to {Math.min(indexOfLastEntry, totalEntries)} of {totalEntries} entries
+        <div className="p-4 bg-slate-50/40 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-500">
+          <div className="font-semibold text-slate-400">
+            Showing <span className="text-slate-700 font-bold">{totalEntries === 0 ? 0 : indexOfFirstEntry + 1}</span> to <span className="text-slate-700 font-bold">{Math.min(indexOfLastEntry, totalEntries)}</span> of <span className="text-slate-700 font-bold">{totalEntries}</span> matrix logs
           </div>
-          <div className="flex gap-1.5">
+          <div className="flex items-center gap-2">
             <button 
               disabled={currentPage === 1}
               onClick={() => setCurrentPage(prev => prev - 1)}
-              className="p-1.5 border border-slate-200 rounded-lg bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="p-2 border border-slate-200 rounded-xl bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition shadow-sm active:scale-95"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeft size={15} />
             </button>
+            <span className="px-3 text-slate-400 font-semibold">
+              Page <span className="text-slate-800 font-extrabold">{currentPage}</span> of {totalPages}
+            </span>
             <button 
               disabled={currentPage === totalPages}
               onClick={() => setCurrentPage(prev => prev + 1)}
-              className="p-1.5 border border-slate-200 rounded-lg bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="p-2 border border-slate-200 rounded-xl bg-white hover:bg-slate-50 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition shadow-sm active:scale-95"
             >
-              <ChevronRight size={16} />
+              <ChevronRight size={15} />
             </button>
           </div>
         </div>

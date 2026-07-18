@@ -82,22 +82,27 @@ const AddLead = () => {
     alert("Lead added successfully! Details logged in console.");
   };
 
+  const ModalIcon = selectedCategory ? selectedCategory.icon : FileText;
+
   return (
-    <div className="min-h-screen bg-slate-50/60 p-4 md:p-8 font-sans antialiased text-slate-800">
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans antialiased text-slate-800">
       
       {/* 1. Header Section */}
       <div className="max-w-6xl mx-auto mb-8 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <button
             type="button"
-            className="p-2.5 hover:bg-slate-100 rounded-xl transition-all duration-200 bg-white shadow-sm border border-slate-200/60 active:scale-95"
+            className="p-2.5 hover:bg-slate-100 rounded-xl transition-all bg-white shadow-xs border border-slate-200 active:scale-95 cursor-pointer"
             onClick={() => window.history.back()}
           >
             <ArrowLeft className="w-5 h-5 text-slate-600" />
           </button>
           <div>
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
-              <span className="p-1.5 bg-purple-50 rounded-lg"><UserPlus className="w-6 h-6 text-purple-700" /></span> Add Lead
+              <span className="p-1.5 bg-purple-50 rounded-lg">
+                <UserPlus className="w-6 h-6 text-purple-700" />
+              </span> 
+              Add Lead
             </h1>
           </div>
         </div>
@@ -106,11 +111,11 @@ const AddLead = () => {
       {/* 2. Banner Overview Dashboard */}
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-6 items-stretch mb-8">
         {/* Left: Info Card */}
-        <div className="flex-1 bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl text-white flex flex-col justify-center shadow-sm">
-          <h2 className="text-xl font-bold mb-2 text-white/95">
+        <div className="flex-1 bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl text-white flex flex-col justify-center shadow-xs">
+          <h2 className="text-xl font-bold mb-2 text-slate-50">
             Select the right capture flow
           </h2>
-          <p className="text-slate-300/90 leading-relaxed text-sm max-w-lg">
+          <p className="text-slate-300 leading-relaxed text-sm max-w-lg">
             Choose a customer intent bucket, jump into the configured product
             stack, and keep the triage process in one place seamlessly.
           </p>
@@ -118,29 +123,29 @@ const AddLead = () => {
 
         {/* Right: Interactive Analytics Cards */}
         <div className="flex flex-wrap md:flex-nowrap items-center gap-4 w-full md:w-auto">
-          <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex flex-col min-w-[130px] flex-1 md:flex-initial">
+          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col min-w-[130px] flex-1 md:flex-initial">
             <h3 className="text-[11px] font-bold text-slate-400 tracking-wider uppercase mb-1 flex items-center gap-1.5">
               <Layers className="w-3.5 h-3.5 text-purple-500" /> Matches
             </h3>
-            <span className="text-2xl font-black text-slate-800 transition-all duration-300">
+            <span className="text-2xl font-black text-slate-800 transition-all">
               {processedCategories.length}
             </span>
           </div>
 
-          <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex flex-col min-w-[130px] flex-1 md:flex-initial">
+          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col min-w-[130px] flex-1 md:flex-initial">
             <h3 className="text-[11px] font-bold text-slate-400 tracking-wider uppercase mb-1 flex items-center gap-1.5">
-              <RefreshCw className="w-3.5 h-3.5 text-emerald-500 animate-spin-slow" /> Sync
+              <RefreshCw className="w-3.5 h-3.5 text-emerald-500 animate-spin" /> Sync
             </h3>
-            <span className="text-2xl font-black text-slate-800 text-nowrap">Live</span>
+            <span className="text-2xl font-black text-slate-800 whitespace-nowrap">Live</span>
           </div>
 
-          <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col justify-between gap-2 min-w-[200px] w-full md:w-auto">
+          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between gap-2 min-w-[200px] w-full md:w-auto">
             <h3 className="text-[11px] font-bold text-purple-700 tracking-wider uppercase flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5 fill-purple-600 text-purple-600" /> Quick Flow
             </h3>
             <button 
               type="button"
-              className="w-full bg-purple-700 hover:bg-purple-800 active:scale-[0.98] text-white text-xs font-semibold py-2.5 px-4 rounded-lg transition-all shadow-sm shadow-purple-200"
+              className="w-full bg-purple-700 hover:bg-purple-800 active:scale-[0.98] text-white text-xs font-semibold py-2.5 px-4 rounded-lg transition-all shadow-xs shadow-purple-100 cursor-pointer"
               onClick={() => handleOpenForm(null)}
             >
               Create manual lead
@@ -154,7 +159,7 @@ const AddLead = () => {
         
         {/* LEFT COLUMN: Main Categorization Engine */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs">
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
             
             {/* Action Bar / Filtering Tools */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -166,7 +171,6 @@ const AddLead = () => {
               </div>
               
               <div className="flex items-center gap-2 w-full sm:w-auto">
-                {/* Modernized Search input styling */}
                 <div className="relative flex-1 sm:flex-initial">
                   <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
@@ -174,13 +178,12 @@ const AddLead = () => {
                     placeholder="Search context..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full sm:w-48 text-xs border border-slate-200 rounded-lg pl-9 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 transition-all bg-slate-50/50"
+                    className="w-full sm:w-48 text-xs border border-slate-200 rounded-lg pl-9 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 transition-all bg-slate-50"
                   />
                 </div>
-                {/* Functional Sort Filter */}
                 <button 
                   onClick={() => setIsAscending(!isAscending)}
-                  className="border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 active:bg-slate-100 flex items-center gap-1 transition-all shadow-2xs"
+                  className="border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 active:bg-slate-100 flex items-center gap-1 transition-all shadow-xs cursor-pointer"
                   title="Sort Direction"
                 >
                   A-Z {isAscending ? "↑" : "↓"}
@@ -198,7 +201,7 @@ const AddLead = () => {
                       key={category.id}
                       type="button"
                       onClick={() => handleOpenForm(category)}
-                      className={`flex flex-col items-center justify-center text-center p-5 bg-white border border-slate-100 rounded-xl hover:shadow-md hover:shadow-slate-100/80 ${category.borderColor} group transition-all duration-200 min-h-[160px] cursor-pointer relative top-0 hover:-top-0.5`}
+                      className={`flex flex-col items-center justify-center text-center p-5 bg-white border border-slate-100 rounded-xl hover:shadow-sm ${category.borderColor} group transition-all transform hover:-translate-y-0.5 min-h-[160px] cursor-pointer`}
                     >
                       <div className={`p-3 rounded-xl ${category.bgIcon} ${category.textIcon} mb-3.5 transition-transform group-hover:scale-110`}>
                         <IconComponent className="w-5 h-5" />
@@ -221,7 +224,7 @@ const AddLead = () => {
           </div>
 
           {/* Quick Capture Quick-clickable Presets */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Recently Used Shortcuts</h3>
             </div>
@@ -243,7 +246,7 @@ const AddLead = () => {
         <div className="space-y-6">
           
           {/* Compliance Checklist */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
             <h4 className="text-[11px] font-bold text-slate-400 tracking-wider uppercase mb-4">
               Dispatch Checklist
             </h4>
@@ -270,7 +273,7 @@ const AddLead = () => {
           </div>
 
           {/* Core Analytics Snapshot */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
             <h4 className="text-[11px] font-bold text-slate-400 tracking-wider uppercase mb-3">
               Routing Snapshot
             </h4>
@@ -294,14 +297,14 @@ const AddLead = () => {
 
       {/* 4. MODAL DRAWER FORM MODULE */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in">
-          <div className="bg-white rounded-2xl max-w-md w-full shadow-xl border border-slate-200 overflow-hidden transform transition-transform scale-100 duration-300">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl max-w-md w-full shadow-xl border border-slate-200 overflow-hidden transform transition-all duration-200">
             
             {/* Modal Header */}
             <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 bg-purple-100 text-purple-700 rounded-lg">
-                  {selectedCategory ? React.createElement(selectedCategory.icon, { className: "w-4 h-4" }) : <FileText className="w-4 h-4" />}
+                  <ModalIcon className="w-4 h-4" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 text-sm">
@@ -312,7 +315,7 @@ const AddLead = () => {
               </div>
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="p-1.5 hover:bg-slate-200/70 rounded-lg transition-colors cursor-pointer text-slate-400 hover:text-slate-600"
+                className="p-1.5 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer text-slate-400 hover:text-slate-600"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -392,7 +395,7 @@ const AddLead = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 text-xs font-semibold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-sm transition-all cursor-pointer active:scale-95"
+                  className="px-4 py-2 text-xs font-semibold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-xs transition-all cursor-pointer active:scale-95"
                 >
                   Dispatch Lead
                 </button>
