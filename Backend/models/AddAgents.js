@@ -1,6 +1,20 @@
-import mongoose from "mongoose";
 
-const AddAgentsSchema = new mongoose.Schema({
+import mongoose from "mongoose";
+import { AutoIncrement } from "./AddEmployee.js";
+
+
+
+const documentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  url: { type: String, required: true },
+  publicId: { type: String, required: true },
+  uploadedAt: { type: Date, default: Date.now },
+});
+
+const AddAgentSchema = new mongoose.Schema({
+    agent_code : {
+        type : Number
+    },
     fullname: {
         type: String,
         required: true,
@@ -14,7 +28,7 @@ const AddAgentsSchema = new mongoose.Schema({
     emailId: {
         type: String,
         required: true,
-        unique: true, // Prevents duplicate agent registrations
+        unique: true, // Ensures employees cannot use duplicate emails
         trim: true,
         lowercase: true
     },
@@ -26,16 +40,16 @@ const AddAgentsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    residenceaddress: {
-        type: String,
-        required: true
-    },
     designationname: {
         type: String,
         required: true
     },
     joiningdate: {
         type: Date,
+        required: true
+    },
+      residenceaddress: {
+        type: String,
         required: true
     },
     dateofbirth: {
@@ -63,32 +77,34 @@ const AddAgentsSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    // Document uploads (Store Cloudflare R2 URLs or Object Keys here)
-    aadharfront: {
+    documents:[documentSchema],
+    status: {
         type: String,
-        required: true
+        enum: ["Active", "Inactive"],
+        required: true,
+        default : "Active"
     },
-    aadharback: {
-        type: String,
-        required: true
+    consent: {
+       type: String,
+        enum: ["Approved", "Pending"],
+        required: true,
+        default: "Pending"
     },
-    pancard: {
+    whatsapp: {
         type: String,
-        required: true
+        enum: ["Enabled", "Disabled"],
+        required: true,
+        default:"Enabled"
     },
-    selfie: {
-        type: String,
-        required: true
-    },
-    signature: {
-        
-        type: String,
-        required: true
-    }
 }, {
-    timestamps: true // Automatically adds createdAt and updatedAt fields
+    timestamps: true // Tracks exactly when the employee profile was created or updated
 });
 
+
+AddAgentSchema.plugin(AutoIncrement, { 
+  inc_field: 'agent_code', 
+  start_seq: 1 
+});
 // Compile and export the model
-const Agent = mongoose.models.Agent || mongoose.model("Agent", AddAgentsSchema);
+const Agent = mongoose.models.Agent || mongoose.model("Agent", AddAgentSchema);
 export default Agent;

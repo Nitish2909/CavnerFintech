@@ -1,6 +1,17 @@
 import mongoose from "mongoose";
+import AutoIncrementFactory from 'mongoose-sequence';
+
+const documentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  url: { type: String, required: true },
+  publicId: { type: String, required: true },
+  uploadedAt: { type: Date, default: Date.now },
+});
 
 const AddEmployeeSchema = new mongoose.Schema({
+    code : {
+        type : Number
+    },
     fullname: {
         type: String,
         required: true,
@@ -59,31 +70,35 @@ const AddEmployeeSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    // Document Uploads (Stores Cloudflare R2 URL links)
-    aadharfront: {
+    documents:[documentSchema],
+    status: {
         type: String,
-        required: true
+        enum: ["Active", "Inactive"],
+        required: true,
+        default : "Active"
     },
-    aadharback: {
-        type: String,
-        required: true
+    consent: {
+       type: String,
+        enum: ["Approved", "Pending"],
+        required: true,
+        default: "Pending"
     },
-    pancard: {
+    whatsapp: {
         type: String,
-        required: true
+        enum: ["Enabled", "Disabled"],
+        required: true,
+        default:"Enabled"
     },
-    selfie: {
-        type: String,
-        required: true
-    },
-    signature: {
-        type: String,
-        required: true
-    }
 }, {
     timestamps: true // Tracks exactly when the employee profile was created or updated
 });
 
+ export const AutoIncrement = AutoIncrementFactory(mongoose);
+
+AddEmployeeSchema.plugin(AutoIncrement, { 
+  inc_field: 'code', 
+  start_seq: 1 
+});
 // Compile and export the model
 const Employee = mongoose.models.Employee || mongoose.model("Employee", AddEmployeeSchema);
 export default Employee;

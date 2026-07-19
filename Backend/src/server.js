@@ -31,7 +31,7 @@ app.use(fileupload({
 app.use(helmet());
 app.use(
   cors({
-    origin: [config.clientUrl, config.adminUrl, "http://localhost:5173", "http://localhost:5174"],
+    origin: [config.clientUrl, config.adminUrl, "http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],
     credentials: true,
   })
 );
@@ -75,8 +75,8 @@ app.use("/api/products", productRoutes);
 app.use("/api/public", publicRoutes);
 app.use("/api/applications", protect, applicationRoutes);
 app.use("/api/loancalculator", amortizationCalculatorRoutes )
-app.use("/api/agent", AddAgentRoutes); 
-app.use("/api/employee", AddEmployeeRoutes)
+app.use("/api/partner/agent", AddAgentRoutes); 
+app.use("/api/partner/employee", AddEmployeeRoutes)
 
 // ---- Error handling ----
 app.use(notFound);

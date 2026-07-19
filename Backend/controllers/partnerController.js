@@ -56,13 +56,12 @@ export const verifyPartnerOtp = asyncHandler(async (req, res) => {
 export const registerPartner = asyncHandler(async (req, res) => {
   const { companyName, contactPerson, email, phone, password, gstNumber, panNumber, businessType, city, state } = req.body;
 
-  const existing = await Partner.findOne({ $or: [{ email: email.toLowerCase() }, { phone }] });
-  if (existing) throw new ApiError("Partner already exists with this email/phone", 409);
+  const existing = await Partner.findOne({ email: email.toLowerCase()});
+  if (existing) throw new ApiError("Partner already exists with this email", 409);
 
   const emailOtp = await Otp.findOne({ identifier: email.toLowerCase(), type: "email", verified: true, purpose: "registration" });
-  const phoneOtp = await Otp.findOne({ identifier: phone, type: "phone", verified: true, purpose: "registration" });
+
   if (!emailOtp) throw new ApiError("Email not verified via OTP", 400);
-  if (!phoneOtp) throw new ApiError("Phone not verified via OTP", 400);
 
   const partner = await Partner.create({
     companyName,
