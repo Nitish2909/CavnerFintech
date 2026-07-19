@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ArrowLeft, ArrowRight, UserPlus } from "lucide-react"; // Using lucide-react for sharp modern icons
+import { addEmployee } from "../../../services/partnerServices";
 
 const AddEmployees = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ const AddEmployees = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Create FormData object if you are sending files to your backend API
     const dataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -43,25 +44,19 @@ const AddEmployees = () => {
 
     try {
       console.log("Submitting form data...", formData);
-      
-      /* ========================================================
-        TODO: CALL YOUR BACKEND API HERE
-        ========================================================
-        
-        const response = await fetch("https://api.yourdomain.com/v1/employees", {
-          method: "POST",
-          body: dataToSend, // or JSON.stringify(formData) if not using file uploads
-          // headers: { "Content-Type": "application/json" }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          // handle success (e.g., show notification, redirect, clear form)
-        } else {
-          // handle server errors
-        }
-      */
-      
+
+      //CALL YOUR BACKEND API
+      try {
+        const { data } = await addEmployee(dataToSend);
+        console.log(data.data);
+        // dispatch(setAdmin(data.data));
+        // navigate("/");
+      } catch (err) {
+        // setError(err.response?.data?.message || "Failed to add employee");
+      } finally {
+        // setLoading(false);
+      }
+
       alert("Employee request submitted successfully!");
     } catch (error) {
       console.error("Error calling backend API:", error);
@@ -73,8 +68,8 @@ const AddEmployees = () => {
       {/* Header Section with Back Arrow */}
       <div className="max-w-6xl mx-auto mb-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="p-2 hover:bg-gray-200/70 rounded-full transition-colors duration-200"
             onClick={() => window.history.back()}
           >
@@ -84,23 +79,31 @@ const AddEmployees = () => {
             <h1 className="text-2xl font-bold text-gray-800 tracking-tight flex items-center gap-2">
               <UserPlus className="w-6 h-6 text-purple-700" /> Add New Employee
             </h1>
-            <p className="text-sm text-gray-500">Fill out the information below to register a new staff member.</p>
+            <p className="text-sm text-gray-500">
+              Fill out the information below to register a new staff member.
+            </p>
           </div>
         </div>
       </div>
 
       {/* Main Form Container */}
       <div className="max-w-6xl mx-auto bg-white border border-gray-100 shadow-xl shadow-gray-200/50 rounded-2xl overflow-hidden">
-        <form onSubmit={handleSubmit} className="p-8 space-y-8">
-          
+        <form
+          onSubmit={handleSubmit}
+          className="p-8 space-y-8"
+          encType="multipart/form-data"
+        >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
             {/* Column 1: Personal & Account Details */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">Personal Details</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">
+                Personal Details
+              </h3>
+
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Full Name</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Full Name
+                </label>
                 <input
                   name="fullname"
                   type="text"
@@ -113,7 +116,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Father's Name</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Father's Name
+                </label>
                 <input
                   name="fathername"
                   type="text"
@@ -125,7 +130,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Email ID</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Email ID
+                </label>
                 <input
                   name="emailId"
                   type="email"
@@ -138,7 +145,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Phone Number</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Phone Number
+                </label>
                 <input
                   name="phone"
                   type="number"
@@ -151,7 +160,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Password</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Password
+                </label>
                 <input
                   name="password"
                   type="password"
@@ -164,7 +175,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Designation Name</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Designation Name
+                </label>
                 <input
                   name="designationname"
                   type="text"
@@ -178,10 +191,14 @@ const AddEmployees = () => {
 
             {/* Column 2: Dates & Complete Address */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">Work & Location</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">
+                Work & Location
+              </h3>
+
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Joining Date</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Joining Date
+                </label>
                 <input
                   name="joiningdate"
                   type="date"
@@ -192,7 +209,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Date of Birth</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Date of Birth
+                </label>
                 <input
                   name="dateofbirth"
                   type="date"
@@ -203,7 +222,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Street Address</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Street Address
+                </label>
                 <input
                   name="address"
                   type="text"
@@ -215,7 +236,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">City</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  City
+                </label>
                 <input
                   name="city"
                   type="text"
@@ -228,7 +251,9 @@ const AddEmployees = () => {
 
               <div className="grid grid-cols-2 gap-2">
                 <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium text-gray-600">District</label>
+                  <label className="mb-1 text-sm font-medium text-gray-600">
+                    District
+                  </label>
                   <input
                     name="district"
                     type="text"
@@ -239,7 +264,9 @@ const AddEmployees = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-1 text-sm font-medium text-gray-600">State</label>
+                  <label className="mb-1 text-sm font-medium text-gray-600">
+                    State
+                  </label>
                   <input
                     name="state"
                     type="text"
@@ -252,7 +279,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Pin Code</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Pin Code
+                </label>
                 <input
                   name="pincode"
                   type="number"
@@ -266,10 +295,14 @@ const AddEmployees = () => {
 
             {/* Column 3: Identity & Verification Documents */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">KYC Documents</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">
+                KYC Documents
+              </h3>
+
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Identity Doc Front</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Identity Doc Front
+                </label>
                 <input
                   name="aadharfront"
                   type="file"
@@ -280,7 +313,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Identity Doc Back</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Identity Doc Back
+                </label>
                 <input
                   name="aadharback"
                   type="file"
@@ -291,7 +326,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">PAN Card Image</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  PAN Card Image
+                </label>
                 <input
                   name="pancard"
                   type="file"
@@ -302,7 +339,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Selfie Photo</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Selfie Photo
+                </label>
                 <input
                   name="selfie"
                   type="file"
@@ -313,7 +352,9 @@ const AddEmployees = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm font-medium text-gray-600">Signature</label>
+                <label className="mb-1 text-sm font-medium text-gray-600">
+                  Signature
+                </label>
                 <input
                   name="signature"
                   type="file"
@@ -325,15 +366,14 @@ const AddEmployees = () => {
 
               {/* Submit Button Container */}
               <div className="pt-4">
-                <button 
+                <button
                   type="submit"
                   className="w-full bg-purple-950 text-white font-semibold py-3 px-6 rounded-xl shadow-lg shadow-purple-950/20 hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all flex items-center justify-center gap-2 group"
                 >
-                  Save Employee 
+                  Save Employee
                   <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
                 </button>
               </div>
-
             </div>
           </div>
         </form>
