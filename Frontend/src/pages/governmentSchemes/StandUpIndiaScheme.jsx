@@ -48,7 +48,6 @@ const StandUpIndiaScheme = () => {
               <h3 className='font-bold text-base text-slate-900 tracking-tight mb-2'>Repayment Tenure</h3>
               <p className='text-xs sm:text-sm text-slate-500 leading-relaxed'>Flexible repayment period of up to 7 years with a maximum moratorium period of 18 months.</p>
             </div>
-
             <div className='p-6 bg-white border border-slate-200 rounded-xl shadow-xs border-l-4 border-l-blue-500 hover:shadow-md transition-all duration-200'>
               <h3 className='font-bold text-base text-slate-900 tracking-tight mb-2'>Low Interest Rates</h3>
               <p className='text-xs sm:text-sm text-slate-500 leading-relaxed'>The interest rate is kept at the lowest applicable rate of the bank for that category (MCLR + 3% + Tenor Premium).</p>

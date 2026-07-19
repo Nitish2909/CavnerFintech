@@ -31,6 +31,7 @@ import NcdDebt from "./pages/corporate/NcdDebt";
 import SolarFunding from "./pages/corporate/SolarFunding";
 import CapexFinance from "./pages/corporate/CapexFinance";
 import FundingShare from "./pages/corporate/FundingShares";
+import ApplyCreditCard from "./pages/ApplyCreditCard";
 
 const Layout = ({ children }) => (
   <div className="min-h-screen flex flex-col">
@@ -123,6 +124,14 @@ const App = () => {
         element={
           <Layout>
             <CreditCardPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/apply-for-credit-card"
+        element={
+          <Layout>
+            <ApplyCreditCard />
           </Layout>
         }
       />

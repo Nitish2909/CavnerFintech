@@ -47,7 +47,7 @@ const CreditCardPage = () => {
                       <p key={i} className="flex items-start gap-2 text-sm text-slate-600"><CheckCircle2 size={14} className="text-brand-600 mt-0.5 shrink-0" /> {b}</p>
                     ))}
                   </div>
-                  <Link to="/applyforloan" className="flex items-center justify-center gap-2 w-full bg-brand-700 text-white py-2.5 rounded-lg hover:bg-brand-800">
+                  <Link to="/apply-for-credit-card" className="flex items-center justify-center gap-2 w-full bg-brand-700 text-white py-2.5 rounded-lg hover:bg-brand-800">
                     Apply Now <ArrowRight size={16} />
                   </Link>
                 </div>
