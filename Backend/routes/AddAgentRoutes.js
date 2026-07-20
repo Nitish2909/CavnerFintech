@@ -1,11 +1,10 @@
 import express from "express"
 const router = express.Router();
-import {AddAgentController} from "../controllers/addAgentController.js";
-import {getAllAgents} from "../controllers/addAgentController.js";
+import { addAgentController,getAllAgents } from "../controllers/addAgentController.js";
 
-router.post("/addAgent", AddAgentController);
+router.post("/addAgent", addAgentController);
 
-router.get("/getAllAgents",getAllAgents );
+router.get("/allagents",getAllAgents );
 
 
 export default router;

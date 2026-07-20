@@ -6,6 +6,8 @@ import { generateOtp, maskEmail, maskPhone } from "../utils/otp.js";
 import { sendOtpEmail } from "../utils/emailService.js";
 import { sendOtpSms } from "../utils/smsService.js";
 import { ApiError, asyncHandler, sendResponse } from "../utils/apiResponse.js";
+import { config } from "dotenv";
+config()
 
 const OTP_TTL_MINUTES = 10;
 
@@ -102,11 +104,11 @@ export const loginPartner = asyncHandler(async (req, res) => {
   res.cookie("partnerToken", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: process.env.NODE_ENV === "production" ? "strict" : "Lax",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  sendResponse(res, 200, "Partner login successful", { partner: partner.toSafeObject(), token });
+  sendResponse(res, 200, "Partner login successful", { partner: partner.toSafeObject(), partnerToken:token });
 });
 
 export const getPartnerProfile = asyncHandler(async (req, res) => {
