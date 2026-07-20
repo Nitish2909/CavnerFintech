@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TabNavigation({ activeTab, setActiveTab }) {
+const TabNavigation = ({ activeTab, setActiveTab })=> {
   return (
     <div className="flex gap-4 border-b border-[#e4e7ec] mb-6">
       <button
@@ -28,3 +28,5 @@ export default function TabNavigation({ activeTab, setActiveTab }) {
     </div>
   );
 }
+
+export default TabNavigation

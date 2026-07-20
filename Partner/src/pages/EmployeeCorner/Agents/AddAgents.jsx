@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react"; // Sleek modern icons
+import { addAgent } from "../../../services/partnerServices";
 
 const AddAgents = () => {
   const [formData, setFormData] = useState({
     fullname: "",
-    
+
     phone: "",
     emailId: "",
     password: "",
@@ -46,23 +47,20 @@ const AddAgents = () => {
     try {
       console.log("Submitting API Payload...", formData);
 
-      /* ========================================================
-         TODO: CALL YOUR BACKEND API HERE
-         ========================================================
-         
-         const response = await fetch("https://api.yourdomain.com/v1/agents", {
-           method: "POST",
-           body: payload, // or JSON.stringify(formData) if raw text parsing is used
-           // headers: { "Authorization": `Bearer ${token}` }
-         });
+      //========================================================
+      // CALL YOUR BACKEND
+      // ========================================================
 
-         if (response.ok) {
-           const result = await response.json();
-           // Trigger success modal or router re-direction
-         } else {
-           // Handle runtime validation or application errors
-         }
-      */
+      try {
+        const { data } = await addAgent(dataToSend);
+        // console.log(data.data);
+        // dispatch(setAdmin(data.data));
+        // navigate("/");
+      } catch (err) {
+        // setError(err.response?.data?.message || "Failed to add employee");
+      } finally {
+        // setLoading(false);
+      }
 
       alert("Agent registered successfully!");
     } catch (error) {
@@ -83,20 +81,26 @@ const AddAgents = () => {
           <ArrowLeft className="w-6 h-6" />
         </button>
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">Add Agent</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Register a new profile directly into the system database.</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">
+            Add Agent
+          </h1>
+          <p className="text-sm text-gray-500 mt-0.5">
+            Register a new profile directly into the system database.
+          </p>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <form 
-          onSubmit={handleSubmit} 
+        <form
+          onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-white border border-gray-100 shadow-xl rounded-2xl p-6 md:p-8"
         >
           {/* Column 1 */}
           <div className="flex flex-col space-y-4">
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Full Name</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Full Name
+              </label>
               <input
                 name="fullname"
                 type="text"
@@ -108,7 +112,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Password</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Password
+              </label>
               <input
                 name="password"
                 type="password"
@@ -120,7 +126,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Joining Date</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Joining Date
+              </label>
               <input
                 name="joiningdate"
                 type="date"
@@ -131,7 +139,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">State</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                State
+              </label>
               <input
                 name="state"
                 type="text"
@@ -143,7 +153,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Pin Code</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Pin Code
+              </label>
               <input
                 name="pincode"
                 type="number"
@@ -155,7 +167,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">PAN Card Image</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                PAN Card Image
+              </label>
               <input
                 name="pancard"
                 type="file"
@@ -169,7 +183,9 @@ const AddAgents = () => {
           {/* Column 2 */}
           <div className="flex flex-col space-y-4">
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Phone Number</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Phone Number
+              </label>
               <input
                 name="phone"
                 type="number"
@@ -181,7 +197,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Address</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Address
+              </label>
               <input
                 name="address"
                 type="text"
@@ -194,7 +212,9 @@ const AddAgents = () => {
 
             {/* Added missing markup field mapped directly to state array matching original index */}
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Residence Address</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Residence Address
+              </label>
               <input
                 name="residenceaddress"
                 type="text"
@@ -206,7 +226,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Date of Birth</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Date of Birth
+              </label>
               <input
                 name="dateofbirth"
                 type="date"
@@ -217,7 +239,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">District</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                District
+              </label>
               <input
                 name="district"
                 type="text"
@@ -229,7 +253,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Aadhar Front</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Aadhar Front
+              </label>
               <input
                 name="aadharfront"
                 type="file"
@@ -240,7 +266,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Selfie</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Selfie
+              </label>
               <input
                 name="selfie"
                 type="file"
@@ -254,7 +282,9 @@ const AddAgents = () => {
           {/* Column 3 */}
           <div className="flex flex-col space-y-4">
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Email ID</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Email ID
+              </label>
               <input
                 name="emailId"
                 type="email"
@@ -266,7 +296,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Designation Name</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Designation Name
+              </label>
               <input
                 name="designationname"
                 type="text"
@@ -278,7 +310,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Father Name</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Father Name
+              </label>
               <input
                 name="fathername"
                 type="text"
@@ -290,7 +324,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">City</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                City
+              </label>
               <input
                 name="city"
                 type="text"
@@ -302,7 +338,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Aadhar Back</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Aadhar Back
+              </label>
               <input
                 name="aadharback"
                 type="file"
@@ -313,7 +351,9 @@ const AddAgents = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-1.5 text-sm font-semibold text-gray-700">Signature</label>
+              <label className="mb-1.5 text-sm font-semibold text-gray-700">
+                Signature
+              </label>
               <input
                 name="signature"
                 type="file"

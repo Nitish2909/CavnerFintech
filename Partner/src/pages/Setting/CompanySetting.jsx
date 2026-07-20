@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CompanySetting() {
+const CompanySetting =() =>{
   return (
     <div className="p-8">
       <h1 className="text-xl font-semibold text-gray-900 mb-2">Company Configurations</h1>
@@ -8,3 +8,5 @@ export default function CompanySetting() {
     </div>
   );
 }
+
+export default CompanySetting

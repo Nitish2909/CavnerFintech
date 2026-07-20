@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function AddVendorExecutive() {
+const AddVendorExecutive = ()=> {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
@@ -155,3 +155,5 @@ export default function AddVendorExecutive() {
     </div>
   );
 }
+
+export default AddVendorExecutive

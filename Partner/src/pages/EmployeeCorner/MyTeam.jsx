@@ -64,7 +64,7 @@ const INITIAL_TEAM = [
 // ==========================================
 // COMPONENT IMPLEMENTATION
 // ==========================================
-export default function MyTeam() {
+const MyTeam = () =>{
   const [team, setTeam] = useState(INITIAL_TEAM);
   const [search, setSearch] = useState("");
   const [entriesPerPage, setEntriesPerPage] = useState(10);
@@ -711,3 +711,5 @@ export default function MyTeam() {
     </div>
   );
 }
+
+export default MyTeam

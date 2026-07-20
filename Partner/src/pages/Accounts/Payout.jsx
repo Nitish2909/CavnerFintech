@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function PayoutsHub() {
+const PayoutsHub =()=> {
   const [showConfiguredOnly, setShowConfiguredOnly] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -246,3 +246,5 @@ export default function PayoutsHub() {
     </div>
   );
 }
+
+export default PayoutsHub

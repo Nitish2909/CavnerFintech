@@ -2,7 +2,7 @@ import React from "react";
 import { Bell, UserCircle } from "lucide-react";
 import logo from "../../public/Cavner-Logo.png";
 
-export default function Navbar() {
+const Navbar = ()=> {
   return (
     /* 
       - mt-16 pulls the navbar below the mobile header on small devices, changing to mt-0 on lg screens.
@@ -50,3 +50,5 @@ export default function Navbar() {
     </header>
   );
 }
+
+export default Navbar

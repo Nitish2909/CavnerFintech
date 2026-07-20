@@ -5,7 +5,7 @@ import {
   Handshake, UserCircle, Settings, ChevronDown, Menu, X 
 } from 'lucide-react';
 
-export default function Sidebar() {
+const Sidebar =()=> {
   const [isOpen, setIsOpen] = useState(false); // Mobile sidebar toggle state
   const [openMenus, setOpenMenus] = useState({
     business: false,
@@ -268,3 +268,5 @@ export default function Sidebar() {
     </>
   );
 }
+
+export default Sidebar

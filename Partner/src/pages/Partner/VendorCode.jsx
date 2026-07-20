@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function VendorCodeDashboard() {
+const VendorCodeDashboard = () =>{
   // Sample state for the table data based on your screenshot
   const [tableData, setTableData] = useState([
     {
@@ -336,3 +336,5 @@ export default function VendorCodeDashboard() {
     </div>
   );
 }
+
+export default VendorCodeDashboard

@@ -44,8 +44,10 @@ const AddEmployees = () => {
 
     try {
       console.log("Submitting form data...", formData);
-
+      
+       //=================================
       //CALL YOUR BACKEND API
+      //==================================
       try {
         const { data } = await addEmployee(dataToSend);
         console.log(data.data);

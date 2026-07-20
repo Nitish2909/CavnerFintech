@@ -23,7 +23,7 @@ const INITIAL_LEADS = [
   { id: 4, grabBy: "John Doe", mobile: "6543210987", leadStatus: "Highest Lead", product: "Cybersecurity", source: "Referral", callStatus: "Connected", statusKeyword: "urgent", customer: "Oscorp", requirement: "Full Audit", created: "2026-07-08" },
 ];
 
-export default function LeadFunnel() {
+const LeadFunnel = ()=> {
   // --- STATE ---
   const [leads, setLeads] = useState(INITIAL_LEADS);
   const [entriesPerPage, setEntriesPerPage] = useState(10);
@@ -454,3 +454,5 @@ export default function LeadFunnel() {
     </div>
   );
 }
+
+export default LeadFunnel

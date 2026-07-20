@@ -16,7 +16,7 @@ import {
   SlidersHorizontal
 } from 'lucide-react';
 
-export default function MyLead() {
+const MyLead = () => {
   // Mock State for Form Filters - Identical, fully functional
   const [filters, setFilters] = useState({
     customerName: '',
@@ -344,3 +344,5 @@ export default function MyLead() {
     </div>
   );
 }
+
+export default MyLead

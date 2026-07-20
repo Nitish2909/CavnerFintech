@@ -4,7 +4,7 @@ import axios from 'axios';
 // const API_BASE_URL = 'http://localhost:5000/api/offers';
 // const IMAGE_BASE_URL = 'http://localhost:5000';
 
-export default function offers() {
+const offers = ()=> {
   const [offers, setOffers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -302,3 +302,5 @@ export default function offers() {
     </div>
   );
 }
+
+export default offers

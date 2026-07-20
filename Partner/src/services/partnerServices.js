@@ -5,6 +5,8 @@ import api from "./api";
 // export const getPartnerProfile = () => api.get("/profile");
 
 
+// Employee
+
 export const addEmployee = (data) => api.post("/employee/addEmployee", data,
     {
         headers: { "Content-Type": "multipart/form-data" }
@@ -12,6 +14,19 @@ export const addEmployee = (data) => api.post("/employee/addEmployee", data,
 
 
 export const getAllEmployees = () => api.get("/employee/getAllEmployees");
+
+
+//Agents
+
+export const addAgent = (data) => api.post("/agent/addAgent", data,{
+      headers: { "Content-Type": "multipart/form-data" }
+});
+
+
+export const getAllAgents = () => api.get("/agent/getAllAgents");
+
+
+
 
 // export const getUsers = (params) => api.get("/partner/manage/users", { params });
 // export const getUserById = (id) => api.get(`/partner/manage/users/${id}`);

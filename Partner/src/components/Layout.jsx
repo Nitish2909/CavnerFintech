@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import {Outlet} from "react-router-dom"
 
-export default function Layout({children}) {
+const Layout = ({children}) =>{
   return (
     <div className="flex flex-col w-full h-screen bg-[#fafbfc] overflow-hidden">
       <Navbar />
@@ -19,3 +19,5 @@ export default function Layout({children}) {
     </div>
   );
 }
+
+export default Layout

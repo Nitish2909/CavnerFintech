@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function CreateVendorCode() {
+const CreateVendorCode = () =>{
   const [formData, setFormData] = useState({
     vendor: '',
     productName: '',
@@ -188,3 +188,5 @@ export default function CreateVendorCode() {
     </div>
   );
 }
+
+export default CreateVendorCode
